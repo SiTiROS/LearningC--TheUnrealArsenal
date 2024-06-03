@@ -372,7 +372,31 @@ using namespace std;
 // 	cout << "-----" << endl;
 // }
 
+class Entity
+{
+public:
+	int getMember() const;
+	void setMember(int memberP);
 
+private:
+	mutable int member = 15;
+};
+
+int Entity::getMember() const
+{
+	member = 2;
+ 	return member;
+}
+
+void Entity::setMember(int memberP)
+{
+	member = memberP;
+}
+
+void print(const Entity& entityP)
+{
+	cout << entityP.getMember() << endl;
+}
 
 int main()
 {
@@ -480,6 +504,14 @@ int main()
 	// GameStats game;
 	// game.ToString();
 
+
+	// Entity entity1;
+	// //cout << entity1.getMember() << endl;
+	// //print(entity1);
+	//
+	// const Entity ENTITY_2;
+	// //ENTITY_2.setMember(5); // не будет работать ибо сам объект const
+	// cout << ENTITY_2.getMember() << endl;
 
 
 	cout << endl;
