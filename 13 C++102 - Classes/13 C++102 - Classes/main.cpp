@@ -2,6 +2,11 @@
 
 using namespace std;
 
+#define END cout << "\n--- End of Program ---" << endl;
+#define THREE 3
+#define SQUARE(x) x * x
+#define MULTIPLY(x, y) (x) * (y)
+
 // class GameStats
 // {
 // public:
@@ -557,7 +562,13 @@ int main()
 	// cout << entity1.getMember() << endl;
 
 
-	
+	int* intPtr = NULL;
+	cout << THREE << endl;
+	END
+	cout << SQUARE(4 + 2) << endl;
+	END
+	cout << MULTIPLY(2,2) <<endl;
+	cout << MULTIPLY(2.2,2.2) <<endl;
 
 	cout << endl;
 	return 0;
