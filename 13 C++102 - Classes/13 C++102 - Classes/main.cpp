@@ -219,85 +219,132 @@ using namespace std;
 // 	cout << "---------" << endl;
 // }
 
-class GameStats
-{
-public:
-	GameStats();
-	GameStats(int levelP);
+// class GameStats
+// {
+// public:
+// 	GameStats();
+// 	GameStats(int levelP);
+//
+// 	int getCurrentLevel();
+// 	void setCurrentLevel(int level);
+//
+// private:
+// 	int currentLevel = 1;
+// };
+//
+// GameStats::GameStats() : currentLevel(1)
+// {
+//
+// }
+//
+// GameStats::GameStats(int levelP)
+// 	:currentLevel(levelP)
+// {
+//
+// }
+//
+// int GameStats::getCurrentLevel()
+// {
+// 	return currentLevel;
+// }
+//
+// void GameStats::setCurrentLevel(int level)
+// {
+// 	currentLevel = level;
+// }
 
-	int getCurrentLevel();
-	void setCurrentLevel(int level);
+// struct Vector2D
+// {
+// 	Vector2D()
+// 		:x(0), y(0)
+// 	{
+// 		cout << "Vector Initialized." << endl;
+// 	}
+//
+// 	Vector2D(float xP, float yP)
+// 	{
+// 		x = xP;
+// 		y = yP;
+//
+// 		cout << "Vector Initialized. x: " << x << " and y: " << y << endl;
+// 	}
+//
+// 	float x;
+// 	float y;
+// };
+//
+// class PlayerStats
+// {
+// public:
+// 	PlayerStats()
+// 		//:health(100), location(Vector2D(15.3f, 4.3f))
+// 		:health(100), location(15.3f, 4.3f) // так короче
+// 	{
+//
+// 	}
+//
+// 	void setLocation(float xP, float yP)
+// 	{
+// 		location.x = xP;
+// 		location.y = yP;
+// 	}
+//
+// 	Vector2D getLocation()
+// 	{
+// 		return location;
+// 	}
+//
+// private:
+// 	float health;
+// 	Vector2D location;
+// };
 
-private:
-	int currentLevel = 1;
-};
-
-GameStats::GameStats() : currentLevel(1)
-{
-
-}
-
-GameStats::GameStats(int levelP)
-	:currentLevel(levelP)
-{
-
-}
-
-int GameStats::getCurrentLevel()
-{
-	return currentLevel;
-}
-
-void GameStats::setCurrentLevel(int level)
-{
-	currentLevel = level;
-}
-
-struct Vector2D
-{
-	Vector2D()
-	{
-		cout << "Vector Initialized." << endl;
-		x = 0;
-		y = 0;
-	}
-
-	Vector2D(float xP, float yP)
-	{
-		x = xP;
-		y = yP;
-
-		cout << "Vector Initialized. x: " << x << " and y: " << y << endl;
-	}
-
-	float x;
-	float y;
-};
-
-class PlayerStats
-{
-public:
-	PlayerStats()
-	{
-		health = 100;
-		location = Vector2D(51.4f, 23.3f);
-	}
-
-	void setLocation(float xP, float yP)
-	{
-		location.x = xP;
-		location.y = yP;
-	}
-
-	Vector2D getLocation()
-	{
-		return location;
-	}
-
-private:
-	float health;
-	Vector2D location;
-};
+// class GameStats
+// {
+// public:
+// 	GameStats();
+// 	GameStats(int levelP, int roomP);
+//
+// 	int getCurrentLevel();
+// 	void setCurrentLevel(int levelP);
+//
+// private:
+// 	int mLevel;
+// 	int mRoom;
+// };
+//
+// GameStats::GameStats()
+// 	: GameStats(1, 1) // нельзя к делегирующему конструкотору добавить другой!
+// {
+// 	cout << "Default constructor invoked." << endl;
+// }
+//
+// GameStats::GameStats(int levelP, int roomP)
+// 	:mLevel(levelP), mRoom(roomP)
+// {
+// 	cout << "Overload two-args constructor invoked." << endl;
+// }
+//
+// int GameStats::getCurrentLevel()
+// {
+// 	return mLevel;
+// }
+//
+// void GameStats::setCurrentLevel(int levelP)
+// {
+// 	 mLevel = levelP;
+// }
+//
+// class Entity
+// {
+// public:
+// 	Entity() : Entity(2, 3) {} //бесконечный цикл
+// 	Entity(int memberVar1P, int memberVar2P) : Entity() {} //бесконечный цикл
+//
+// private:
+// 	int memberVar1;
+// 	int memberVar2;
+// };
 
 
 int main()
@@ -387,12 +434,21 @@ int main()
 	// cout << demoPtr << endl;
 
 
-	// GameStats game, game2(5);
+	// // GameStats game, game2(5);
+	// //
+	// // cout << game.getCurrentLevel() << endl;
+	// // cout << game2.getCurrentLevel() << endl;
+	//
+	// PlayerStats player1;
+
+
+	// GameStats game, game2(5, 4);
 	//
 	// cout << game.getCurrentLevel() << endl;
 	// cout << game2.getCurrentLevel() << endl;
+	// 
+	// cout << endl;
 
-	PlayerStats player1;
 
 
 
