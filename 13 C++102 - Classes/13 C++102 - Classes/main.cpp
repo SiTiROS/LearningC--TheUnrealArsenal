@@ -372,31 +372,52 @@ using namespace std;
 // 	cout << "-----" << endl;
 // }
 
-class Entity
-{
-public:
-	int getMember() const;
-	void setMember(int memberP);
+// class Entity
+// {
+// public:
+// 	int getMember() const;
+// 	void setMember(int memberP);
+//
+// private:
+// 	mutable int member = 15;
+// };
+//
+// int Entity::getMember() const
+// {
+// 	member = 2;
+//  	return member;
+// }
+//
+// void Entity::setMember(int memberP)
+// {
+// 	member = memberP;
+// }
+//
+// void print(const Entity& entityP)
+// {
+// 	cout << entityP.getMember() << endl;
+// }
 
-private:
-	mutable int member = 15;
-};
+// inline int greatestInt(int x, int y)
+// {
+// 	return x > y ? x : y;
+// }
+//
+// class Entity
+// {
+// public:
+// 	//inline int getMember();
+// 	int getMember();
+//
+// private:
+// 	int member = 15;
+// };
+//
+// inline int Entity::getMember()
+// {
+// 	return member;
+// }
 
-int Entity::getMember() const
-{
-	member = 2;
- 	return member;
-}
-
-void Entity::setMember(int memberP)
-{
-	member = memberP;
-}
-
-void print(const Entity& entityP)
-{
-	cout << entityP.getMember() << endl;
-}
 
 int main()
 {
@@ -513,6 +534,30 @@ int main()
 	// //ENTITY_2.setMember(5); // не будет работать ибо сам объект const
 	// cout << ENTITY_2.getMember() << endl;
 
+
+	// // Example inline expansion
+	// // int demoInt{};
+	// // {
+	// // 	int x = 5;
+	// // 	int y = 10;
+	// // 	demoInt = x > y ? x : y;
+	// // }
+	// // cout << demoInt << endl;
+	//
+	// // int demoInt{}; // может быть пустым - само 0 ставит
+	// // int demoInt2(0); // не может быть пустым, ругнЄтс€ при компил€ции
+	// // cout << demoInt << endl;
+	// // cout << demoInt2 << endl;
+	//
+	// // int demoInt{};
+	// // demoInt = greatestInt(5, 10);
+	// // cout << demoInt << endl;
+	//
+	// Entity entity1;
+	// cout << entity1.getMember() << endl;
+
+
+	
 
 	cout << endl;
 	return 0;
