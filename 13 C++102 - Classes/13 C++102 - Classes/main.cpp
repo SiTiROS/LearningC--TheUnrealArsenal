@@ -346,6 +346,33 @@ using namespace std;
 // 	int memberVar2;
 // };
 
+// class GameStats
+// {
+// public:
+// 	// GameStats() {} // будет ошибка как как уже есть конструктор со стандартными аргументами
+// 	GameStats(int levelP = 1, int roomP = 1); // constructor with default arguments
+//
+// 	void ToString();
+//
+// private:
+// 	int m_Level;
+// 	int m_Room;
+// };
+//
+// GameStats::GameStats(int levelP, int roomP)
+// 	: m_Level(levelP), m_Room(roomP)
+// {
+// }
+//
+// void GameStats::ToString()
+// {
+// 	cout << "-----" << endl;
+// 	cout << "Current Level:\t" << m_Level << endl;
+// 	cout << "Current Room:\t" << m_Room << endl;
+// 	cout << "-----" << endl;
+// }
+
+
 
 int main()
 {
@@ -450,7 +477,11 @@ int main()
 	// cout << endl;
 
 
+	// GameStats game;
+	// game.ToString();
 
 
+
+	cout << endl;
 	return 0;
 }
