@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 using namespace std;
 
 struct Vector2D
@@ -17,7 +17,7 @@ Vector2D Vector2D::operator-() const
 
 	return temp;
 }
-
+// тест
 
 int main()
 {

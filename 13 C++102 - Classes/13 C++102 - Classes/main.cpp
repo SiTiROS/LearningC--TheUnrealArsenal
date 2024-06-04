@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 
 using namespace std;
 
@@ -87,7 +87,7 @@ using namespace std;
 // 			return *location;
 // 		else
 // 			return Vector2D();
-// 	} // так как функция возвращает как бы временный объект Vector2D а не указатель, то будет вызван ещё 1 раз деструктор Vector2D, после вызова функции 
+// 	} // С‚Р°Рє РєР°Рє С„СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ РєР°Рє Р±С‹ РІСЂРµРјРµРЅРЅС‹Р№ РѕР±СЉРµРєС‚ Vector2D Р° РЅРµ СѓРєР°Р·Р°С‚РµР»СЊ, С‚Рѕ Р±СѓРґРµС‚ РІС‹Р·РІР°РЅ РµС‰С‘ 1 СЂР°Р· РґРµСЃС‚СЂСѓРєС‚РѕСЂ Vector2D, РїРѕСЃР»Рµ РІС‹Р·РѕРІР° С„СѓРЅРєС†РёРё 
 //
 // private:
 // 	float health;
@@ -283,7 +283,7 @@ using namespace std;
 // public:
 // 	PlayerStats()
 // 		//:health(100), location(Vector2D(15.3f, 4.3f))
-// 		:health(100), location(15.3f, 4.3f) // так короче
+// 		:health(100), location(15.3f, 4.3f) // С‚Р°Рє РєРѕСЂРѕС‡Рµ
 // 	{
 //
 // 	}
@@ -319,7 +319,7 @@ using namespace std;
 // };
 //
 // GameStats::GameStats()
-// 	: GameStats(1, 1) // нельзя к делегирующему конструкотору добавить другой!
+// 	: GameStats(1, 1) // РЅРµР»СЊР·СЏ Рє РґРµР»РµРіРёСЂСѓСЋС‰РµРјСѓ РєРѕРЅСЃС‚СЂСѓРєРѕС‚РѕСЂСѓ РґРѕР±Р°РІРёС‚СЊ РґСЂСѓРіРѕР№!
 // {
 // 	cout << "Default constructor invoked." << endl;
 // }
@@ -343,8 +343,8 @@ using namespace std;
 // class Entity
 // {
 // public:
-// 	Entity() : Entity(2, 3) {} //бесконечный цикл
-// 	Entity(int memberVar1P, int memberVar2P) : Entity() {} //бесконечный цикл
+// 	Entity() : Entity(2, 3) {} //Р±РµСЃРєРѕРЅРµС‡РЅС‹Р№ С†РёРєР»
+// 	Entity(int memberVar1P, int memberVar2P) : Entity() {} //Р±РµСЃРєРѕРЅРµС‡РЅС‹Р№ С†РёРєР»
 //
 // private:
 // 	int memberVar1;
@@ -354,7 +354,7 @@ using namespace std;
 // class GameStats
 // {
 // public:
-// 	// GameStats() {} // будет ошибка как как уже есть конструктор со стандартными аргументами
+// 	// GameStats() {} // Р±СѓРґРµС‚ РѕС€РёР±РєР° РєР°Рє РєР°Рє СѓР¶Рµ РµСЃС‚СЊ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃРѕ СЃС‚Р°РЅРґР°СЂС‚РЅС‹РјРё Р°СЂРіСѓРјРµРЅС‚Р°РјРё
 // 	GameStats(int levelP = 1, int roomP = 1); // constructor with default arguments
 //
 // 	void ToString();
@@ -556,7 +556,7 @@ int main()
 	// //cout << s_Var;
 	// // demoFunction();
 	//
-	// // Entity entity1{ 5 }; // списковая инициализация
+	// // Entity entity1{ 5 }; // СЃРїРёСЃРєРѕРІР°СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ
 	//
 	// // Entity entity1, entity2;
 	//
@@ -616,7 +616,7 @@ int main()
 	// //print(entity1);
 	//
 	// const Entity ENTITY_2;
-	// //ENTITY_2.setMember(5); // не будет работать ибо сам объект const
+	// //ENTITY_2.setMember(5); // РЅРµ Р±СѓРґРµС‚ СЂР°Р±РѕС‚Р°С‚СЊ РёР±Рѕ СЃР°Рј РѕР±СЉРµРєС‚ const
 	// cout << ENTITY_2.getMember() << endl;
 
 
@@ -629,8 +629,8 @@ int main()
 	// // }
 	// // cout << demoInt << endl;
 	//
-	// // int demoInt{}; // может быть пустым - само 0 ставит
-	// // int demoInt2(0); // не может быть пустым, ругнётся при компиляции
+	// // int demoInt{}; // РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј - СЃР°РјРѕ 0 СЃС‚Р°РІРёС‚
+	// // int demoInt2(0); // РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј, СЂСѓРіРЅС‘С‚СЃСЏ РїСЂРё РєРѕРјРїРёР»СЏС†РёРё
 	// // cout << demoInt << endl;
 	// // cout << demoInt2 << endl;
 	//
@@ -697,9 +697,9 @@ int main()
 	// // }
 	//
 	// int x = 2;
-	// x = Normal; // так будет работать
-	// // x = ETerrainDifficulty::Normal; // так не будет работать
-	// x = (int)ETerrainDifficulty::Normal; // так будет работать
+	// x = Normal; // С‚Р°Рє Р±СѓРґРµС‚ СЂР°Р±РѕС‚Р°С‚СЊ
+	// // x = ETerrainDifficulty::Normal; // С‚Р°Рє РЅРµ Р±СѓРґРµС‚ СЂР°Р±РѕС‚Р°С‚СЊ
+	// x = (int)ETerrainDifficulty::Normal; // С‚Р°Рє Р±СѓРґРµС‚ СЂР°Р±РѕС‚Р°С‚СЊ
 	// cout << x << endl;
 	//
 	// EMyEnum myEnum = EMyEnum::a;
