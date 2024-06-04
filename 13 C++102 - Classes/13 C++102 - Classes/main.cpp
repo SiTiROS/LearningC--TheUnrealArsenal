@@ -2,10 +2,10 @@
 
 using namespace std;
 
-#define END cout << "\n--- End of Program ---" << endl;
-#define THREE 3
-#define SQUARE(x) x * x
-#define MULTIPLY(x, y) (x) * (y)
+// #define END cout << "\n--- End of Program ---" << endl;
+// #define THREE 3
+// #define SQUARE(x) x * x
+// #define MULTIPLY(x, y) (x) * (y)
 
 // class GameStats
 // {
@@ -423,6 +423,43 @@ using namespace std;
 // 	return member;
 // }
 
+// //enum EDifficulty { Easy, Normal, Hard };
+//
+// enum EGameDifficulty
+// {
+// 	Easy = 1,
+// 	Normal = 3,
+// 	Hard = 5
+// };
+//
+// enum class ETerrainDifficulty
+// {
+// 	Easy,
+// 	Normal,
+// 	Hard
+// };
+//
+// EGameDifficulty pointsCollected(int points)
+// {
+// 	if (points == 1)
+// 	{
+// 		return EGameDifficulty::Easy;
+// 	}
+// 	else if (points == 3)
+// 	{
+// 		return Normal;
+// 	}
+// 	else if (points == 5)
+// 	{
+// 		return Hard;
+// 	}
+// 	else
+// 	{
+// 		return Easy;
+// 	}
+// }
+//
+// enum class EMyEnum : int { a, b, c };
 
 int main()
 {
@@ -562,13 +599,76 @@ int main()
 	// cout << entity1.getMember() << endl;
 
 
-	int* intPtr = NULL;
-	cout << THREE << endl;
-	END
-	cout << SQUARE(4 + 2) << endl;
-	END
-	cout << MULTIPLY(2,2) <<endl;
-	cout << MULTIPLY(2.2,2.2) <<endl;
+	// int* intPtr = NULL;
+	// cout << THREE << endl;
+	// END
+	// cout << SQUARE(4 + 2) << endl;
+	// END
+	// cout << MULTIPLY(2,2) <<endl;
+	// cout << MULTIPLY(2.2,2.2) <<endl;
+
+
+	// // EDifficulty difficulty = EDifficulty::Normal;
+	// // EDifficulty difficulty = Easy;
+	// //
+	// // cout << difficulty << endl;
+	// // cout << Normal << endl;
+	// //
+	// // switch (difficulty)
+	// // {
+	// // case Easy:
+	// // 	cout << "Easy" << endl;
+	// // 	break;
+	// // case Normal:
+	// // 	cout << "Normal" << endl;
+	// // 	break;
+	// // case Hard:
+	// // 	cout << "Hard" << endl;
+	// // 	break;
+	// // default:
+	// // 	cout << "Illegal choice!" << endl;
+	// // 	break;
+	// // }
+	//
+	// // EGameDifficulty gameDifficulty = Normal;
+	// //
+	// // cout << Easy << endl;
+	// // cout << Normal << endl;
+	// // cout << Hard << endl;
+	// //
+	// // if (gameDifficulty == Normal)
+	// // {
+	// // 	cout << (Normal - Easy) << endl;
+	// // }
+	//
+	// // EGameDifficulty gameDifficulty = pointsCollected(4);
+	// //
+	// // cout << gameDifficulty << endl;
+	//
+	// EGameDifficulty gameDifficulty = EGameDifficulty::Normal;
+	// ETerrainDifficulty terrainDifficulty = ETerrainDifficulty::Normal;
+	//
+	// // if (terrainDifficulty == ETerrainDifficulty::Normal)
+	// // {
+	// // 	cout << "Normal" << endl;
+	// // }
+	//
+	// int x = 2;
+	// x = Normal; // так будет работать
+	// // x = ETerrainDifficulty::Normal; // так не будет работать
+	// x = (int)ETerrainDifficulty::Normal; // так будет работать
+	// cout << x << endl;
+	//
+	// EMyEnum myEnum = EMyEnum::a;
+	// cout << (int)myEnum << endl;
+	//
+	// gameDifficulty = (EGameDifficulty)2;
+	// terrainDifficulty = (ETerrainDifficulty)2;
+	// cout << gameDifficulty << endl;
+	// cout << (int)terrainDifficulty << endl;
+
+
+
 
 	cout << endl;
 	return 0;
