@@ -461,6 +461,9 @@ using namespace std;
 //
 // enum class EMyEnum : int { a, b, c };
 
+// const int x = 55;
+//
+
 int main()
 {
 	// GameStats* newDynamicWorld = new GameStats;
@@ -667,6 +670,9 @@ int main()
 	// cout << gameDifficulty << endl;
 	// cout << (int)terrainDifficulty << endl;
 
+
+	// int x = 2;
+	// cout << ::x << endl;
 
 
 
