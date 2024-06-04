@@ -464,6 +464,46 @@ using namespace std;
 // const int x = 55;
 //
 
+struct Vector2D
+{
+	Vector2D(float xP = 0, float yP = 0)
+		: x(xP), y(yP)
+	{
+	}
+
+	~Vector2D()
+	{
+	}
+
+	float x;
+	float y;
+};
+
+class PlayerStats
+{
+public:
+	PlayerStats(int healthP = 100, Vector2D locationP = Vector2D{ 33.15f, 47.5f })
+		: health(healthP), location(locationP.x, locationP.y)
+	{}
+
+	~PlayerStats() {};
+
+	int getHealth() const
+	{
+		return health;
+	}
+
+	Vector2D getPos() const
+	{
+		return location;
+	}
+
+private:
+	int health;
+	Vector2D location;
+};
+
+
 int main()
 {
 	// GameStats* newDynamicWorld = new GameStats;
@@ -674,6 +714,31 @@ int main()
 	// int x = 2;
 	// cout << ::x << endl;
 
+
+	// int x = (3, 5, 7);
+	// cout << x << endl;
+
+
+	// PlayerStats playerOne{};
+	// cout << playerOne.getHealth() << endl;
+	// cout << playerOne.getPos().x << endl;
+	// cout << playerOne.getPos().y << endl;
+	// cout << endl;
+	//
+	// PlayerStats playerTwo{ 75, Vector2D{55.50f, 66.68f}};
+	// // prefered
+	// // Vector2D playerTwoLocation{55.50f, 66.68f};
+	// // PlayerStats playerTwo {75, playerTwoLocation};
+	// cout << playerTwo.getHealth() << endl;
+	// cout << playerTwo.getPos().x << endl;
+	// cout << playerTwo.getPos().y << endl;
+
+	// int j{ 3 }, k{ 5 }, l{ 7 };
+	// cout << j << k << l << endl;
+	//
+	// int m = (j = k, l);
+	// cout << j << k << l << endl;
+	// cout << m << endl;
 
 
 	cout << endl;
