@@ -21,17 +21,50 @@ Vector2D Vector2D::operator-() const
 class Entity
 {
 public:
+	Entity(int memberP = 5) : member(memberP) {}
+
+	Entity add(const Entity& other) const;
+	Entity operator+(const Entity& other) const;
+	Entity multiply(const Entity& other) const;
+	Entity operator*(const Entity& other) const;
+
 	Entity& operator++();
 	Entity operator++(int);
 	Entity& operator--();
 	Entity operator--(int);
 
+	void toString() const { cout << member << endl; }
 
-	int getMember();
+	int getMember() const;
 
 private:
 	int member{ 1 };
 };
+
+Entity Entity::add(const Entity& other)	const
+{
+	Entity temp;
+	temp.member = member + other.member;
+	return temp; // связка 2
+	// return *this + other; // связка 1
+	// return operator+(other); // и так можно
+}
+
+Entity Entity::operator+(const Entity& other) const
+{
+	// return Entity(member + other.member); // связка 1
+	return add(other); // связка 2
+}
+
+Entity Entity::multiply(const Entity& other) const
+{
+	return Entity(member * other.member);
+}
+
+Entity Entity::operator*(const Entity& other) const
+{
+	return Entity(member * other.member);
+}
 
 Entity& Entity::operator++()
 {
@@ -75,7 +108,7 @@ Entity Entity::operator--(int n)
 	return temp;
 }
 
-int Entity::getMember()
+int Entity::getMember() const
 {
 	return member;
 }
@@ -100,23 +133,34 @@ int main()
 	// cout << vec2.y << endl;
 
 
-	// int x{ 1 }, y{ 5 };
-	// x++ += 5; // не будет работать так
-
-	Entity entity1;
-
-	// cout << (++entity1).getMember() << endl;
+	// // int x{ 1 }, y{ 5 };
+	// // x++ += 5; // не будет работать так
+	//
+	// Entity entity1;
+	//
+	// // cout << (++entity1).getMember() << endl;
+	// // cout << entity1.getMember() << endl;
+	//
+	// //entity1++;  
+	// //cout << entity1.getMember() << endl;
+	//
+	// entity1.operator++(1);
+	// cout << entity1.getMember() << endl;
+	//
+	// --entity1;  
+	// //entity1.operator--();
 	// cout << entity1.getMember() << endl;
 
-	//entity1++;  
-	//cout << entity1.getMember() << endl;
 
-	entity1.operator++(1);
-	cout << entity1.getMember() << endl;
+	// Entity entity1(3), entity2(3), result;
+	// //result = entity1.add(entity2);
+	// //result = entity1 * entity2;
+	//
+	// result = entity1.add(entity2.multiply(entity1));
+	// //result = entity1 + entity2 * entity1;
+	//
+	// result.toString();
 
-	--entity1;  
-	//entity1.operator--();
-	cout << entity1.getMember() << endl;
 
 	cout << endl;
 	return 0;
