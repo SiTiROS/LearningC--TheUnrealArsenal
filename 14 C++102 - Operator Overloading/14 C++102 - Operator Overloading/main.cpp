@@ -21,7 +21,16 @@ Vector2D Vector2D::operator-() const
 class Entity
 {
 public:
-	Entity(int memberP = 5) : member(memberP) {}
+	Entity(int memberP = 5) : member(memberP)
+	{
+		cout << "Default Constructor Invoked." << endl;
+	}
+
+	Entity(const Entity& other)
+		:member(other.member)
+	{
+		cout << "Copy Constructor Invoked." << endl;
+	}
 
 	bool operator==(const Entity& other) const;
 	bool operator!=(const Entity& other) const;
@@ -76,8 +85,8 @@ Entity Entity::add(const Entity& other)	const
 
 Entity Entity::operator+(const Entity& other) const
 {
-	// return Entity(member + other.member); // связка 1
-	return add(other); // связка 2
+	return Entity(member + other.member); // связка 1
+	// return add(other); // связка 2
 }
 
 Entity Entity::multiply(const Entity& other) const
@@ -137,6 +146,11 @@ int Entity::getMember() const
 	return member;
 }
 
+void toString(Entity entityP)
+{
+	cout << entityP.getMember() << endl;
+}
+
 class DoubleEntity
 {
 public:
@@ -145,7 +159,7 @@ public:
 	{
 	}
 
-	bool operator==(const DoubleEntity &other) const
+	bool operator==(const DoubleEntity& other) const
 	{
 		return ((member1 == other.member1) && (member2 == other.member2));
 	}
@@ -154,6 +168,76 @@ private:
 	int member1;
 	int member2;
 };
+
+
+class Entity2
+{
+public:
+	Entity2(int x = 1)
+	{
+		memberPtr = new int(x);
+	}
+
+	//Copy constructor
+	Entity2(const Entity2& other)
+		: memberPtr(other.memberPtr)
+	{}
+
+	~Entity2()
+	{
+		delete memberPtr;
+	}
+
+	int getMemberPtr() const
+	{
+		return *memberPtr;
+	}
+
+private:
+	int* memberPtr;
+};
+
+//Note: Copy-by-value parameter
+void toString(Entity2 entityP)
+{
+	cout << entityP.getMemberPtr() << endl;
+}
+
+class Entity3
+{
+public:
+	Entity3(int x = 1)
+	{
+		memberPtr = new int(x);
+	}
+
+	//Deep Copy constructor
+	Entity3(const Entity3& other)
+		:Entity3(*other.memberPtr)
+	{
+		// memberPtr = new int;
+		// *memberPtr = *other.memberPtr;
+	}
+
+	~Entity3()
+	{
+		delete memberPtr;
+	}
+
+	int getMemberPtr() const
+	{
+		return *memberPtr;
+	}
+
+private:
+	int* memberPtr;
+};
+
+//Note: Copy-by-value parameter
+void toString(Entity3 entityP)
+{
+	cout << entityP.getMemberPtr() << endl;
+}
 
 int main()
 {
@@ -210,6 +294,41 @@ int main()
 	//
 	// DoubleEntity doubleEntity1(2, 2), doubleEntity2(2, 2);
 	// cout << (doubleEntity1 == doubleEntity2);
+
+
+	// Entity entity1(3), entity2(3);
+	// Entity result = entity1;
+	// result = entity1 + entity2;
+	// toString(result);
+	//
+	// int* sourcePtr = new int(3);
+	// int* copyPtr = sourcePtr;
+	// cout << *sourcePtr << endl;
+	// cout << *copyPtr << endl;
+	// delete copyPtr;
+	// sourcePtr = nullptr;
+	// delete sourcePtr; // crash! если не вызывать sourcePtr = nullptr;
+	//
+	// int *sourcePtr = new int(3);
+	// int *copyPtr = new int;
+	// *copyPtr = *sourcePtr;
+	// cout << *sourcePtr << endl;
+	// cout << *copyPtr << endl;
+	// delete copyPtr;
+	// delete sourcePtr;
+	//
+	//Entity2 entity1(5);
+	// {
+	// 	Entity2 entity2(entity1);
+	// }
+	//cout << entity1.getMemberPtr() << endl;
+	//toString(entity1);
+	//
+	// Entity3 entity3;
+	// toString(entity3);
+	// {
+	// 	Entity3 entity4(entity3);
+	// }
 
 
 	cout << endl;
