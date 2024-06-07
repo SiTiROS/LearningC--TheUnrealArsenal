@@ -23,13 +23,20 @@ class Entity
 public:
 	Entity(int memberP = 5) : member(memberP) {}
 
+	bool operator==(const Entity& other) const;
+	bool operator!=(const Entity& other) const;
+
+	bool operator<(const Entity& other) const;
+
 	Entity add(const Entity& other) const;
 	Entity operator+(const Entity& other) const;
+
 	Entity multiply(const Entity& other) const;
 	Entity operator*(const Entity& other) const;
 
 	Entity& operator++();
 	Entity operator++(int);
+
 	Entity& operator--();
 	Entity operator--(int);
 
@@ -40,6 +47,23 @@ public:
 private:
 	int member{ 1 };
 };
+
+bool Entity::operator==(const Entity& other) const
+{
+	return member == other.member;
+}
+
+bool Entity::operator!=(const Entity& other) const
+{
+	// return member != other.member;  //or
+	// return !(operator==(other)); //or
+	return !(*this == other); //or тут мы сравниваем объекты как бы через оператор == который внутри уже сравнивает bool Entity::operator==(const Entity& other){ const return member == other.member;}
+}
+
+bool Entity::operator<(const Entity& other) const
+{
+	return member < other.member;
+}
 
 Entity Entity::add(const Entity& other)	const
 {
@@ -113,6 +137,23 @@ int Entity::getMember() const
 	return member;
 }
 
+class DoubleEntity
+{
+public:
+	DoubleEntity(int member1P = 1, int member2P = 1)
+		:member1(member1P), member2(member2P)
+	{
+	}
+
+	bool operator==(const DoubleEntity &other) const
+	{
+		return ((member1 == other.member1) && (member2 == other.member2));
+	}
+
+private:
+	int member1;
+	int member2;
+};
 
 int main()
 {
@@ -160,6 +201,15 @@ int main()
 	// //result = entity1 + entity2 * entity1;
 	//
 	// result.toString();
+
+
+	// Entity entity1(2), entity2(3);
+	// cout << (entity1 == entity2);
+	// cout << (entity1 != entity2);
+	// cout << (entity1 < entity2);
+	//
+	// DoubleEntity doubleEntity1(2, 2), doubleEntity2(2, 2);
+	// cout << (doubleEntity1 == doubleEntity2);
 
 
 	cout << endl;
