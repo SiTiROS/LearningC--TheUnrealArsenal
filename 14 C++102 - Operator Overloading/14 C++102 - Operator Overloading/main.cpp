@@ -1,22 +1,22 @@
 ﻿#include <iostream>
 using namespace std;
 
-struct Vector2D
-{
-	float x{};
-	float y{};
-
-	Vector2D operator-() const;
-};
-
-Vector2D Vector2D::operator-() const
-{
-	Vector2D temp;
-	temp.x = -x;
-	temp.y = -y;
-
-	return temp;
-}
+// struct Vector2D
+// {
+// 	float x{};
+// 	float y{};
+//
+// 	Vector2D operator-() const;
+// };
+//
+// Vector2D Vector2D::operator-() const
+// {
+// 	Vector2D temp;
+// 	temp.x = -x;
+// 	temp.y = -y;
+//
+// 	return temp;
+// }
 
 class Entity
 {
@@ -151,6 +151,7 @@ void toString(Entity entityP)
 	cout << entityP.getMember() << endl;
 }
 
+
 class DoubleEntity
 {
 public:
@@ -203,6 +204,7 @@ void toString(Entity2 entityP)
 	cout << entityP.getMemberPtr() << endl;
 }
 
+
 class Entity3
 {
 public:
@@ -217,6 +219,19 @@ public:
 	{
 		// memberPtr = new int;
 		// *memberPtr = *other.memberPtr;
+	}
+
+	Entity3& operator=(const Entity3& other)
+	{
+		if (this != &other) //Avoid self-assignment
+		{
+			//*memberPtr = *other.memberPtr; // simple copy assignment
+
+			delete memberPtr;
+			memberPtr = new int;
+			*memberPtr = *other.memberPtr;
+		}
+		return *this;
 	}
 
 	~Entity3()
@@ -238,6 +253,76 @@ void toString(Entity3 entityP)
 {
 	cout << entityP.getMemberPtr() << endl;
 }
+
+
+struct Vector2D
+{
+	Vector2D& operator=(const Vector2D& other)
+	{
+		x = other.x;
+		y = other.y;
+
+		return *this;
+	}
+
+	float x;
+	float y;
+};
+
+
+class ArrayList
+{
+public:
+	ArrayList(int lenghtP = 1)
+	{
+		length = lenghtP;
+		list = new char[length];
+
+		for (int i = 0; i < length; i++)
+		{
+			//list[i] = 'X';
+			*(list + i) = 'X';
+		}
+	}
+
+	~ArrayList()
+	{
+		delete[] list;
+	}
+
+	ArrayList& operator=(const ArrayList& other)
+	{
+		if (this != &other)
+		{
+			delete[] list;
+
+			length = other.length;
+			list = new char[length];
+
+			for (int i = 0; i < length; i++)
+			{
+				// list[i] = 'X';
+				*(list + i) = 'X';
+			}
+		}
+
+		return *this;
+	}
+
+	void toString()
+	{
+		for (int i = 0; i < length; i++)
+		{
+			// cout << list[i];
+			cout << *(list + i);
+		}
+		cout << endl;
+	}
+
+private:
+	char* list;
+	int length;
+};
 
 int main()
 {
@@ -329,6 +414,38 @@ int main()
 	// {
 	// 	Entity3 entity4(entity3);
 	// }
+
+
+	// int x{ 2 }, y{ 7 }, z{ 3 };
+	// x = y = z;
+	// cout << x << '\t' << y << '\t' << z << '\t' << endl;
+	//
+	// Vector2D vec1{}, vec2{ 3, 5 }, vec3{ 12, 12 };
+	// cout << vec1.x << '\t' << vec1.y << endl;
+	//
+	// // vec1.operator=(vec2); equal vec1 = vec2;
+	// vec1 = vec2;
+	// cout << vec1.x << '\t' << vec1.y << endl;
+	//
+	// vec1 = vec2 = vec3;
+	// cout << "\nChained Assignment..." << endl;
+	// cout << vec1.x << '\t' << vec1.y << endl;
+	// cout << vec2.x << '\t' << vec2.y << endl;
+	//
+	// Entity3 entity1(5), entity2(7);
+	// //Entity3 entity3 = entity1; // equal Entity3 entity3(entity1);
+	// Entity3 entity3(entity1);
+	// toString(entity3);
+	// entity3 = entity2;
+	// toString(entity3);
+	//
+	// ArrayList arrayList1(2), arrayList2(5), arrayList3;
+	// arrayList1.toString();
+	//
+	// arrayList3 = arrayList1 = arrayList2;
+	// arrayList1.toString();
+	// arrayList3.toString();
+
 
 
 	cout << endl;
