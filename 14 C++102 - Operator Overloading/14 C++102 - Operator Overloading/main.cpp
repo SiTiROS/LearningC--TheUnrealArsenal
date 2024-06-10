@@ -1,4 +1,6 @@
 ﻿#include <iostream>
+#include <utility>
+
 using namespace std;
 
 // struct Vector2D
@@ -324,6 +326,109 @@ private:
 	int length;
 };
 
+
+void test(const int& x)
+{
+	cout << &x << "\t" << x << "\tL-value Reference." << endl;
+}
+
+void test(int&& x)
+{
+	cout << &x << "\t" << x << "\tR-value Reference." << endl;
+}
+
+
+class MoveConstructor
+{
+public:
+	MoveConstructor(int memberP = 1)
+		:member(memberP)
+	{
+		cout << "Default Constructor Invoked." << endl;
+	}
+
+	MoveConstructor(const MoveConstructor& other)
+		:member(other.member)
+	{
+		cout << "Copy Constructor Invoked." << endl;
+	}
+
+	MoveConstructor(const MoveConstructor&& other) noexcept
+		:member(other.member)
+	{
+		cout << "Move Constructor Invoked." << endl;
+	}
+
+	MoveConstructor operator+(const MoveConstructor& other) const
+	{
+		// MoveConstructor temp(MoveConstructor(member + other.member));
+		// MoveConstructor temp(member + other.member);
+		// return move(temp); // вот так будет только работать не дефолтные конструкторы!
+		return MoveConstructor(member + other.member);
+	}
+
+	void toString() const
+	{
+		cout << member << endl;
+	}
+
+private:
+	int member;
+};
+
+class MoveConstructor2
+{
+public:
+	MoveConstructor2(int x = 1)
+	{
+		memberPtr = new int(x);
+	}
+
+	//Deep Copy Constructor...
+	MoveConstructor2(const MoveConstructor2& other)
+		:MoveConstructor2(*other.memberPtr)
+	{
+		cout << "Copy Constructor Invoked." << endl;
+	}
+
+	//Move Constructor
+	MoveConstructor2(MoveConstructor2&& other) noexcept
+		:memberPtr(other.memberPtr)
+	{
+		other.memberPtr = nullptr;
+		cout << "Move Constructor Invoked." << endl;
+	}
+
+	~MoveConstructor2()
+	{
+		if (memberPtr != nullptr)
+		{
+			delete memberPtr;
+			cout << "Dynamic object deallocated." << endl;
+		}
+		else
+		{
+			cout << "Noting to deallocate." << endl;
+		}
+	}
+
+	MoveConstructor2 operator+(const MoveConstructor2& other) const
+	{
+		MoveConstructor2 temp(*memberPtr + *other.memberPtr);
+		return move(temp);
+		//return temp;
+	}
+
+	void toString() const
+	{
+		cout << *memberPtr << endl;
+	}
+
+private:
+	int* memberPtr;
+};
+
+
 int main()
 {
 	// Vector2D vec1, vec2{ 15.0f, 5.0f };
@@ -446,6 +551,21 @@ int main()
 	// arrayList1.toString();
 	// arrayList3.toString();
 
+
+	// int myInt{};
+	// test((int&&)myInt); cast to int&& R-value
+	// int &&myInt = 55 + 55;
+	// test(myInt);
+	// test((int&&)myInt);
+
+	
+	// MoveConstructor entity1(3), entity2(3);
+	// MoveConstructor entity3(entity1 + entity2);
+	// entity3.toString();
+
+	// MoveConstructor2 entity1(3), entity2(3);
+	// MoveConstructor2 entity3(entity1 + entity2);
+	// entity3.toString();
 
 
 	cout << endl;
