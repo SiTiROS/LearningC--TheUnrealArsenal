@@ -530,6 +530,61 @@ void A::func(B& b)
 }
 
 
+struct SVector2D
+{
+	float x{};
+	float y{};
+
+	// SVector2D operator-() const
+	// {
+	// 	SVector2D temp;
+	// 	temp.x = -x;
+	// 	temp.y = -y;
+	//
+	// 	return temp;
+	// }
+};
+
+SVector2D operator-(const SVector2D& operand)
+{
+	SVector2D temp;
+	temp.x = -operand.x;
+	temp.y = -operand.y;
+
+	return temp;
+}
+
+
+class NEntity
+{
+	friend NEntity operator+(const NEntity& lho, const NEntity& rho);
+
+public:
+	NEntity(int memberP = 1)
+		:member(memberP)
+	{
+	}
+
+	// NEntity operator+(const NEntity& other) const
+	// {
+	// 	return NEntity(member + other.member);
+	// }
+
+	void toString() const
+	{
+		cout << member << endl;
+	}
+
+private:
+	int member;
+};
+
+NEntity operator+(const NEntity& lho, const NEntity& rho)
+{
+	return NEntity(lho.member + rho.member);
+}
+
+
 int main()
 {
 	// Vector2D vec1, vec2{ 15.0f, 5.0f };
@@ -686,6 +741,16 @@ int main()
 	// A a;
 	// B b;
 	// a.toString(b);
+
+
+	// SVector2D vec1, vec2{ 15.0f, 5.0f };
+	// vec1 = -vec2;
+	// cout << vec1.x << " " << vec1.y << endl;
+	// cout << vec2.x << " " << vec2.y << endl;
+	//
+	// NEntity entity1(3), entity2(12), result;
+	// result = entity1 + entity2;
+	// result.toString();
 
 
 
