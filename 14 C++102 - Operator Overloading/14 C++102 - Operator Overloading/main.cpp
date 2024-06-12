@@ -450,7 +450,6 @@ public:
 	}
 
 	MoveConstructor2& operator++() // это префиксный инкремент. Он увеличивает значение переменной memberPtr на 1, и затем возвращает новое значение объекта 
-
 	{
 		++*memberPtr;
 		return *this;
@@ -472,6 +471,63 @@ public:
 private:
 	int* memberPtr;
 };
+
+
+class EntityFriend
+{
+	friend void toString(EntityFriend entityP);
+
+public:
+	EntityFriend(int memberP = 1)
+		:member(memberP)
+	{
+	}
+
+	EntityFriend(const EntityFriend& other)
+		:member(other.member)
+	{
+		cout << "Copy Constructor Invoked." << endl;
+	}
+
+private:
+	int member;
+};
+
+void toString(EntityFriend entityP) //friend
+{
+	cout << entityP.member << endl;
+}
+
+
+class B;
+
+class A
+{
+public:
+	void toString(const B& b) const;
+	void func(B& b);
+};
+
+class B
+{
+	// friend void A::toString(const B& b) const;
+	friend class A;
+
+private:
+	int member{ 5 };
+	void toString() const { cout << member << endl; }
+};
+
+void A::toString(const B& b) const
+{
+	cout << b.member << endl;
+	b.toString();
+}
+
+void A::func(B& b)
+{
+	//cout << b.member << endl;
+}
 
 
 int main()
@@ -607,7 +663,7 @@ int main()
 	// MoveConstructor entity1(3), entity2(3);
 	// MoveConstructor entity3(entity1 + entity2);
 	// entity3.toString();
-
+	//
 	// MoveConstructor2 entity1(3), entity2(3);
 	// MoveConstructor2 entity3(entity1 + entity2);
 	// entity3.toString();
@@ -616,12 +672,21 @@ int main()
 	// MoveConstructor2 entity1(5);
 	// entity1 = MoveConstructor2(55);
 	// entity1.toString();
+	//
+	// MoveConstructor2 entity1(5), entity2(1);
+	// // entity1 = ++entity2;
+	// entity1 = entity2++;
+	// entity1.toString();
+	// entity2.toString();
 
-	MoveConstructor2 entity1(5), entity2(1);
-	// entity1 = ++entity2;
-	entity1 = entity2++;
-	entity1.toString();
-	entity2.toString();
+
+	// EntityFriend entity1(3);
+	// toString(entity1);
+	//
+	// A a;
+	// B b;
+	// a.toString(b);
+
 
 
 
