@@ -449,13 +449,14 @@ public:
 		return *this;
 	}
 
-	MoveConstructor2& operator++()
+	MoveConstructor2& operator++() // это префиксный инкремент. Он увеличивает значение переменной memberPtr на 1, и затем возвращает новое значение объекта 
+
 	{
 		++*memberPtr;
 		return *this;
 	}
 
-	MoveConstructor2 operator++(int)
+	MoveConstructor2 operator++(int) // это постфиксный инкремент. Он увеличивает значение переменной memberPtr на 1, но сначала возвращает старое значение объекта 
 	{
 		MoveConstructor2 temp = *this;
 		++*memberPtr;
