@@ -419,6 +419,50 @@ public:
 		//return temp;
 	}
 
+	//Copy Assignment Operator
+	MoveConstructor2& operator=(const MoveConstructor2& other)
+	{
+		cout << "Copy Assignment Invoked." << endl;
+		if (this != &other)
+		{
+			delete memberPtr;
+			memberPtr = new int;
+			*memberPtr = *other.memberPtr;
+		}
+
+		return *this;
+	}
+
+	//Move Assignment Operator
+	MoveConstructor2& operator=(MoveConstructor2&& other) noexcept
+	{
+		cout << "Move Assignment Invoked." << endl;
+		if (this != &other)
+		{
+			delete memberPtr;
+
+			//reallocate resources to *this
+			memberPtr = other.memberPtr;
+			other.memberPtr = nullptr;
+		}
+
+		return *this;
+	}
+
+	MoveConstructor2& operator++()
+	{
+		++*memberPtr;
+		return *this;
+	}
+
+	MoveConstructor2 operator++(int)
+	{
+		MoveConstructor2 temp = *this;
+		++*memberPtr;
+
+		return move(temp);
+	}
+
 	void toString() const
 	{
 		cout << *memberPtr << endl;
@@ -558,7 +602,7 @@ int main()
 	// test(myInt);
 	// test((int&&)myInt);
 
-	
+
 	// MoveConstructor entity1(3), entity2(3);
 	// MoveConstructor entity3(entity1 + entity2);
 	// entity3.toString();
@@ -568,6 +612,19 @@ int main()
 	// entity3.toString();
 
 
+	// MoveConstructor2 entity1(5);
+	// entity1 = MoveConstructor2(55);
+	// entity1.toString();
+
+	MoveConstructor2 entity1(5), entity2(1);
+	// entity1 = ++entity2;
+	entity1 = entity2++;
+	entity1.toString();
+	entity2.toString();
+
+
+
+	cout << "___END___" << endl;
 	cout << endl;
 	return 0;
 }
