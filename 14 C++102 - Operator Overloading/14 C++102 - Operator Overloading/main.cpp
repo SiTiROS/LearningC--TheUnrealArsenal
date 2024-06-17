@@ -585,6 +585,39 @@ NEntity operator+(const NEntity& lho, const NEntity& rho)
 }
 
 
+class OEntity
+{
+	friend ostream& operator<<(ostream& output, const OEntity& entityP);
+	friend istream& operator>>(istream& input, OEntity& entity);
+
+public:
+	OEntity(int memberP = 1)
+		:member(memberP)
+	{
+	}
+
+	void toString() const
+	{
+		cout << member << endl;
+	}
+
+private:
+	int member;
+};
+
+ostream& operator<<(ostream& output, const OEntity& entityP)
+{
+	output << entityP.member << endl;
+	return output;
+}
+
+istream& operator>>(istream& input, OEntity& entityP)
+{
+	input >> entityP.member;
+	return input;
+}
+
+
 int main()
 {
 	// Vector2D vec1, vec2{ 15.0f, 5.0f };
@@ -751,6 +784,16 @@ int main()
 	// NEntity entity1(3), entity2(12), result;
 	// result = entity1 + entity2;
 	// result.toString();
+
+
+	// int x = 5;
+	// cin >> x;
+	// cout << x << endl;
+	// cout.operator<<(x);
+
+	OEntity entity1;
+	cin >> entity1;
+	cout << entity1;
 
 
 
