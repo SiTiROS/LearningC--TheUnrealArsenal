@@ -618,6 +618,147 @@ istream& operator>>(istream& input, OEntity& entityP)
 }
 
 
+struct CVector3D
+{
+	CVector3D()
+		:x(0.0f), y(0.0f), z(0.0f)
+	{
+	}
+
+	CVector3D(float xP, float yP, float zP)
+		:x(xP), y(yP), z(zP)
+	{
+	}
+
+	float x;
+	float y;
+	float z;
+};
+
+struct CVector2D
+{
+	CVector2D()
+		:x(0.0f), y(0.0f)
+	{
+	}
+
+	//conversation constructor
+	CVector2D(const CVector3D& vec3P)
+	{
+		x = vec3P.x;
+		y = vec3P.y;
+	}
+
+	float x;
+	float y;
+};
+
+struct C2Vector2D
+{
+	C2Vector2D() : x(0.0f), y(0.0f) {}
+
+	explicit C2Vector2D(float inF)
+		: x(inF), y(inF)
+	{
+		cout << "Conversion Constructor Invoked!" << endl;
+	}
+
+	// C2Vector2D operator+(const C2Vector2D& rho)
+	// {
+	// 	C2Vector2D temp;
+	// 	temp.x = x + rho.x;
+	// 	temp.y = y + rho.y;
+	// 	return temp;
+	// }
+
+	float x;
+	float y;
+};
+
+C2Vector2D operator+(const C2Vector2D& lho, const C2Vector2D& rho)
+{
+	C2Vector2D temp;
+	temp.x = lho.x + rho.x;
+	temp.y = lho.y + rho.y;
+	return temp;
+}
+
+class CEntity
+{
+public:
+	CEntity(int memberP = 1) :member(memberP) {}
+
+	explicit operator int() const
+	{
+		return member;
+	}
+
+private:
+	int member;
+};
+
+struct CNVector3D
+{
+	CNVector3D() : x(0.0f), y(0.0f), z(0.0f) {}
+
+	CNVector3D(float xP, float yP, float zP)
+		: x(xP), y(yP), z(zP) {}
+
+	float x;
+	float y;
+	float z;
+};
+
+struct CNVector2D
+{
+	CNVector2D(float inF = 0.0f) : x(inF), y(inF) {}
+
+	//conversation constructor
+	// CNVector2D(const CNVector3D& vec3P)
+	// {
+	// 	x = vec3P.x;
+	// 	y = vec3P.y;
+	// }
+
+	//conversation operation/function
+	operator CNVector3D() const
+	{
+		cout << "Conversation Function Invoked!" << endl;
+		return CNVector3D(x, y, 0);
+	}
+
+	float x;
+	float y;
+};
+
+struct Vector3D2
+{
+	Vector3D2() : x(0.0f), y(0.0f), z(0.0f) {}
+
+	Vector3D2(float xP, float yP, float zP)
+		: x(xP), y(yP), z(zP) {}
+
+	float x;
+	float y;
+	float z;
+};
+
+struct Vector2D2
+{
+	Vector2D2(float inF = 0.0f) : x(inF), y(inF) {}
+
+	Vector2D2& operator=(const Vector3D2& rho)
+	{
+		x = rho.x;
+		y = rho.y;
+		return *this;
+	}
+
+	float x;
+	float y;
+};
+
+
 int main()
 {
 	// Vector2D vec1, vec2{ 15.0f, 5.0f };
@@ -790,10 +931,45 @@ int main()
 	// cin >> x;
 	// cout << x << endl;
 	// cout.operator<<(x);
+	//
+	// OEntity entity1;
+	// cin >> entity1;
+	// cout << entity1;
 
-	OEntity entity1;
-	cin >> entity1;
-	cout << entity1;
+
+	// CVector3D vec3(3, 5, 7);
+	// CVector2D vec2(vec3);
+	// cout << vec2.x << endl;
+	// cout << vec2.y << endl;
+
+	// // C2Vector2D vec(5.0f);
+	// // C2Vector2D vec = C2Vector2D(5.0f);
+	// // C2Vector2D vec = C2Vector2D(5);
+	// C2Vector2D vec(5);
+	//
+	// vec = C2Vector2D(3.0f) + vec;
+	// //vec = vec + 3.0f;
+	//
+	// cout << vec.x << endl;
+	// cout << vec.y << endl;
+
+	// CEntity entity1(55);
+	// int x = (int)entity1;
+	// // cout << "Entity 1 member: " << (int)entity1 << endl;
+	// cout << "Entity 1 member: " << x << endl;
+
+	// CNVector3D vec3(3, 4, 6);
+	// CNVector2D vec2(4.4f);
+	// vec3 = vec2;
+	// cout << vec3.x << endl;
+	// cout << vec3.y << endl;
+	// cout << vec3.z << endl;
+
+	// Vector3D2 vec3(3.0f, 5.0f, 7.0f);
+	// Vector2D2 vec2(5.5f);
+	// vec2 = vec3;
+	// cout << vec2.x << endl;
+	// cout << vec2.y << endl;
 
 
 
