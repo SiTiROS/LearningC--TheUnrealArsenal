@@ -759,6 +759,45 @@ struct Vector2D2
 };
 
 
+class SEntity
+{
+public:
+	SEntity(int size)
+	{
+		if (size > 0)
+		{
+			elements = new int[size];
+			upperBound = size - 1;
+		}
+		else
+		{
+			elements = new int[1];
+			upperBound = 0;
+		}
+	}
+
+	int& operator[](int subscript)
+	{
+		static int boundsError = -1;
+
+		if (subscript >= 0 && subscript <= upperBound)
+		{
+			return elements[subscript];
+		}
+		else
+		{
+			cout << "\nIndex out of bounds!" << endl;
+			return boundsError;
+		}
+	}
+	~SEntity() { delete[] elements; }
+
+private:
+	int* elements;
+	int upperBound;
+};
+
+
 int main()
 {
 	// Vector2D vec1, vec2{ 15.0f, 5.0f };
@@ -941,7 +980,7 @@ int main()
 	// CVector2D vec2(vec3);
 	// cout << vec2.x << endl;
 	// cout << vec2.y << endl;
-
+	//
 	// // C2Vector2D vec(5.0f);
 	// // C2Vector2D vec = C2Vector2D(5.0f);
 	// // C2Vector2D vec = C2Vector2D(5);
@@ -949,27 +988,38 @@ int main()
 	//
 	// vec = C2Vector2D(3.0f) + vec;
 	// //vec = vec + 3.0f;
-	//
 	// cout << vec.x << endl;
 	// cout << vec.y << endl;
-
+	//
 	// CEntity entity1(55);
 	// int x = (int)entity1;
 	// // cout << "Entity 1 member: " << (int)entity1 << endl;
 	// cout << "Entity 1 member: " << x << endl;
-
+	//
 	// CNVector3D vec3(3, 4, 6);
 	// CNVector2D vec2(4.4f);
 	// vec3 = vec2;
 	// cout << vec3.x << endl;
 	// cout << vec3.y << endl;
 	// cout << vec3.z << endl;
-
+	//
 	// Vector3D2 vec3(3.0f, 5.0f, 7.0f);
 	// Vector2D2 vec2(5.5f);
 	// vec2 = vec3;
 	// cout << vec2.x << endl;
 	// cout << vec2.y << endl;
+
+
+	// const int SIZE = 5;
+	// SEntity entity1(SIZE);
+	// for (int i = 0; i < SIZE; i++)
+	// {
+	// 	entity1[i] = i + 1;
+	// }
+	// for (int i = 0; i < SIZE; i++)
+	// {
+	// 	cout << entity1[i] << endl;
+	// }
 
 
 
