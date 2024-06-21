@@ -798,6 +798,30 @@ private:
 };
 
 
+class FEntity
+{
+public:
+	FEntity(int member1P = 1, int member2P = 1)
+		: member1(member1P), member2(member2P) {}
+
+	FEntity& operator()(int member1P, int member2P)
+	{
+		member1 = member1P;
+		member2 = member2P;
+		return *this;
+	}
+
+	void toString()
+	{
+		cout << "Member1: " << member1 << "\tMember2: " << member2 << endl;
+	}
+
+private:
+	int member1;
+	int member2;
+};
+
+
 int main()
 {
 	// Vector2D vec1, vec2{ 15.0f, 5.0f };
@@ -1020,6 +1044,13 @@ int main()
 	// {
 	// 	cout << entity1[i] << endl;
 	// }
+
+
+	// FEntity entity1;
+	// entity1.toString();
+	// entity1(4, 5);
+	// entity1.toString();
+
 
 
 
