@@ -86,6 +86,102 @@ int main()
 
 	//139. Dynamic Two-Dimensional Arrays
 
+	// массив в куче и указатель на него в стеке
+	// const int SIZE = 3;
+	// Entity* arrayPtr = new Entity[SIZE]{ Entity(3), Entity(5), Entity(9) };
+	//
+	// for (int i = 0; i < SIZE; i++)
+	// {
+	// 	arrayPtr[i].toString();
+	// }
+	//
+	// delete[] arrayPtr;
+	// arrayPtr = nullptr;
+
+
+	// const int ARRAY_SIZE = 3;
+	// int x{ 3 }, y{ 5 }, z{ 9 };
+	//
+	// int* pointerArray[ARRAY_SIZE]{ &x, &y, &z };
+	//
+	// for (int i = 0; i < ARRAY_SIZE; i++)
+	// {
+	// 	cout << *pointerArray[i] << '\t';
+	// }
+
+
+	// массив указателей в стеке которые создают объекты в куче
+	// const int SIZE = 3;
+	// Entity* pointerArray[SIZE]{};
+	//
+	// cout << "--- Allocation ---" << endl;
+	// for (int i = 0; i < SIZE; i++)
+	// {
+	// 	pointerArray[i] = new Entity(i);
+	// }
+	//
+	// cout << "\n--- Entity::toString() followed by Deallocation ---" << endl;
+	// for (int i = 0; i < SIZE; i++)
+	// {
+	// 	pointerArray[i]->toString();
+	// 	delete pointerArray[i];
+	// 	pointerArray[i] = nullptr;
+	// }
+
+
+	// массив указателей в стеке которые создают массивы в куче
+	// const int ARRAY_SIZE = 2;
+	//
+	// Entity* pointerArray[ARRAY_SIZE]{};
+	//
+	// pointerArray[0] = new Entity[2]{ Entity(3), Entity(5) };
+	// pointerArray[1] = new Entity[3]{ };
+	//
+	// pointerArray[1][2].setMember(55);
+	//
+	// for (int i = 0; i < ARRAY_SIZE; i++)
+	// {
+	// 	delete[] pointerArray[i];
+	// 	pointerArray[i] = nullptr;
+	// }
+
+
+	//динамичесские двухсвязанные массивы
+	// const int ROWS = 2;
+	// const int COLUMNS = 3;
+	//
+	// Entity** pp_Table = new Entity* [ROWS]{};
+	//
+	// for (int currentRow = 0; currentRow < ROWS; currentRow++)
+	// {
+	// 	pp_Table[currentRow] = new Entity[COLUMNS]{};
+	// }
+	//
+	// for (int i = 0; i < ROWS; i++)
+	// {
+	// 	for (int j = 0; j < COLUMNS; j++)
+	// 	{
+	// 		pp_Table[i][j].setMember(10 + i + j);
+	// 	}
+	// }
+	//
+	// for (int i = 0; i < ROWS; i++)
+	// {
+	// 	for (int j = 0; j < COLUMNS; j++)
+	// 	{
+	// 		pp_Table[i][j].toString();
+	// 	}
+	// }
+	//
+	// for (int i = 0; i < ROWS; i++)
+	// {
+	// 	delete[] pp_Table[i];
+	// 	pp_Table[i] = nullptr;
+	// }
+	// delete[] pp_Table;
+
+
+
 	cout << "\nEND" << endl;
 	return 0;
 }
