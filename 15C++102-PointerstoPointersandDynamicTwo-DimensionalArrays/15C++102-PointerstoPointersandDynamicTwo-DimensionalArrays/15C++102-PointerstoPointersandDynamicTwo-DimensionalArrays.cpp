@@ -12,16 +12,71 @@ public:
 
 	~Entity() { cout << "Entity Destructor Invoked. Member was: " << member << endl; }
 
-	void toString() const { cout << member << endl; }
+	void toString() const { cout << '\t' << member; }
 	void setMember(int memberP) { member = memberP; }
 
 private:
 	int member;
 };
 
+
+Entity** entityArrayFactory(int rowsP, int columnsP)
+{
+	Entity** pp_Table = new Entity * [rowsP];
+
+	for (int i = 0; i < rowsP; i++)
+	{
+		pp_Table[i] = new Entity[columnsP];
+	}
+
+	return pp_Table;
+}
+
+void initialize(Entity** p, int rowsP, int columnsP)
+{
+	int temp{};
+
+	for (int i = 0; i < rowsP; i++)
+	{
+		cout << "\nEnter " << columnsP << " numbers for row number: " << i << ": ";
+		for (int j = 0; j < columnsP; j++)
+		{
+			temp = 0;
+			cin >> temp;
+			p[i][j].setMember(temp);
+		}
+	}
+	cout << endl;
+}
+
+void print(Entity** p, int rowsP, int columnsP)
+{
+	cout << "\t----\tTable\t----" << endl;
+	for (int i = 0; i < rowsP; i++)
+	{
+		for (int j = 0; j < columnsP; j++)
+		{
+			p[i][j].toString();
+		}
+		cout << endl;
+	}
+}
+
+void deallocate(Entity** p, int rowsP)
+{
+	for (int i = 0; i < rowsP; i++)
+	{
+		delete[] p[i];
+		p[i] = nullptr;
+	}
+	delete[] p;
+}
+
+
 int main()
 {
 	//137. Pointers to Pointers
+
 	// int var = 55;
 	// int* ptr = &var; // указатель на переменную, нужно выполнить операцию взятия адреса &
 	// *ptr = 0; // разыменование указателя для изменения значения по указателю
@@ -46,6 +101,7 @@ int main()
 
 
 	//138. Arrays of Pointers
+
 	// const int ARRAY_SIZE = 3;
 	// int x{ 3 }, y{ 5 }, z{ 9 };
 	//
@@ -179,6 +235,24 @@ int main()
 	// 	pp_Table[i] = nullptr;
 	// }
 	// delete[] pp_Table;
+
+
+
+	//140. Dynamic Two-Dimensional Arrays Exercise
+
+	// int rows{}, columns{};
+	//
+	// cout << "Enter the number of rows and columns: ";
+	// cin >> rows >> columns;
+	//
+	// Entity** pp_Table = entityArrayFactory(rows, columns);
+	//
+	// initialize(pp_Table, rows, columns);
+	//
+	// print(pp_Table, rows, columns);
+	//
+	// deallocate(pp_Table, rows);
+
 
 
 
