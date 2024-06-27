@@ -73,6 +73,27 @@ void deallocate(Entity** p, int rowsP)
 }
 
 
+// function to assign new address to pointer
+// passing a pointer by value
+// void modifyPointer(int* ptrP, int* addressToAssign)
+// {
+// 	ptrP = addressToAssign;
+// }
+
+// function to assign new address to pointer
+// passing a pointer to a pointer
+void modifyPointer(int** ptrP, int* addressToAssign)
+{
+	*ptrP = addressToAssign;
+}
+
+// function to assign new address to pointer
+// passing to a reference to a pointer
+void modifyPointer(int*& ptrP, int* addressToAssign)
+{
+	ptrP = addressToAssign;
+}
+
 int main()
 {
 	//137. Pointers to Pointers
@@ -253,6 +274,25 @@ int main()
 	//
 	// deallocate(pp_Table, rows);
 
+
+
+	// 141. References to Pointers
+
+	int var{ 55 }, varToAssign{ 250 };
+	int* ptr = &var;
+
+	cout << "Before:\t " << *ptr << endl;
+
+	// Reference to Pointer
+	// refToPtr is an Alias of ptr 
+	// int*& refToPtr = ptr;
+	// refToPtr = &varToAssign;
+	// *refToPtr = 45;
+
+	modifyPointer(ptr, &varToAssign); // passing to a reference to a pointer
+	//modifyPointer(&ptr, &varToAssign); // passing a pointer to a pointer
+
+	cout << "After:\t " << *ptr << endl;
 
 
 
