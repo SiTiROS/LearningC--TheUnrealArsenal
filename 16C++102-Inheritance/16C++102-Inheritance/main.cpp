@@ -71,6 +71,97 @@ public:
 };
 
 
+class Base
+{
+public:
+	Base()
+	{
+		std::cout << "Base Class Constructor Invoked." << std::endl;
+	}
+	~Base()
+	{
+		std::cout << "Base Class Destructor Invoked." << std::endl;
+	}
+
+private:
+	int x{ 1 };
+};
+
+class Derived : public Base
+{
+public:
+	Derived()
+	{
+		std::cout << "Derived Class Constructor Invoked." << std::endl;
+	}
+	~Derived()
+	{
+		std::cout << "Derived Class Destructor Invoked." << std::endl;
+	}
+
+private:
+	int y{ 2 };
+};
+
+
+class Base2
+{
+public:
+	Base2()
+		: x(1)
+	{
+		std::cout << "Base Class Default Constructor Invoked." << std::endl;
+	}
+
+	Base2(int xP)
+		: x(xP)
+	{
+		std::cout << "Base Class Overloaded Constructor Invoked." << std::endl;
+	}
+
+	// ~Base2()
+	// {
+	// 	std::cout << "Base Class Destructor Invoked." << std::endl;
+	// }
+
+protected:
+	int x;
+};
+
+class Derived2 : public Base2
+{
+public:
+	Derived2()
+		:y(2)
+	{
+		std::cout << "Derived Class Default Constructor Invoked." << std::endl;
+	}
+
+	Derived2(int yP)
+		:y(yP)
+	{
+		std::cout << "Derived Class Overloaded Constructor Invoked." << std::endl;
+	}
+
+	Derived2(int xP, int yP)
+		:Base2(xP), y(yP)
+	{
+		std::cout << "Derived Class Overloaded Constructor Invoked." << std::endl;
+	}
+
+	void toString() { std::cout << "x: " << x << '\t' << "y: " << y << std::endl; }
+
+	// ~Derived2()
+	// {
+	// 	std::cout << "Derived Class Destructor Invoked." << std::endl;
+	// }
+
+private:
+	int y;
+};
+
+
+
 int main()
 {
 	// 142. An Introduction to Inheritance
@@ -99,8 +190,19 @@ int main()
 
 
 
+	// 144. Initialization with Inheritance.mp4
+
+	// //Base base;
+	// // Derived derived;
+	//
+	// //Derived2 derived2;
+	// //Derived2 derived2(5);
+	// Derived2 derived2(2, 3);
+	// derived2.toString();
 
 
-	std::cout << "END";
+
+
+	std::cout << "END" << std::endl;
 	return 0;
 }
