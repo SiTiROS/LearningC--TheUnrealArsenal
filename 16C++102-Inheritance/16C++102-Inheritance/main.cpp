@@ -234,6 +234,33 @@ private:
 };
 
 
+class FriendBaseF
+{
+	friend class BaseF;
+
+private:
+	int friendMember{ 5 };
+};
+
+class BaseF
+{
+public:
+	void toString(const FriendBaseF& friendBaseP)
+	{
+		std::cout << friendBaseP.friendMember << std::endl;
+	}
+};
+
+class DerivedF : public BaseF
+{
+public:
+	// void toString(const FriendBaseF& friendBaseP)
+	// {
+	// 	std::cout << friendBaseP.friendMember << std::endl; // не будет работать наследование дружественных классов
+	// }
+};
+
+
 int main()
 {
 	// 142. An Introduction to Inheritance
@@ -291,6 +318,19 @@ int main()
 	// player.setStats(200, 100, 1000);
 	// player.Character::printStats();
 	// player.printStats();
+
+
+
+	// 146. Friendship with Inheritance
+
+	// BaseF base;
+	// FriendBaseF friendBase;
+	// //base.toString(friendBase);
+	//
+	// DerivedF derived;
+	// derived.toString(friendBase);
+	// derived.BaseF::toString(friendBase);
+
 
 
 
