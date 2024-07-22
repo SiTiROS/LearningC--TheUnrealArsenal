@@ -49,10 +49,11 @@ int main()
 	// cout << d.StructC2::x << endl;
 	//
 	//
-	PlayerCharacter player;
+	//PlayerCharacter player;
 
 
 
 	std::cout << "END" << std::endl;
 	return 0;
 }
+
