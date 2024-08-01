@@ -1,8 +1,8 @@
-#pragma once
+п»ї#pragma once
 #include "Character.h"
 #include "Vector.h"
 
-//class Vector; // forward declaration для указателей
+//class Vector; // forward declaration РґР»СЏ СѓРєР°Р·Р°С‚РµР»РµР№
 
 class PlayerCharacter : public Character 
 {
@@ -11,7 +11,7 @@ public:
 	~PlayerCharacter();
 
 private:
-	// class Vector* vec; // forward declaration и так можно
-	//Vector* vec; // с указателем можно forward declaration
+	// class Vector* vec; // forward declaration Рё С‚Р°Рє РјРѕР¶РЅРѕ
+	//Vector* vec; // СЃ СѓРєР°Р·Р°С‚РµР»РµРј РјРѕР¶РЅРѕ forward declaration
 	Vector vec;
 };
