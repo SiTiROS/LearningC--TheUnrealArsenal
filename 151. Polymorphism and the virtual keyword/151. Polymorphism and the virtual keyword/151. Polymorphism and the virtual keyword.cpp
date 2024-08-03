@@ -81,6 +81,83 @@ namespace Lesson152v2
 	}
 }
 
+namespace Lesson153
+{
+	class Base
+	{
+	public:
+		virtual void toString() const
+		{
+			std::cout << "Base:toString()" << std::endl;
+		}
+	};
+
+	class Derived : public Base
+	{
+	public:
+		virtual void toString() const
+		{
+			std::cout << "Derived:toString()" << std::endl;
+		}
+	};
+
+	class Parent
+	{
+	public:
+		virtual void toString() const
+		{
+			std::cout << "Parent:toString()" << std::endl;
+		}
+	};
+
+	class Child : public Parent
+	{
+	public:
+		virtual void toString() const
+		{
+			std::cout << "Child:toString()" << std::endl;
+		}
+	};
+
+	class GrandChild : public Child
+	{
+	public:
+		virtual void toString() const
+		{
+			std::cout << "GrandChild:toString()" << std::endl;
+		}
+	};
+
+	//
+	class VirtualEntity
+	{
+	public:
+		virtual void toString() const
+		{
+			std::cout << "Entity:toString()" << std::endl;
+		}
+
+	private:
+		double d;
+		float f;
+	};
+
+	class NonVirtualEntity
+	{
+	public:
+		void toString() const
+		{
+			std::cout << "Entity:toString()" << std::endl;
+		}
+
+	private:
+		double d;
+		float f;
+	};
+
+
+}
+
 int main()
 {
 	// 151. Polymorphism and the virtual keyword
@@ -149,29 +226,73 @@ int main()
 	}
 
 	{
-		using namespace Lesson152v2;
+		//using namespace Lesson152v2;
 
-		//Derived* derived = new Derived(33, 55);
-		//Base* base = (Base*)derived; //upcast from derived to base
+		////Derived* derived = new Derived(33, 55);
+		////Base* base = (Base*)derived; //upcast from derived to base
+		////base->toString();
+
+		////
+		////Base* base = new Derived(33, 55); //upcast implicitly from derived to base
+		////base->toString();
+
+		////Derived* derived = (Derived*)base;
+		////derived->toString();
+
+		////
+		//Base* base = new Base(33); 
 		//base->toString();
 
-		//
-		//Base* base = new Derived(33, 55); //upcast implicitly from derived to base
-		//base->toString();
-
-		//Derived* derived = (Derived*)base;
-		//derived->toString();
-
-		//
-		Base* base = new Base(33); 
-		base->toString();
-
-		Derived* derived = (Derived*)base; //downcast 
-		derived->toString(); 
+		//Derived* derived = (Derived*)base; //downcast 
+		//derived->toString(); 
 	}
 
 
+	// 153. Virtual Member Functions
+	{
+		using namespace Lesson153;
 
+		//Base* basePtr = new Derived;
+		//basePtr->toString();
+
+		//Derived* derivedPtr = new Derived;
+		//derivedPtr->toString();
+		//derivedPtr->Base::toString();
+
+		//delete derivedPtr;
+		//delete basePtr;
+
+		//
+		//GrandChild* grandChilPtr = new GrandChild;
+
+		//grandChilPtr->toString();
+		//grandChilPtr->Child::toString();
+		//grandChilPtr->Parent::toString();
+
+		//delete grandChilPtr;
+
+		//
+		//int a = 1;
+		//int* aP = &a;
+		//std::cout << sizeof(aP) << std::endl;
+
+		//std::cout << sizeof(VirtualEntity) << std::endl;
+
+		//NonVirtualEntity entity;
+		//std::cout << sizeof(entity) << std::endl;
+
+		//
+		VirtualEntity* entityPtr = new VirtualEntity;
+
+		VirtualEntity& entityRef = *entityPtr;
+
+		std::cout << sizeof(entityPtr) << std::endl;
+
+		std::cout << sizeof(entityRef) << std::endl;
+
+		delete entityPtr;
+
+	}
 
 
 
