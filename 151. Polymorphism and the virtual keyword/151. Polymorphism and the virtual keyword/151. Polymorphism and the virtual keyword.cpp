@@ -177,6 +177,33 @@ namespace Lesson154
 	};
 }
 
+namespace Lesson155
+{
+	class Base
+	{
+	public:
+		virtual ~Base() {};
+
+		virtual void toString() const
+		{
+			std::cout << "Base::toString()" << std::endl;
+		}
+	};
+
+	class Derived : public Base
+	{
+	public:
+		virtual ~Derived() {};
+
+		virtual void toString() const override
+		{
+			std::cout << "Derived::toString()" << std::endl;
+		}
+	};
+}
+
+
+
 int main()
 {
 	// 151. Polymorphism and the virtual keyword
@@ -315,20 +342,26 @@ int main()
 
 
 	// 154. Virtual Destructors
-
 	{
-		using namespace Lesson154;
+		//using namespace Lesson154;
 
-		Base* basePtr = new Base;
-		Base* basePtr2 = new Derived;
+		//Base* basePtr = new Base;
+		//Base* basePtr2 = new Derived;
 
-		delete basePtr;
-		delete basePtr2;
+		//delete basePtr;
+		//delete basePtr2;
 	}
 
+	// 155. The override Keyword
+	{
+		using namespace Lesson155;
 
+		Base* basePtr = new Derived();
 
+		basePtr->toString();
 
+		delete basePtr;
+	}
 
 
 
