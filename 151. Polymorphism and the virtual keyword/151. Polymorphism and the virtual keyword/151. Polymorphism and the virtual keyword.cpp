@@ -154,8 +154,27 @@ namespace Lesson153
 		double d;
 		float f;
 	};
+}
 
+namespace Lesson154
+{
+	class Base
+	{
+	public:
+		virtual ~Base()
+		{
+			std::cout << "Base Destructor Invoked" << std::endl;
+		}
+	};
 
+	class Derived : public Base
+	{
+	public:
+		virtual ~Derived()
+		{
+			std::cout << "Derived Destructor Invoked" << std::endl;
+		}
+	};
 }
 
 int main()
@@ -282,22 +301,30 @@ int main()
 		//std::cout << sizeof(entity) << std::endl;
 
 		//
-		VirtualEntity* entityPtr = new VirtualEntity;
+		//VirtualEntity* entityPtr = new VirtualEntity;
 
-		VirtualEntity& entityRef = *entityPtr;
+		//VirtualEntity& entityRef = *entityPtr;
 
-		std::cout << sizeof(entityPtr) << std::endl;
+		//std::cout << sizeof(entityPtr) << std::endl;
 
-		std::cout << sizeof(entityRef) << std::endl;
+		//std::cout << sizeof(entityRef) << std::endl;
 
-		delete entityPtr;
+		//delete entityPtr;
 
 	}
 
 
+	// 154. Virtual Destructors
 
+	{
+		using namespace Lesson154;
 
+		Base* basePtr = new Base;
+		Base* basePtr2 = new Derived;
 
+		delete basePtr;
+		delete basePtr2;
+	}
 
 
 
