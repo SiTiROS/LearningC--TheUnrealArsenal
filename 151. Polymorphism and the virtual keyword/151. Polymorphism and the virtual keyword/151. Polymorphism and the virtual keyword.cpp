@@ -202,7 +202,63 @@ namespace Lesson155
 	};
 }
 
+namespace Lesson156
+{
+	class Parent {};
 
+	class Child : public Parent {};
+
+	class GrandChild final : public Child {};
+
+	class Base
+	{
+	public:
+		virtual ~Base() {};
+
+		virtual void toString() const final
+		{
+			std::cout << "Base::toString()" << std::endl;
+		}
+	};
+
+	class Derived : public Base
+	{
+	public:
+		virtual ~Derived() {};
+
+		//virtual void toString() const override
+		//{
+		//	std::cout << "Derived::toString()" << std::endl;
+		//}
+	};
+
+	class Base2
+	{
+	public:
+		virtual ~Base2() {};
+
+		virtual void toString() const final;
+	};
+
+	class Derived2 : public Base2
+	{
+	public:
+		virtual ~Derived2() {};
+
+		//virtual void toString() const override;
+	};
+
+	void Base2::toString() const
+	{
+		std::cout << "Base2::toString()" << std::endl;
+	}
+
+	//void Derived2::toString() const
+	//{
+	//	std::cout << "Derived2::toString()" << std::endl;
+	//}
+
+}
 
 int main()
 {
@@ -352,22 +408,32 @@ int main()
 		//delete basePtr2;
 	}
 
+
 	// 155. The override Keyword
 	{
-		using namespace Lesson155;
+		//using namespace Lesson155;
 
-		Base* basePtr = new Derived();
+		//Base* basePtr = new Derived();
 
-		basePtr->toString();
+		//basePtr->toString();
 
-		delete basePtr;
+		//delete basePtr;
 	}
 
 
+	// 156. The final Keyword
+	{
+		//using namespace Lesson156;
+
+		//Base* basePtr = new Derived();
+
+		//basePtr->toString();
+
+		//delete basePtr;
+	}
 
 
-
-
+	// 157. Abstract and Concrete Classes
 
 
 	std::cout << "\nEND" << std::endl;
