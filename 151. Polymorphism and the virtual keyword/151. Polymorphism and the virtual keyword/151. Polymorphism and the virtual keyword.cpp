@@ -260,6 +260,40 @@ namespace Lesson156
 
 }
 
+namespace Lesson157
+{
+	class Entity
+	{
+	public:
+		void toString() { std::cout << "Entity::toString" << std::endl; }
+
+	protected:
+		Entity() {}
+	private:
+	};
+
+	class Abstract
+	{
+	public:
+		// pure virtual function declaration
+		virtual void toString() const = 0;
+		virtual ~Abstract() { std::cout << "Abstract::Destructor" << std::endl; }
+		void hello() { std::cout << "Hello!" << std::endl; }
+	};
+
+	class Concrete : public Abstract
+	{
+	public:
+		virtual void toString() const override
+		{
+			std::cout << "Concrete::toString()" << std::endl;
+		}
+
+		virtual ~Concrete() { std::cout << "Concrete::Destructor" << std::endl; }
+	};
+}
+
+
 int main()
 {
 	// 151. Polymorphism and the virtual keyword
@@ -434,6 +468,24 @@ int main()
 
 
 	// 157. Abstract and Concrete Classes
+	{
+		using namespace Lesson157;
+
+		// Entity entity; // не будет работать - запрещено инстанцировать ибо конструктор приватный или защищённый. но обычно так не делают
+		// Abstract a; // не будет работать - запрещено инстанцировать ибо pure function
+
+		//
+		//Concrete c;
+		//c.toString();
+
+		//
+		//Abstract* abstractPtr = new Concrete;
+		//abstractPtr->toString();
+		//abstractPtr->hello();
+		//delete abstractPtr;
+	}
+
+
 
 
 	std::cout << "\nEND" << std::endl;
