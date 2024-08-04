@@ -293,6 +293,126 @@ namespace Lesson157
 	};
 }
 
+namespace Lesson158
+{
+	class ISpawnable
+	{
+	public:
+		virtual void spawn() const = 0;
+		virtual ~ISpawnable() {}
+	};
+
+	class GameLevel
+	{
+	public:
+		void spawn(ISpawnable* toSpawnP) const
+		{
+			toSpawnP->spawn();
+		}
+
+		//void spawnPlayer();
+		//void spawnChair();
+		//void spawnAsteroid();
+		//void spawnAlien();
+	};
+
+	class PlayerCharacter : public ISpawnable
+	{
+	public:
+		virtual void spawn() const override
+		{
+			std::cout << "Player Spawned!" << std::endl;
+		}
+	};
+
+	class Alien : public ISpawnable
+	{
+	public:
+		virtual void spawn() const override
+		{
+			std::cout << "Alien Spawned!" << std::endl;
+		}
+	};
+
+	class Chair : public ISpawnable
+	{
+	public:
+		virtual void spawn() const override
+		{
+			std::cout << "Chair Spawned!" << std::endl;
+		}
+	};
+}
+
+namespace Lesson158v2
+{
+	class PlayerCharacter {};
+
+	std::ostream& operator<<(std::ostream& output, const PlayerCharacter& player)
+	{
+		output << "Human player joined the game!";
+		return output;
+	}
+
+	class Alien {};
+
+	std::ostream& operator<<(std::ostream& output, const Alien& alien)
+	{
+		output << "Alien AI joined the game!";
+		return output;
+	}
+}
+
+namespace Lesson158v3
+{
+	class IPrintable
+	{
+		//friend std::ostream& operator<<(std::ostream& output, const IPrintable& rho);
+	public:
+		virtual void toString(std::ostream& output) const = 0;
+		virtual ~IPrintable() {}
+	};
+
+	std::ostream& operator<<(std::ostream& output, const IPrintable& rho)
+	{
+		rho.toString(output);
+		return output;
+	}
+
+	class PlayerCharacter : public IPrintable
+	{
+	public:
+		virtual void toString(std::ostream& output) const override
+		{
+			output << "Human player joined the game!";
+		}
+
+		virtual ~PlayerCharacter() {}
+	};
+
+	class Alien : public IPrintable
+	{
+	public:
+		virtual void toString(std::ostream& output) const override
+		{
+			output << "Alien AI joined the game!";
+		}
+
+		virtual ~Alien() {}
+	};
+
+	class Chair : public IPrintable
+	{
+	public:
+		virtual void toString(std::ostream& output) const override
+		{
+			output << "A chair has spawned in the game!";
+		}
+
+		virtual ~Chair() {}
+	};
+}
+
 
 int main()
 {
@@ -469,7 +589,7 @@ int main()
 
 	// 157. Abstract and Concrete Classes
 	{
-		using namespace Lesson157;
+		//using namespace Lesson157;
 
 		// Entity entity; // не будет работать - запрещено инстанцировать ибо конструктор приватный или защищённый. но обычно так не делают
 		// Abstract a; // не будет работать - запрещено инстанцировать ибо pure function
@@ -486,6 +606,42 @@ int main()
 	}
 
 
+	// 158. Interface Classes
+	{
+		//using namespace Lesson158;
+
+		//GameLevel level1;
+
+		//PlayerCharacter player;
+		//Alien alien;
+		//Chair chair;
+
+		//level1.spawn(&player);
+		//level1.spawn(&alien);
+		//level1.spawn(&chair);
+	}
+
+	{
+		//using namespace Lesson158v2;
+
+		//PlayerCharacter player;
+		//Alien alien;
+
+		//std::cout << player << std::endl;
+		//std::cout << alien << std::endl;
+	}
+
+	{
+		using namespace Lesson158v3;
+
+		PlayerCharacter player;
+		Alien alien;
+		Chair chair;
+
+		std::cout << player << std::endl;
+		std::cout << alien << std::endl;
+		std::cout << chair << std::endl;
+	}
 
 
 	std::cout << "\nEND" << std::endl;
