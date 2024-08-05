@@ -413,6 +413,37 @@ namespace Lesson158v3
 	};
 }
 
+namespace Lesson159
+{
+	class Entity
+	{
+	public:
+		// Use compiler generated no-args constuctor
+		Entity() = default;
+
+		// One-argument Constructor (whith no default argument)
+		Entity(int xP) { member = xP; }
+		// Entity(int xP = 0) { member = xP; } // если в аргументах передаваемых есть значение по умолчанию то в конструктор можно и не передавать значение
+
+		// Entity(const Entity& other) { member = other.member; }
+
+		// Use compiler generated copy constructor
+		Entity(const Entity& other) = default;
+
+		void setMember(int memberP) { member = memberP; }
+
+		void toString() { std::cout << member << std::endl; }
+
+	private:
+		int member{44};
+	};
+
+	class Derived : public Entity
+	{
+	public:
+
+	};
+}
 
 int main()
 {
@@ -632,16 +663,31 @@ int main()
 	}
 
 	{
-		using namespace Lesson158v3;
+		//using namespace Lesson158v3;
 
-		PlayerCharacter player;
-		Alien alien;
-		Chair chair;
+		//PlayerCharacter player;
+		//Alien alien;
+		//Chair chair;
 
-		std::cout << player << std::endl;
-		std::cout << alien << std::endl;
-		std::cout << chair << std::endl;
+		//std::cout << player << std::endl;
+		//std::cout << alien << std::endl;
+		//std::cout << chair << std::endl;
 	}
+
+
+	// 159. Explicitly Defaulted Functions
+	{
+		//using namespace Lesson159;
+
+		//Entity entity1;
+		//entity1.setMember(150);
+		//entity1.toString();
+
+
+		//Entity entity2{ entity1 };
+		//entity2.toString();
+	}
+
 
 
 	std::cout << "\nEND" << std::endl;
