@@ -445,6 +445,34 @@ namespace Lesson159
 	};
 }
 
+namespace Lesson160
+{
+	class NonCopyableEntity
+	{
+	public:
+		NonCopyableEntity() = default;
+		~NonCopyableEntity() { std::cout << "Destructor Invoked." << this << std::endl; }
+
+		NonCopyableEntity(const NonCopyableEntity& other) = delete;
+		NonCopyableEntity& operator=(const NonCopyableEntity&) = delete;
+
+		static NonCopyableEntity* allocateCopy(const NonCopyableEntity& toCopyP)
+		{
+			//return new NonCopyableEntity{ toCopyP };
+		}
+
+		void setMember(int memberP) { member = memberP; }
+		void setMember(float memberP) = delete;
+
+		void toString() { std::cout << member << std::endl; }
+
+	private:
+		//NonCopyableEntity(const NonCopyableEntity& other) : member(other.member) {}
+
+		int member{ 55 };
+	};
+}
+
 int main()
 {
 	// 151. Polymorphism and the virtual keyword
@@ -688,6 +716,20 @@ int main()
 		//entity2.toString();
 	}
 
+
+	// 160. Explicitly Deleted Functions
+	{
+		//using namespace Lesson160;
+
+		//NonCopyableEntity entity1;
+		//entity1.setMember(150);
+
+		////NonCopyableEntity entity2{ entity1 };
+
+		//NonCopyableEntity* entityPtr = NonCopyableEntity::allocateCopy(entity1);
+		//entityPtr->toString();
+		//delete entityPtr;
+	}
 
 
 	std::cout << "\nEND" << std::endl;
