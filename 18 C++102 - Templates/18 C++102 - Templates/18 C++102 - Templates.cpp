@@ -145,7 +145,104 @@ namespace L165
 {
 	using namespace std;
 
+	template<typename T = int>
+	T* instantiate()
+	{
+		T* localPtr = new T(55);
+		return localPtr;
+	}
+}
 
+namespace L165v2
+{
+	using namespace std;
+
+	template<int x, typename T = int>
+	T* instantiate()
+	{
+		T* localPtr = new T(x);
+		return localPtr;
+	}
+}
+
+namespace L165v3
+{
+	using namespace std;
+
+	template<typename T = int, int size = 4>
+	struct ArrayEntity
+	{
+		void toString()
+		{
+			for (int i = 0; i < size; i++)
+			{
+				cout << m_Array[i] << endl;
+			}
+		}
+
+		T m_Array[size]{};
+	};
+}
+
+namespace L165v4
+{
+	using namespace std;
+
+	template<typename T = int, int size = 4>
+	class ArrayEntity
+	{
+	public:
+		void toString()
+		{
+			for (int i = 0; i < size; i++)
+			{
+				cout << m_Array[i] << endl;
+			}
+		}
+
+		T& operator[](int index)
+		{
+			return m_Array[index];
+		}
+
+	private:
+		T m_Array[size]{};
+	};
+}
+
+namespace L165v5
+{
+	using namespace std;
+
+	enum ESize { One = 1, Two, Three };
+
+	template<typename T, ESize size>
+	class ArrayEntity
+	{
+	public:
+		T& operator[](int index)
+		{
+			return m_Array[index];
+		}
+
+	private:
+		T m_Array[size]{};
+	};
+}
+
+namespace L165v6
+{
+	using namespace std;
+
+	struct Entity { int member{}; };
+
+	template<Entity& entity>
+	struct EntityTemplate
+	{
+		void toString() { cout << entity.member << endl; }
+	};
+
+	static Entity entity { 55 };
 }
 
 namespace L166
@@ -248,18 +345,92 @@ int main()
 	}
 
 	{
-		using std::pair;
+		//using std::pair;
 
-		pair<char, int> pair1{'H', 55};
-		pair<char, int> pair2{'B', 33};
+		//pair<char, int> pair1{'H', 55};
+		//pair<char, int> pair2{'B', 33};
 
-		std::cout << pair1.first << std::endl;
-		std::cout << pair1.second << std::endl;
+		//std::cout << pair1.first << std::endl;
+		//std::cout << pair1.second << std::endl;
 
-		pair1.swap(pair2);
+		//pair1.swap(pair2);
 
-		std::cout << pair1.first << std::endl;
-		std::cout << pair1.second << std::endl;
+		//std::cout << pair1.first << std::endl;
+		//std::cout << pair1.second << std::endl;
+	}
+
+
+	// 165. Template Type Parameter Default Arguments and Non-Type Parameters
+	{
+		//using namespace L165;
+
+		//float* ptr = nullptr;
+
+		//ptr = instantiate<float>();
+
+		//cout << *ptr << endl;
+
+		//delete ptr;
+	}
+
+	{
+		//using namespace L165v2;
+
+		//float* ptr = nullptr;
+
+		//ptr = instantiate<55, float>();
+
+		//cout << *ptr << endl;
+
+		//delete ptr;
+	}
+
+	{
+		//using namespace L165v3;
+
+		////ArrayEntity<int, 5> arrayEntity1;
+		//ArrayEntity<> arrayEntity1;
+
+		//arrayEntity1.m_Array[0] = 44;
+
+		//arrayEntity1.toString();
+	}
+
+	{
+		//using namespace L165v4;
+
+		//ArrayEntity<> arrayEntity1;
+
+		//arrayEntity1[0] = 44;
+
+		////arrayEntity1.toString();
+
+		//for (int i = 0; i < sizeof(arrayEntity1) / sizeof(int); i++)
+		//{
+		//	cout << arrayEntity1[i] << endl;
+		//}
+	}
+
+	{
+		//using namespace L165v5;
+
+		//ArrayEntity<int, ESize::Two> arrayEntity1;
+
+		//arrayEntity1[0] = 44;
+
+		//for (int i = 0; i < ESize::Two; i++)
+		//{
+		//	cout << arrayEntity1[i] << endl;
+		//}
+	}
+
+	{
+		using namespace L165v6;
+
+		EntityTemplate<entity> entityTemplate;
+
+		entityTemplate.toString();
+
 	}
 
 	std::cout << "\nEND!\n";
