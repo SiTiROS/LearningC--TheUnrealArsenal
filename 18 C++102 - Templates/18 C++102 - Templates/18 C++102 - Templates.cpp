@@ -351,12 +351,90 @@ namespace L168v2
 	using namespace std;
 
 	//#include "Entity.cpp"
-	#include "Entity.h"
+#include "Entity.h"
 }
 
 namespace L169
 {
 	using namespace std;
+
+	template<typename T>
+	struct Pair
+	{
+		T first;
+		T second;
+	};
+
+	//int smallestMember(const Pair<int>& pairP)
+	//{
+	//	return (pairP.first < pairP.second) ? pairP.first : pairP.second;
+	//}
+
+	//template<typename T>
+	//T smallestMember(const Pair<T>& pairP)
+	//{
+	//	return (pairP.first < pairP.second) ? pairP.first : pairP.second;
+	//}
+
+	template<typename T>
+	T smallestMember(const Pair<T>* pairP)
+	{
+		return (pairP->first < pairP->second) ? pairP->first : pairP->second;
+	}
+}
+
+namespace L169v2
+{
+	using namespace std;
+
+	template<typename T>
+	struct Pair
+	{
+		T first;
+		T second;
+	};
+
+	template<typename T>
+	T smallestMember(const Pair<T>& pairP)
+	{
+		return (pairP.first < pairP.second) ? pairP.first : pairP.second;
+	}
+
+	template<typename T>
+	T addMembers(const Pair<T>& pairP)
+	{
+		return (pairP.first + pairP.second);
+	}
+}
+
+namespace L169v3
+{
+	using namespace std;
+
+	template<typename T>
+	struct Pair
+	{
+		T first;
+		T second;
+
+		Pair operator+(const Pair& other) const
+		{
+			return Pair{ first + other.first, second + other.second };
+		}
+	};
+
+	template<typename T>
+	std::ostream& operator<<(std::ostream& output, const Pair<T>& pairP)
+	{
+		output << "First: " << pairP.first << "\t Second: " << pairP.second << endl;
+		return output;
+	}
+
+	template<typename T>
+	T addMembers(const Pair<T>& pairP)
+	{
+		return (pairP.first + pairP.second);
+	}
 }
 
 namespace L170
@@ -631,16 +709,58 @@ int main()
 	}
 
 	{
-		using namespace L168v2;
+		//using namespace L168v2;
 
-		Entity<int> entity1(55);
-		Entity<float> entity2(55.4f);
-		Entity<short> entity3(55);
-		
-		cout << entity1.getMember() << endl;
-		cout << entity2.getMember() << endl;
-		cout << entity3.getMember() << endl;
+		//Entity<int> entity1(55);
+		//Entity<float> entity2(55.4f);
+		//Entity<short> entity3(55);
+		//
+		//cout << entity1.getMember() << endl;
+		//cout << entity2.getMember() << endl;
+		//cout << entity3.getMember() << endl;
 	}
+
+
+	// 169. Class or Struct Templates as Function Formal Parameters
+	{
+		//using namespace L169;
+
+		//Pair<float> pair{33.66f, 44.32f};
+
+		////cout << smallestMember(pair) << endl;
+		//cout << smallestMember(&pair) << endl;
+	}
+
+	{
+		//using namespace L169v2;
+
+		//Pair<int> pair{33, 44};
+
+		//cout << smallestMember(pair) << endl;
+
+		//cout << addMembers(pair) << endl;
+	}
+
+	{
+		using namespace L169v3;
+
+		Pair<int> pair1{33, 44};
+		cout << pair1 << endl;
+
+		Pair<int> pair2{2, 3};
+		cout << pair2 << endl;
+
+		Pair<Pair<int>> pairOfPairs{ pair1, pair2 };
+
+		cout << addMembers(pairOfPairs) << endl;
+	}
+
+
+
+
+
+
+
 
 
 	std::cout << "\nEND!\n";
