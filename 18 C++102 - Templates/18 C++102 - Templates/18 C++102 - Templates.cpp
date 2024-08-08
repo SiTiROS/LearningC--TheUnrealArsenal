@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <utility>
+//#include "Entity.h"
 
 namespace L162
 {
@@ -314,6 +315,43 @@ namespace L167
 namespace L168
 {
 	using namespace std;
+
+	template<typename T>
+	void print(T formalP);
+
+	template<typename T>
+	void print(T formalP) { cout << formalP << endl; }
+
+	template<typename T>
+	class Entity
+	{
+	public:
+		Entity(T memberP);
+
+		void setMember(T memberP);
+
+		T getMember() const;
+
+	private:
+		T member;
+	};
+
+	template<typename T>
+	Entity<T>::Entity(T memberP) : member(memberP) {}
+
+	template<typename T>
+	void Entity<T>::setMember(T memberP) { member = memberP; }
+
+	template<typename T>
+	T Entity<T>::getMember() const { return member; }
+}
+
+namespace L168v2
+{
+	using namespace std;
+
+	//#include "Entity.cpp"
+	#include "Entity.h"
 }
 
 namespace L169
@@ -556,7 +594,7 @@ int main()
 
 	// 167. Static Variables with Function and Class Templates
 	{
-		using namespace L167;
+		//using namespace L167;
 
 		//increment();
 		//increment();
@@ -568,19 +606,41 @@ int main()
 		//increment<char>();
 
 		//
-		Entity<short> entity1;
-		entity1.increment();
-		entity1.increment();
+		//Entity<short> entity1;
+		//entity1.increment();
+		//entity1.increment();
 
-		Entity<char> entity2;
-		entity2.increment();
-		entity2.increment();
-		entity2.increment();
-		entity2.increment();
+		//Entity<char> entity2;
+		//entity2.increment();
+		//entity2.increment();
+		//entity2.increment();
+		//entity2.increment();
 	}
 
 
+	// 168. Define Class and Struct Templates in Header Files
+	{
+		//using namespace L168;
 
+		////print<int>(55);
+
+		////
+		//Entity<int> entity1(55);
+
+		//cout << entity1.getMember() << endl;
+	}
+
+	{
+		using namespace L168v2;
+
+		Entity<int> entity1(55);
+		Entity<float> entity2(55.4f);
+		Entity<short> entity3(55);
+		
+		cout << entity1.getMember() << endl;
+		cout << entity2.getMember() << endl;
+		cout << entity3.getMember() << endl;
+	}
 
 
 	std::cout << "\nEND!\n";
