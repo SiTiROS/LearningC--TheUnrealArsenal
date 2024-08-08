@@ -249,7 +249,39 @@ namespace L166
 {
 	using namespace std;
 
+	template<typename T, T* pT>
+	struct Entity
+	{
+		T getVal() { return *pT; }
+	};
 
+	int x = 55;
+}
+
+namespace L166v2
+{
+	using namespace std;
+
+	template<typename T, T pT>
+	struct Entity
+	{
+		T getVal() { return pT; }
+	};
+
+	//const float x = 55.05f;
+}
+
+namespace L166v3
+{
+	using namespace std;
+
+	template<typename T1, T1* pT, typename T2 = T1>
+	struct Entity
+	{
+		T2 getVal() { return *pT; }
+	};
+
+	int x = 55;
 }
 
 namespace L167
@@ -425,13 +457,49 @@ int main()
 	}
 
 	{
-		using namespace L165v6;
+		//using namespace L165v6;
 
-		EntityTemplate<entity> entityTemplate;
+		//EntityTemplate<entity> entityTemplate;
 
-		entityTemplate.toString();
+		//entityTemplate.toString();
 
 	}
+
+
+	// 166. Template Parameter Reuse
+	{
+		//using namespace L166;
+
+		//Entity<int, &x> entity;
+
+		//cout << entity.getVal() << endl;
+	}
+
+	{
+		//using namespace L166v2;
+
+		//static const int x = 53;
+
+		//Entity<int, x> entity;
+
+		//cout << entity.getVal() << endl;
+	}
+
+	{
+		using namespace L166v3;
+
+		Entity<int, &x, short> entity;
+
+		cout << entity.getVal() << endl;
+	}
+
+
+
+
+
+
+
+
 
 	std::cout << "\nEND!\n";
 
