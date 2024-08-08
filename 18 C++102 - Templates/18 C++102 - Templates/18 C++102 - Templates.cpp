@@ -288,7 +288,67 @@ namespace L167
 {
 	using namespace std;
 
+	int G = 0;
 
+	template<typename Type = int>
+	void increment()
+	{
+		static int L = 0;
+		cout << "Global Variable: " << ++G << "\tLocal Static Variable: " << ++L << endl;
+	}
+
+	template<typename Type>
+	struct Entity
+	{
+		inline static int L = 0;
+
+		void increment()
+		{
+			cout << "Global Variable: " << ++G
+				<< "\tLocal Static Variable: " << ++L << endl;
+		}
+	};
+
+}
+
+namespace L168
+{
+	using namespace std;
+}
+
+namespace L169
+{
+	using namespace std;
+}
+
+namespace L170
+{
+	using namespace std;
+}
+
+namespace L171
+{
+	using namespace std;
+}
+
+namespace L172
+{
+	using namespace std;
+}
+
+namespace L173
+{
+	using namespace std;
+}
+
+namespace L174
+{
+	using namespace std;
+}
+
+namespace L175
+{
+	using namespace std;
 }
 
 
@@ -486,16 +546,38 @@ int main()
 	}
 
 	{
-		using namespace L166v3;
+		//using namespace L166v3;
 
-		Entity<int, &x, short> entity;
+		//Entity<int, &x, short> entity;
 
-		cout << entity.getVal() << endl;
+		//cout << entity.getVal() << endl;
 	}
 
 
+	// 167. Static Variables with Function and Class Templates
+	{
+		using namespace L167;
 
+		//increment();
+		//increment();
 
+		//increment<double>();
+		//increment<double>();
+
+		//increment<char>();
+		//increment<char>();
+
+		//
+		Entity<short> entity1;
+		entity1.increment();
+		entity1.increment();
+
+		Entity<char> entity2;
+		entity2.increment();
+		entity2.increment();
+		entity2.increment();
+		entity2.increment();
+	}
 
 
 
