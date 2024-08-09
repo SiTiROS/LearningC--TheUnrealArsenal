@@ -468,6 +468,79 @@ namespace L170
 namespace L171
 {
 	using namespace std;
+
+	template<typename T>
+	void print(T formalP)
+	{
+		cout << "--- From General Template --- \nArgument: " << formalP << endl << endl;
+	}
+
+	template<>
+	void print<const int*>(const int* formalP)
+	{
+		cout << "--- From Specialized Template --- \nArgument: " << *formalP << endl << endl;
+	}
+
+	template<typename T>
+	void print(T* formalP)
+	{
+		cout << "--- From Template Overload --- \nArgument: " << *formalP << endl << endl;
+	}
+
+	//void print(const int* formalP)
+	//{
+	//	cout << "--- From print(const int*) --- \nArgument: " << *formalP << endl << endl;
+	//}
+}
+
+namespace L171v2
+{
+	using namespace std;
+
+	template<typename T1, typename T2>
+	struct Pair
+	{
+		T1 first;
+		T2 second;
+
+		void toString() const
+		{
+			cout << "From Genreal Struct Template" << endl;
+			cout << "First: " << first << endl;
+			cout << "Second: " << second << endl << endl;
+		}
+	};
+
+	//partial specialization
+	template<typename T1>
+	struct Pair<T1, int*>
+	{
+		T1 first;
+		int* second;
+
+		void toString() const
+		{
+			cout << "From Partially Specialized Struct Template" << endl;
+			cout << "First: " << first << endl;
+			cout << "Second: " << *second << endl << endl;
+		}
+	};
+
+	//complete specialization
+	template<>
+	struct Pair<int*, int*>
+	{
+		int* first;
+		int* second;
+
+		void toString() const
+		{
+			cout << "From Completely Specialized Struct Template" << endl;
+			cout << "First: " << *first << endl;
+			cout << "Second: " << *second << endl << endl;
+		}
+	};
+
 }
 
 namespace L172
@@ -781,16 +854,86 @@ int main()
 
 	// 170. Function Overloading with Function Templates
 	{
-		using namespace L170;
+		//using namespace L170;
 
-		const int x = 4;
+		//const int x = 4;
 
-		print('H');
-		print(x);
-		print<int>(x);
-		print(&x);
-		print(55, 'R');
+		//print('H');
+		//print(x);
+		//print<int>(x);
+		//print(&x);
+		//print(55, 'R');
 	}
+
+
+	// 171. Template Specialization
+	{
+		//using namespace L171;
+
+		//print<char>('H');
+
+		//const int x = 44;
+		//print(x);
+		//print(&x);
+
+		//int y = 22;
+		//print<const int*>(&y);
+
+		////
+		//char myChar = 'H';
+		//print(&myChar);
+	}
+
+	{
+		using namespace L171v2;
+
+		Pair<int, char> pair1{ 55, 'G' };
+		pair1.toString();
+
+		int x = 5;
+		Pair<char, int*> pair2{'A', &x };
+		pair2.toString();
+
+		Pair<int*, int*> pair3{ &x, &x };
+		pair3.toString();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
