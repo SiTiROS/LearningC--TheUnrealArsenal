@@ -440,6 +440,29 @@ namespace L169v3
 namespace L170
 {
 	using namespace std;
+
+	template<typename T>
+	void print(T param)
+	{
+		cout << "---From Template--- \nArgument: " << param << endl << endl;
+	}
+
+	template<typename T1, typename T2>
+	void print(T1 param1, T2 param2)
+	{
+		cout << "---From Template--- \nArgument1: " << param1 << endl;
+		cout << "Argument2: " << param2 << endl << endl;
+	}
+
+	void print(int param)
+	{
+		cout << "---From print(int)--- \nArgument: " << param << endl << endl;
+	}
+
+	void print(const int* param)
+	{
+		cout << "---From print(const int*)--- \nArgument: " << *param << endl << endl;
+	}
 }
 
 namespace L171
@@ -742,22 +765,32 @@ int main()
 	}
 
 	{
-		using namespace L169v3;
+		//using namespace L169v3;
 
-		Pair<int> pair1{33, 44};
-		cout << pair1 << endl;
+		//Pair<int> pair1{33, 44};
+		//cout << pair1 << endl;
 
-		Pair<int> pair2{2, 3};
-		cout << pair2 << endl;
+		//Pair<int> pair2{2, 3};
+		//cout << pair2 << endl;
 
-		Pair<Pair<int>> pairOfPairs{ pair1, pair2 };
+		//Pair<Pair<int>> pairOfPairs{ pair1, pair2 };
 
-		cout << addMembers(pairOfPairs) << endl;
+		//cout << addMembers(pairOfPairs) << endl;
 	}
 
 
+	// 170. Function Overloading with Function Templates
+	{
+		using namespace L170;
 
+		const int x = 4;
 
+		print('H');
+		print(x);
+		print<int>(x);
+		print(&x);
+		print(55, 'R');
+	}
 
 
 
