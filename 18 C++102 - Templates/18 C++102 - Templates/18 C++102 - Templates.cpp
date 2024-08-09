@@ -546,6 +546,25 @@ namespace L171v2
 namespace L172
 {
 	using namespace std;
+
+	template<typename T>
+	struct Helpers
+	{
+		template<typename U>
+		//static void interchange(U& xP, U& yP);
+		void interchange(U& xP, U& yP);
+
+		T member;
+	};
+
+	template<typename T> template<typename U>
+	void Helpers<T>::interchange(U& xP, U& yP)
+	{
+		U temp;
+		temp = xP;
+		xP = yP;
+		yP = temp;
+	}
 }
 
 namespace L173
@@ -885,21 +904,40 @@ int main()
 	}
 
 	{
-		using namespace L171v2;
+		//using namespace L171v2;
 
-		Pair<int, char> pair1{ 55, 'G' };
-		pair1.toString();
+		//Pair<int, char> pair1{ 55, 'G' };
+		//pair1.toString();
 
-		int x = 5;
-		Pair<char, int*> pair2{'A', &x };
-		pair2.toString();
+		//int x = 5;
+		//Pair<char, int*> pair2{'A', &x };
+		//pair2.toString();
 
-		Pair<int*, int*> pair3{ &x, &x };
-		pair3.toString();
+		//Pair<int*, int*> pair3{ &x, &x };
+		//pair3.toString();
 	}
 
 
+	// 172. Member Function Templates
+	{
+		using namespace L172;
 
+		int q{ 33 }, w{ 55 };
+		cout << "q: " << q << endl;
+		cout << "w: " << w << endl;
+
+		//Helpers helper;
+		//helper.interchange<int>(q, w);
+
+		//Helpers::interchange<int>(q, w);
+
+		//Helpers<int>::interchange<int>(q, w);
+
+		Helpers<int> helper;
+		helper.interchange<int>(q, w);
+		cout << "q: " << q << endl;
+		cout << "w: " << w << endl;
+	}
 
 
 
