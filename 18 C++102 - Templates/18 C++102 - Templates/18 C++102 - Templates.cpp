@@ -663,6 +663,20 @@ namespace L173v2
 namespace L174
 {
 	using namespace std;
+
+	template<typename T>
+	struct Pair
+	{
+		T first;
+		T second;
+	};
+
+	typedef Pair<int> IntPair;
+
+	int smallestMember(const IntPair& pairP)
+	{
+		return (pairP.first < pairP.second) ? pairP.first : pairP.second;
+	}
 }
 
 namespace L175
@@ -1043,25 +1057,30 @@ int main()
 	}
 
 	{
-		using namespace L173v2;
+		//using namespace L173v2;
 
-		int x = 44;
+		//int x = 44;
 
-		Entity<int*> entity1(&x);
-		toString(entity1);
-		cout << entity1;
+		//Entity<int*> entity1(&x);
+		//toString(entity1);
+		//cout << entity1;
 
-		cout << "------" <<endl;
+		//cout << "------" <<endl;
 
-		Entity<int> entity2(x);
-		toString(entity2);
-		cout << entity2;
+		//Entity<int> entity2(x);
+		//toString(entity2);
+		//cout << entity2;
 	}
 
 
+	// 174. Type Definitions with Class Templates
+	{
+		using namespace L174;
 
+		IntPair pair{ 33, 11 };
 
-
+		cout << smallestMember(pair) << endl;
+	}
 
 
 
