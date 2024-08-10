@@ -679,6 +679,11 @@ namespace L174
 	}
 }
 
+namespace NumericLimits
+{
+	#include <limits>
+}
+
 namespace L175
 {
 	using namespace std;
@@ -1075,14 +1080,27 @@ int main()
 
 	// 174. Type Definitions with Class Templates
 	{
-		using namespace L174;
+		//using namespace L174;
 
-		IntPair pair{ 33, 11 };
+		//IntPair pair{ 33, 11 };
 
-		cout << smallestMember(pair) << endl;
+		//cout << smallestMember(pair) << endl;
 	}
 
 
+	// Numeric Limits
+	{
+		using namespace NumericLimits;
+
+		std::cout << "Max value for int: " << INT_MAX << std::endl;
+		std::cout << "Min value for int: " << INT_MIN << std::endl;
+
+		std::cout << "Max value for int: " << std::numeric_limits<int>::max() << std::endl;
+		std::cout << "Min value for int: " << std::numeric_limits<int>::min() << std::endl;
+
+		std::cout << std::boolalpha;
+		std::cout << "Int is signed: " << std::numeric_limits<unsigned int>::is_signed << std::endl;
+	}
 
 
 
