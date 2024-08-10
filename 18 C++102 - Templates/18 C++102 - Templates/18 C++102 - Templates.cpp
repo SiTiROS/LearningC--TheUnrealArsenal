@@ -570,6 +570,94 @@ namespace L172
 namespace L173
 {
 	using namespace std;
+
+	template<typename T>
+	class Entity;
+
+	template<typename T>
+	void toString(const Entity<T>& entityP);
+
+	template<typename T>
+	class Entity
+	{
+		//friend specification
+		friend void toString<>(const Entity<T>& entityP);
+
+	public:
+		Entity(T memberP) : member(memberP) {}
+
+	private:
+		T member;
+	};
+
+	template<typename T>
+	void toString(const Entity<T>& entityP)
+	{
+		cout << entityP.member << endl;
+	}
+
+	template<>
+	void toString(const Entity<int*>& entityP)
+	{
+		cout << "--- From toString Specialization ---" << endl;
+		cout << *entityP.member << endl;
+	}
+}
+
+namespace L173v2
+{
+	using namespace std;
+
+	template<typename T>
+	class Entity;
+
+	template<typename T>
+	void toString(const Entity<T>& entityP);
+
+	template<typename T>
+	std::ostream& operator<<(std::ostream& output, const Entity<T>& entityP);
+
+	template<typename T>
+	class Entity
+	{
+		//friend specification
+		friend void toString<>(const Entity<T>& entityP);
+		friend std::ostream& operator<< <>(std::ostream& output, const Entity<T>& entityP);
+
+	public:
+		Entity(T memberP) : member(memberP) {}
+
+	private:
+		T member;
+	};
+
+	template<typename T>
+	void toString(const Entity<T>& entityP)
+	{
+		cout << entityP.member << endl;
+	}
+
+	template<>
+	void toString(const Entity<int*>& entityP)
+	{
+		cout << "--- From toString() Specialization ---" << endl;
+		cout << *entityP.member << endl;
+	}
+
+	template<typename T>
+	std::ostream& operator<<(std::ostream& output, const Entity<T>& entityP)
+	{
+		output << entityP.member << endl;
+		return output;
+	}
+
+	template<>
+	std::ostream& operator<<(std::ostream& output, const Entity<int*>& entityP)
+	{
+		cout << "--- From operator<<() Specialization ---" << endl;
+		output << *entityP.member << endl;
+		return output;
+	}
 }
 
 namespace L174
@@ -920,30 +1008,55 @@ int main()
 
 	// 172. Member Function Templates
 	{
-		using namespace L172;
+		//using namespace L172;
 
-		int q{ 33 }, w{ 55 };
-		cout << "q: " << q << endl;
-		cout << "w: " << w << endl;
+		//int q{ 33 }, w{ 55 };
+		//cout << "q: " << q << endl;
+		//cout << "w: " << w << endl;
 
-		//Helpers helper;
+		////Helpers helper;
+		////helper.interchange<int>(q, w);
+
+		////Helpers::interchange<int>(q, w);
+
+		////Helpers<int>::interchange<int>(q, w);
+
+		//Helpers<int> helper;
 		//helper.interchange<int>(q, w);
-
-		//Helpers::interchange<int>(q, w);
-
-		//Helpers<int>::interchange<int>(q, w);
-
-		Helpers<int> helper;
-		helper.interchange<int>(q, w);
-		cout << "q: " << q << endl;
-		cout << "w: " << w << endl;
+		//cout << "q: " << q << endl;
+		//cout << "w: " << w << endl;
 	}
 
 
+	// 173. Friends of a Class or Struct Template
+	{
+		//using namespace L173;
 
+		//int x = 44;
 
+		//// Entity<int> entity1(x);
+		////Entity<int*> entity1(&x);
+		////toString(entity1);
 
+		//Entity<int> entity2(x);
+		//toString(entity2);
+	}
 
+	{
+		using namespace L173v2;
+
+		int x = 44;
+
+		Entity<int*> entity1(&x);
+		toString(entity1);
+		cout << entity1;
+
+		cout << "------" <<endl;
+
+		Entity<int> entity2(x);
+		toString(entity2);
+		cout << entity2;
+	}
 
 
 
