@@ -681,12 +681,112 @@ namespace L174
 
 namespace NumericLimits
 {
-	#include <limits>
+#include <limits>
 }
 
 namespace L175
 {
 	using namespace std;
+
+	template<typename T>
+	T smallest(T xP, T yP)
+	{
+		return (xP < yP) ? xP : yP;
+	}
+
+	template<typename T>
+	void print(T formalP)
+	{
+		formalP += 5;
+		cout << formalP << endl;
+	}
+}
+
+namespace L175v2
+{
+	using namespace std;
+
+	template<typename T = int, int size = 4>
+	class MyContainer
+	{
+	public:
+		T& operator[] (int index)
+		{
+			return m_Array[index];
+		}
+
+	private:
+		T m_Array[size]{};
+	};
+}
+
+namespace L175v3
+{
+	using namespace std;
+
+	class Base
+	{
+	public:
+
+		virtual ~Base() {};
+
+		virtual void toString() const
+		{
+			cout << "Base::toString()" << endl;
+		}
+	};
+
+	class Derived : public Base
+	{
+	public:
+		virtual ~Derived() {};
+
+		virtual void toString() const override
+		{
+			cout << "Derived::toString()" << endl;
+		}
+	};
+
+	template<typename T = int, int size = 1>
+	class MyContainer
+	{
+	public:
+		T& operator[](int index)
+		{
+			return m_Array[index];
+		}
+
+	private:
+		T m_Array[size]{};
+	};
+}
+
+namespace L175v4
+{
+	using namespace std;
+
+	template<typename T, float tP>
+	struct Entity
+	{
+		T getVal() { return tP; }
+	};
+}
+
+namespace L175v5
+{
+	using namespace std;
+
+	template<typename T, auto ntP>
+	struct Entity
+	{
+		void toString()
+		{
+			cout << "member: " << member << endl;
+			cout << "Non-type Parameter: " << ntP << endl;
+		}
+
+		T member{};
+	};
 }
 
 
@@ -1090,28 +1190,103 @@ int main()
 
 	// Numeric Limits
 	{
-		using namespace NumericLimits;
+		//using namespace NumericLimits;
 
-		std::cout << "Max value for int: " << INT_MAX << std::endl;
-		std::cout << "Min value for int: " << INT_MIN << std::endl;
+		//std::cout << "Max value for int: " << INT_MAX << std::endl;
+		//std::cout << "Min value for int: " << INT_MIN << std::endl;
 
-		std::cout << "Max value for int: " << std::numeric_limits<int>::max() << std::endl;
-		std::cout << "Min value for int: " << std::numeric_limits<int>::min() << std::endl;
+		//std::cout << "Max value for int: " << std::numeric_limits<int>::max() << std::endl;
+		//std::cout << "Min value for int: " << std::numeric_limits<int>::min() << std::endl;
 
-		std::cout << std::boolalpha;
-		std::cout << "Int is signed: " << std::numeric_limits<unsigned int>::is_signed << std::endl;
+		//std::cout << std::boolalpha;
+		//std::cout << "Int is signed: " << std::numeric_limits<unsigned int>::is_signed << std::endl;
 	}
 
 
+	// 175. Templates Lesson Wrap-Up
+	{
+		//using namespace L175;
 
+		//cout << smallest<int>(5, 3) << endl;
+		//cout << smallest(2, 4) << endl; //int type argument deduced
 
+		//cout << smallest<float>(33.04f, 55.04f) << endl;
+		//cout << smallest<char>('A', 'Z') << endl;
 
+		//cout << smallest<int>(5, 3.33) << endl; //smallest: 3
+		//// cout << smallest(5, 3.45) << endl; //ambiguous - can not deduce type
+	}
 
+	{
+		//using namespace L175;
 
+		//int x = 55;
 
+		////Explicit template argument supplied
+		//print<int&>(x); // передача по ссылке
+		//print<int>(x);  // передача по значению
+		//cout << "After Print - x: " << x << endl;
+	}
 
+	{
+		//using namespace L175v2;
 
+		//const int SIZE = 3;
 
+		//MyContainer<int*, SIZE> container1;
+
+		//int x{ 3 }, y{ 4 }, z{ 5 };
+
+		//container1[0] = &x;
+		//container1[1] = &y;
+		//container1[2] = &z;
+
+		//for (int i = 0; i < SIZE; i++)
+		//{
+		//	cout << *container1[i] << endl;
+		//}
+	}
+
+	{
+		//using namespace L175v3;
+
+		//const int SIZE = 3;
+
+		//MyContainer<Base*, SIZE> container1;
+
+		//Base base1;
+		//Derived derived1, derived2;
+
+		//container1[0] = &derived1;
+		//container1[1] = &base1;
+		//container1[2] = &derived2;
+
+		//for (int i = 0; i < SIZE; i++)
+		//{
+		//	container1[i]->toString();
+		//}
+	}
+
+	{
+		//using namespace L175v4;
+
+		//const int x = 55;
+
+		//Entity<int, 5.0f> entity;
+
+		//cout << entity.getVal() << endl;
+	}
+
+	{
+		using namespace L175v5;
+
+		auto entity1 = Entity<int, 55.5f>();
+		//Entity<int, 55> entity1;
+
+		entity1.member = 55;
+
+		entity1.toString();
+	}
 
 
 
