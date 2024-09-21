@@ -77,6 +77,129 @@ namespace L2v4
 
 }
 
+namespace L3
+{
+	class Base
+	{
+	public:
+		Base() = default;
+		virtual ~Base() {};
+
+		virtual void toString() const
+		{
+			std::cout << "Base::toString()" << std::endl;
+		}
+	};
+
+	class Derived : public Base
+	{
+	public:
+		Derived() = default;
+		virtual ~Derived() {};
+
+		virtual void toString() const
+		{
+			std::cout << "Derived::toString()" << std::endl;
+		}
+
+		int getMember() const { return member; }
+
+	private:
+		int member{ 3 };
+	};
+
+	void displayPtr(Base* pBaseP)
+	{
+		Derived* pDerived = dynamic_cast<Derived*>(pBaseP);
+
+		if (pDerived)
+		{
+			std::cout << "Derived Member is: " << pDerived->getMember() << std::endl;
+			pDerived->toString();
+		}
+		else
+		{
+			std::cout << "nullptr" << std::endl;
+		}
+	}
+
+	void displayRef(Base& rBaseP)
+	{
+		Derived& rDerived = dynamic_cast<Derived&>(rBaseP);
+
+		// Convert Reference Into Pointer...
+		Derived* pDerived = dynamic_cast<Derived*>(&rDerived);
+
+		if (pDerived)
+		{
+			std::cout << "Derived Member is: " << pDerived->getMember() << std::endl;
+			pDerived->toString();
+		}
+		else
+		{
+			std::cout << "nullptr" << std::endl;
+		}
+	}
+}
+
+namespace L3v2
+{
+	class EntityOne
+	{
+	public:
+		EntityOne() = default;
+		virtual ~EntityOne() {};
+
+		virtual void toString() const
+		{
+			std::cout << "EntityOne::toString()" << std::endl;
+		}
+	};
+
+	class EntityTwo
+	{
+	public:
+		EntityTwo() = default;
+		virtual ~EntityTwo() {};
+
+		void toString() const
+		{
+			std::cout << "EntityTwo::toString()" << std::endl;
+		}
+	};
+}
+
+namespace L3v3
+{
+	class A
+	{
+		virtual void toString() const
+		{
+			std::cout << "Base::toString()" << std::endl;
+		}
+	};
+
+	class B : public A {};
+
+	class C : public A {};
+
+	class D : public B, public C {};
+
+}
+
+namespace L3v4
+{
+	class A { virtual void toString() const {} };
+
+	class B : public A {};
+
+	class C : public A {};
+
+	class D { virtual void toString() const {} };
+
+	class E : public B, public C, public D {};
+}
+
 
 int main()
 {
@@ -138,21 +261,173 @@ int main()
 
 	//
 	{
-		using namespace L2v4;
+		//using namespace L2v4;
 
-		Entity entity(3);
+		//Entity entity(3);
 
-		entity = 55;
+		//entity = 55;
 
-		std::cout << "\nEntity.member is: " << entity << std::endl << std::endl;
+		//std::cout << "\nEntity.member is: " << entity << std::endl << std::endl;
 
-		int x = static_cast<int>(entity);
+		//int x = static_cast<int>(entity);
 
-		entity = static_cast<Entity>(47);
+		//entity = static_cast<Entity>(47);
 
-		std::cout << "\nEntity.member is: " << entity << std::endl;
+		//std::cout << "\nEntity.member is: " << entity << std::endl;
 	}
 
+
+	// 3. The dynamic_cast() Operator
+
+	{
+		//using namespace L3;
+
+		//Base* pBase = new Base;
+		////Base* pBase = new Derived;
+		//pBase->toString();
+
+		////std::cout << "Derived Member is: " << pBase->getMember() << std::endl;
+
+		//Derived* pDerived = dynamic_cast<Derived*>(pBase);
+
+		//if (pDerived)
+		//{
+		//	std::cout << "Derived Member is: " << pDerived->getMember() << std::endl;
+		//	pDerived->toString();
+		//}
+		//else
+		//{
+		//	std::cout << "nullptr" << std::endl;
+		//}
+
+		//delete pDerived;
+	}
+
+	{
+		//using namespace L3;
+
+		////Pointers
+		//Base* pBase = new Derived;
+		//displayPtr(pBase);
+
+		////References
+		//Derived derived{};
+		//Base& rBase = derived;
+		//displayRef(rBase);
+
+		//delete pBase;
+	}
+
+	{
+		//using namespace L3v2;
+
+		//EntityOne E1;
+
+		////Fail at compile-time
+		////EntityTwo* pE2 = static_cast<EntityTwo*>(&E1);
+
+		////Fail at run-time - return nullptr
+		//EntityTwo* pE2 = dynamic_cast<EntityTwo*>(&E1);
+
+		//if (pE2)
+		//{
+		//	pE2->toString();
+		//}
+	}
+
+	{
+		//double d{ 3.14 };
+		////int i = dynamic_cast<int>(d);//nope
+		//int i = static_cast<int>(d);//yeap
+	}
+
+	{
+		//using namespace L3v2;
+
+		//EntityOne* pEOne = new EntityOne;
+		//EntityTwo* pETwo = new EntityTwo;
+
+		//void* pVoid = dynamic_cast<void*>(pEOne);
+
+		////Error - must be a pointer to a complete class type
+		////EntityOne* pEOne2 = dynamic_cast<EntityOne*>(pVoid);
+
+		//EntityOne* pEOne2 = static_cast<EntityOne*>(pVoid);
+
+		//if (pEOne2)
+		//{
+		//	pEOne2->toString();
+		//}
+		//else
+		//{
+		//	std::cout << "nullptr" << std::endl;
+		//}
+
+		//pVoid = dynamic_cast<void*>(pETwo);
+
+		//EntityTwo* pETwo2 = static_cast<EntityTwo*>(pVoid);
+
+		//if (pETwo2)
+		//{
+		//	pETwo2->toString();
+		//}
+		//else
+		//{
+		//	std::cout << "nullptr" << std::endl;
+		//}
+
+		//delete pEOne;
+		//delete pETwo;
+	}
+
+	{
+		//using namespace L3v3;
+
+		//D* pD = new D;
+
+		//// Ambiguous Cast
+		//A* pA = dynamic_cast<A*>(pD);
+		//if (pA == nullptr)
+		//{
+		//	std::cout << "nullptr" << std::endl;
+		//}
+
+		////Multiple Upcast for Unambiguous Cast
+		//B* pB = dynamic_cast<B*>(pD);
+		//A* pA2 = dynamic_cast<A*>(pB);
+
+		//delete pD;
+	}
+
+	{
+		using namespace L3v4;
+
+		D* pD = new E;
+
+		// Ambiguous Cast
+		A* pA = dynamic_cast<A*>(pD);
+		if (pA == nullptr)
+		{
+			std::cout << "nullptr" << std::endl;
+		}
+
+		//Downcast followed by Upcast for Unambiguous Cast
+		E* pE = dynamic_cast<E*>(pD);
+		B* pB = dynamic_cast<B*>(pE);
+		A* pA2 = dynamic_cast<A*>(pB);
+		//A* pA2 = pB;
+
+
+		// Cross-Cast followed by Upcast for Unambiguous Cast
+		B* pB2 = dynamic_cast<B*>(pD);
+		A* pA3 = dynamic_cast<A*>(pB2);
+		//A* pA3 = pB2;
+
+		delete pE;
+	}
+
+
+	std::cout << std::endl;
 	std::cout << "End of Program\n";
 	return 0;
 }
