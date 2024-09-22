@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 
+// 2. The static_cast() Operator
 namespace L2
 {
 	class EntityOne
@@ -77,6 +78,8 @@ namespace L2v4
 
 }
 
+
+// 3. The dynamic_cast() Operator
 namespace L3
 {
 	class Base
@@ -200,6 +203,39 @@ namespace L3v4
 	class E : public B, public C, public D {};
 }
 
+
+// 4. The typeid Operator
+namespace L4
+{
+	class Entity {};
+}
+
+namespace L4v2
+{
+	class Base
+	{
+	public:
+		Base() = default;
+		virtual ~Base() = default;
+
+		virtual void toString() const
+		{
+			std::cout << "Base::toString()." << std::endl;
+		}
+	};
+
+	class Derived : public Base
+	{
+	public:
+		Derived() = default;
+		virtual ~Derived() = default;
+
+		virtual void toString() const override
+		{
+			std::cout << "Derived::toString()." << std::endl;
+		}
+	};
+}
 
 int main()
 {
@@ -400,31 +436,95 @@ int main()
 	}
 
 	{
-		using namespace L3v4;
+		//using namespace L3v4;
 
-		D* pD = new E;
+		//D* pD = new E;
 
-		// Ambiguous Cast
-		A* pA = dynamic_cast<A*>(pD);
-		if (pA == nullptr)
-		{
-			std::cout << "nullptr" << std::endl;
-		}
+		//// Ambiguous Cast
+		//A* pA = dynamic_cast<A*>(pD);
+		//if (pA == nullptr)
+		//{
+		//	std::cout << "nullptr" << std::endl;
+		//}
 
-		//Downcast followed by Upcast for Unambiguous Cast
-		E* pE = dynamic_cast<E*>(pD);
-		B* pB = dynamic_cast<B*>(pE);
-		A* pA2 = dynamic_cast<A*>(pB);
-		//A* pA2 = pB;
+		////Downcast followed by Upcast for Unambiguous Cast
+		//E* pE = dynamic_cast<E*>(pD);
+		//B* pB = dynamic_cast<B*>(pE);
+		//A* pA2 = dynamic_cast<A*>(pB);
+		////A* pA2 = pB;
 
 
-		// Cross-Cast followed by Upcast for Unambiguous Cast
-		B* pB2 = dynamic_cast<B*>(pD);
-		A* pA3 = dynamic_cast<A*>(pB2);
-		//A* pA3 = pB2;
+		//// Cross-Cast followed by Upcast for Unambiguous Cast
+		//B* pB2 = dynamic_cast<B*>(pD);
+		//A* pA3 = dynamic_cast<A*>(pB2);
+		////A* pA3 = pB2;
 
-		delete pE;
+		//delete pE;
 	}
+
+
+	// 4. The typeid Operator
+	{
+		//using namespace L4;
+
+		//int* x{}, y{};
+		//Entity entity{};
+		//const Entity* const ptr1{};
+		//Entity* const ptr2{};
+		//Entity* ptr3 = new Entity{};
+
+		//std::cout << "Types" << std::endl;
+		//std::cout << "43: " << typeid(43).name() << std::endl;
+		//std::cout << "x: " << typeid(x).name() << std::endl;
+		//std::cout << "y: " << typeid(y).name() << std::endl;
+
+		//std::cout << "entity: " << typeid(entity).name() << std::endl;
+		//std::cout << "ptr1: " << typeid(ptr1).name() << std::endl;
+		//std::cout << "ptr2: " << typeid(ptr2).name() << std::endl;
+		//std::cout << "ptr3->: " << typeid(*ptr3).name() << std::endl;
+
+		//delete ptr3;
+	}
+
+	{
+		//int* x{}, y{};
+
+		//if (typeid(x) != typeid(y))
+		//{
+		//	std::cout << "Types are not the same!" << std::endl;
+		//}
+		//else
+		//{
+		//	std::cout << "Types are the same." << std::endl;
+		//}
+	}
+
+	{
+		using namespace L4v2;
+
+		Base* pBase1 = new Base;
+		Base* pBase2 = new Derived;
+
+		std::cout << "pBase1: " << typeid(pBase1).name() << std::endl;
+		std::cout << "pBase2: " << typeid(pBase2).name() << std::endl;
+
+		std::cout << "*pBase1: " << typeid(*pBase1).name() << std::endl;
+		std::cout << "*pBase2: " << typeid(*pBase2).name() << std::endl;
+
+		Derived derived;
+		Base& rBase = derived;
+		std::cout << "derived: " << typeid(derived).name() << std::endl;
+		std::cout << "rBase: " << typeid(rBase).name() << std::endl;
+
+		delete pBase1;
+		delete pBase2;
+	}
+
+
+
+
+
+
 
 
 	std::cout << std::endl;
