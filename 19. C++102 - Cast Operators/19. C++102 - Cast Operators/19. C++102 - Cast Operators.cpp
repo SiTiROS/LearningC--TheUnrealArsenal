@@ -237,6 +237,40 @@ namespace L4v2
 	};
 }
 
+
+//5. The const_cast() Operator
+namespace L5
+{
+	void display(int* ptr)
+	{
+		std::cout << *ptr << std::endl;
+	}
+}
+
+namespace L5v2
+{
+	class Entity
+	{
+	public:
+		Entity(int memberP = 0)
+			: member(memberP)
+		{ }
+
+		// const function that modifies the state of the Entity object...
+		void ModifyMemberConst(const int intP) const
+		{
+			(const_cast<Entity*>(this))->member = intP;
+		}
+
+		void toString()const { std::cout << member << std::endl; }
+		void setMember(int memberP) { member = memberP; }
+
+	private:
+		int member;
+	};
+
+}
+
 int main()
 {
 	// 2. The static_cast() Operator
@@ -314,7 +348,6 @@ int main()
 
 
 	// 3. The dynamic_cast() Operator
-
 	{
 		//using namespace L3;
 
@@ -500,32 +533,98 @@ int main()
 	}
 
 	{
-		using namespace L4v2;
+		//using namespace L4v2;
 
-		Base* pBase1 = new Base;
-		Base* pBase2 = new Derived;
+		//Base* pBase1 = new Base;
+		//Base* pBase2 = new Derived;
 
-		std::cout << "pBase1: " << typeid(pBase1).name() << std::endl;
-		std::cout << "pBase2: " << typeid(pBase2).name() << std::endl;
+		//std::cout << "pBase1: " << typeid(pBase1).name() << std::endl;
+		//std::cout << "pBase2: " << typeid(pBase2).name() << std::endl;
 
-		std::cout << "*pBase1: " << typeid(*pBase1).name() << std::endl;
-		std::cout << "*pBase2: " << typeid(*pBase2).name() << std::endl;
+		//std::cout << "*pBase1: " << typeid(*pBase1).name() << std::endl;
+		//std::cout << "*pBase2: " << typeid(*pBase2).name() << std::endl;
 
-		Derived derived;
-		Base& rBase = derived;
-		std::cout << "derived: " << typeid(derived).name() << std::endl;
-		std::cout << "rBase: " << typeid(rBase).name() << std::endl;
+		//Derived derived;
+		//Base& rBase = derived;
+		//std::cout << "derived: " << typeid(derived).name() << std::endl;
+		//std::cout << "rBase: " << typeid(rBase).name() << std::endl;
 
-		delete pBase1;
-		delete pBase2;
+		//delete pBase1;
+		//delete pBase2;
 	}
 
 
+	//5. The const_cast() Operator
+	{
+		//const int x = 33;
 
+		//// Error...
+		//// int y = const_cast<int>(x); 
 
+		//int* ptr = const_cast<int*>(&x);
 
+		//std::cout << *ptr << std::endl;
 
+		////Undefined behaviour!
+		//*ptr = 1;
 
+		//std::cout << *ptr << std::endl;
+		//std::cout << x << std::endl;
+	}
+
+	{
+		//int x = 33;
+
+		//const int* cptr = &x;
+		//int* ptr = const_cast<int*>(cptr);
+
+		//*ptr = 47;
+		//std::cout << *ptr << std::endl;
+		//std::cout << x << std::endl;
+	}
+
+	{
+		//using namespace L5;
+		//int x = 33;
+
+		//const int* cptr = &x;
+		////display(cptr);
+		//int* ptr = const_cast<int*>(cptr);
+		//display(ptr);
+
+		//*ptr = 47;
+		//std::cout << *ptr << std::endl;
+		//std::cout << x << std::endl;
+	}
+
+	{
+		//using namespace L5v2;
+
+		//Entity entity{};
+
+		//entity.toString();
+
+		//entity.ModifyMemberConst(47);
+
+		//entity.toString();
+	}
+
+	{
+		int x{ 47 };
+		const int* cPtr{ &x };
+		volatile int* vPtr{ &x };
+
+		std::cout << "Types." << std::endl;
+		std::cout << "x: " << typeid(x).name() << std::endl;
+		std::cout << "vPtr: " << typeid(vPtr).name() << std::endl;
+
+		int* ptr = const_cast<int*>(vPtr);
+		std::cout << "ptr: " << typeid(ptr).name() << std::endl;
+
+		std::cout << "cPtr: " << typeid(cPtr).name() << std::endl;
+		ptr = const_cast<int*>(cPtr);
+		std::cout << "ptr: " << typeid(ptr).name() << std::endl;
+	}
 
 	std::cout << std::endl;
 	std::cout << "End of Program\n";
