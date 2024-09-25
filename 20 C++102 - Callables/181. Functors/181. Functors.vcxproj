@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a5afd5d4-1c75-4bca-a8e1-87df378004a0}</ProjectGuid>
-    <RootNamespace>My180FunctionPointerTypeAliases</RootNamespace>
+    <ProjectGuid>{1c5bb4c6-ea78-4bf4-a70f-fdbb6a5ca123}</ProjectGuid>
+    <RootNamespace>My181Functors</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
