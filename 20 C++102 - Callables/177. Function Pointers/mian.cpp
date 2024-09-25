@@ -50,8 +50,6 @@ int main()
 	int(*fPtr3)(int, int) { multiply }; // списковая инициализация
 
 
-
-
 	std::cout << "END\n";
 	return 0;
 }
