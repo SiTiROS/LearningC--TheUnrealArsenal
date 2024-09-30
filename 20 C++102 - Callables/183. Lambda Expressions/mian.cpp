@@ -26,7 +26,7 @@ int main()
 #endif
 
 #if 0
-	auto div = [](int x, int y) -> double
+	auto div = [](int x, int y) -> double // -> double явное указание типа возврата
 	{
 		if (true)
 		{
