@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "195. Unique Pointers that M
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "196. Unique Pointers as Class Members", "196. Unique Pointers as Class Members\196. Unique Pointers as Class Members.vcxproj", "{A8E94D47-A780-4DAC-A082-B52B6380ABE1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "197. Unique Pointers and Polymorphism", "197. Unique Pointers and Polymorphism\197. Unique Pointers and Polymorphism.vcxproj", "{68087BD9-2082-45C0-9348-102133F0A6FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -91,6 +93,14 @@ Global
 		{A8E94D47-A780-4DAC-A082-B52B6380ABE1}.Release|x64.Build.0 = Release|x64
 		{A8E94D47-A780-4DAC-A082-B52B6380ABE1}.Release|x86.ActiveCfg = Release|Win32
 		{A8E94D47-A780-4DAC-A082-B52B6380ABE1}.Release|x86.Build.0 = Release|Win32
+		{68087BD9-2082-45C0-9348-102133F0A6FC}.Debug|x64.ActiveCfg = Debug|x64
+		{68087BD9-2082-45C0-9348-102133F0A6FC}.Debug|x64.Build.0 = Debug|x64
+		{68087BD9-2082-45C0-9348-102133F0A6FC}.Debug|x86.ActiveCfg = Debug|Win32
+		{68087BD9-2082-45C0-9348-102133F0A6FC}.Debug|x86.Build.0 = Debug|Win32
+		{68087BD9-2082-45C0-9348-102133F0A6FC}.Release|x64.ActiveCfg = Release|x64
+		{68087BD9-2082-45C0-9348-102133F0A6FC}.Release|x64.Build.0 = Release|x64
+		{68087BD9-2082-45C0-9348-102133F0A6FC}.Release|x86.ActiveCfg = Release|Win32
+		{68087BD9-2082-45C0-9348-102133F0A6FC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
