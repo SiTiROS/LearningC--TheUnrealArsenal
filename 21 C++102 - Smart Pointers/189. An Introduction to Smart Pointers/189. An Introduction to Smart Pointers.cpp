@@ -77,7 +77,7 @@ int main()
 
 
 	//example2
-#if 1 
+#if 0 
 	{
 		using namespace e2;
 
