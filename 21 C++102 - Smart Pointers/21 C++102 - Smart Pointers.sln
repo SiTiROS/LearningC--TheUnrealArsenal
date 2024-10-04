@@ -31,6 +31,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "201. Shared Pointers that M
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "202. An Introduction to Weak Pointers", "202. An Introduction to Weak Pointers\202. An Introduction to Weak Pointers.vcxproj", "{C708D9C5-8DCD-48F6-96A8-45D10295FA2D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "203. Shared Pointer Implementation Technicalities", "203. Shared Pointer Implementation Technicalities\203. Shared Pointer Implementation Technicalities.vcxproj", "{432ADAA7-0F9D-4263-A810-07B45D478FF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -151,6 +153,14 @@ Global
 		{C708D9C5-8DCD-48F6-96A8-45D10295FA2D}.Release|x64.Build.0 = Release|x64
 		{C708D9C5-8DCD-48F6-96A8-45D10295FA2D}.Release|x86.ActiveCfg = Release|Win32
 		{C708D9C5-8DCD-48F6-96A8-45D10295FA2D}.Release|x86.Build.0 = Release|Win32
+		{432ADAA7-0F9D-4263-A810-07B45D478FF8}.Debug|x64.ActiveCfg = Debug|x64
+		{432ADAA7-0F9D-4263-A810-07B45D478FF8}.Debug|x64.Build.0 = Debug|x64
+		{432ADAA7-0F9D-4263-A810-07B45D478FF8}.Debug|x86.ActiveCfg = Debug|Win32
+		{432ADAA7-0F9D-4263-A810-07B45D478FF8}.Debug|x86.Build.0 = Debug|Win32
+		{432ADAA7-0F9D-4263-A810-07B45D478FF8}.Release|x64.ActiveCfg = Release|x64
+		{432ADAA7-0F9D-4263-A810-07B45D478FF8}.Release|x64.Build.0 = Release|x64
+		{432ADAA7-0F9D-4263-A810-07B45D478FF8}.Release|x86.ActiveCfg = Release|Win32
+		{432ADAA7-0F9D-4263-A810-07B45D478FF8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
