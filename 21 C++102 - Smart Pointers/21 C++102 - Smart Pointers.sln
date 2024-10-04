@@ -35,6 +35,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "203. Shared Pointer Impleme
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "204. Useless Entity Exercise", "204. Useless Entity Exercise\204. Useless Entity Exercise.vcxproj", "{4E8AA95B-0417-4678-8A5C-70BA928E3E25}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "205. Custom Deleters for Smart Pointers", "205. Custom Deleters for Smart Pointers\205. Custom Deleters for Smart Pointers.vcxproj", "{C45D065D-C9B8-41E9-9998-45E47122C0BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -171,6 +173,14 @@ Global
 		{4E8AA95B-0417-4678-8A5C-70BA928E3E25}.Release|x64.Build.0 = Release|x64
 		{4E8AA95B-0417-4678-8A5C-70BA928E3E25}.Release|x86.ActiveCfg = Release|Win32
 		{4E8AA95B-0417-4678-8A5C-70BA928E3E25}.Release|x86.Build.0 = Release|Win32
+		{C45D065D-C9B8-41E9-9998-45E47122C0BC}.Debug|x64.ActiveCfg = Debug|x64
+		{C45D065D-C9B8-41E9-9998-45E47122C0BC}.Debug|x64.Build.0 = Debug|x64
+		{C45D065D-C9B8-41E9-9998-45E47122C0BC}.Debug|x86.ActiveCfg = Debug|Win32
+		{C45D065D-C9B8-41E9-9998-45E47122C0BC}.Debug|x86.Build.0 = Debug|Win32
+		{C45D065D-C9B8-41E9-9998-45E47122C0BC}.Release|x64.ActiveCfg = Release|x64
+		{C45D065D-C9B8-41E9-9998-45E47122C0BC}.Release|x64.Build.0 = Release|x64
+		{C45D065D-C9B8-41E9-9998-45E47122C0BC}.Release|x86.ActiveCfg = Release|Win32
+		{C45D065D-C9B8-41E9-9998-45E47122C0BC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
