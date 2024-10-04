@@ -33,6 +33,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "202. An Introduction to Wea
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "203. Shared Pointer Implementation Technicalities", "203. Shared Pointer Implementation Technicalities\203. Shared Pointer Implementation Technicalities.vcxproj", "{432ADAA7-0F9D-4263-A810-07B45D478FF8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "204. Useless Entity Exercise", "204. Useless Entity Exercise\204. Useless Entity Exercise.vcxproj", "{4E8AA95B-0417-4678-8A5C-70BA928E3E25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -161,6 +163,14 @@ Global
 		{432ADAA7-0F9D-4263-A810-07B45D478FF8}.Release|x64.Build.0 = Release|x64
 		{432ADAA7-0F9D-4263-A810-07B45D478FF8}.Release|x86.ActiveCfg = Release|Win32
 		{432ADAA7-0F9D-4263-A810-07B45D478FF8}.Release|x86.Build.0 = Release|Win32
+		{4E8AA95B-0417-4678-8A5C-70BA928E3E25}.Debug|x64.ActiveCfg = Debug|x64
+		{4E8AA95B-0417-4678-8A5C-70BA928E3E25}.Debug|x64.Build.0 = Debug|x64
+		{4E8AA95B-0417-4678-8A5C-70BA928E3E25}.Debug|x86.ActiveCfg = Debug|Win32
+		{4E8AA95B-0417-4678-8A5C-70BA928E3E25}.Debug|x86.Build.0 = Debug|Win32
+		{4E8AA95B-0417-4678-8A5C-70BA928E3E25}.Release|x64.ActiveCfg = Release|x64
+		{4E8AA95B-0417-4678-8A5C-70BA928E3E25}.Release|x64.Build.0 = Release|x64
+		{4E8AA95B-0417-4678-8A5C-70BA928E3E25}.Release|x86.ActiveCfg = Release|Win32
+		{4E8AA95B-0417-4678-8A5C-70BA928E3E25}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
