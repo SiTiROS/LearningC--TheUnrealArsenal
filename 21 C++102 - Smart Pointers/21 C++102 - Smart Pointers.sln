@@ -25,6 +25,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "198. An Introduction to Sha
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "199. Shared Pointers as Formal Parameters", "199. Shared Pointers as Formal Parameters\199. Shared Pointers as Formal Parameters.vcxproj", "{FD7902F5-D588-4C90-854A-DAEAEBFF20B4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "200. Unique Pointer and Shared Pointer Conversion", "200. Unique Pointer and Shared Pointer Conversion\200. Unique Pointer and Shared Pointer Conversion.vcxproj", "{865898AA-0329-4812-B5E3-98B485D9D6A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -121,6 +123,14 @@ Global
 		{FD7902F5-D588-4C90-854A-DAEAEBFF20B4}.Release|x64.Build.0 = Release|x64
 		{FD7902F5-D588-4C90-854A-DAEAEBFF20B4}.Release|x86.ActiveCfg = Release|Win32
 		{FD7902F5-D588-4C90-854A-DAEAEBFF20B4}.Release|x86.Build.0 = Release|Win32
+		{865898AA-0329-4812-B5E3-98B485D9D6A6}.Debug|x64.ActiveCfg = Debug|x64
+		{865898AA-0329-4812-B5E3-98B485D9D6A6}.Debug|x64.Build.0 = Debug|x64
+		{865898AA-0329-4812-B5E3-98B485D9D6A6}.Debug|x86.ActiveCfg = Debug|Win32
+		{865898AA-0329-4812-B5E3-98B485D9D6A6}.Debug|x86.Build.0 = Debug|Win32
+		{865898AA-0329-4812-B5E3-98B485D9D6A6}.Release|x64.ActiveCfg = Release|x64
+		{865898AA-0329-4812-B5E3-98B485D9D6A6}.Release|x64.Build.0 = Release|x64
+		{865898AA-0329-4812-B5E3-98B485D9D6A6}.Release|x86.ActiveCfg = Release|Win32
+		{865898AA-0329-4812-B5E3-98B485D9D6A6}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
