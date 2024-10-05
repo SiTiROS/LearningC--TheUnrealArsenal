@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "207. The char Type and ASCII Codes", "207. The char Type and ASCII Codes\207. The char Type and ASCII Codes.vcxproj", "{18F027C6-9902-45F2-B2C3-991FFCF0885A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "208. Operations on Characters", "208. Operations on Characters\208. Operations on Characters.vcxproj", "{12931740-3958-4BF2-BAA7-5A28C7AE2916}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{18F027C6-9902-45F2-B2C3-991FFCF0885A}.Release|x64.Build.0 = Release|x64
 		{18F027C6-9902-45F2-B2C3-991FFCF0885A}.Release|x86.ActiveCfg = Release|Win32
 		{18F027C6-9902-45F2-B2C3-991FFCF0885A}.Release|x86.Build.0 = Release|Win32
+		{12931740-3958-4BF2-BAA7-5A28C7AE2916}.Debug|x64.ActiveCfg = Debug|x64
+		{12931740-3958-4BF2-BAA7-5A28C7AE2916}.Debug|x64.Build.0 = Debug|x64
+		{12931740-3958-4BF2-BAA7-5A28C7AE2916}.Debug|x86.ActiveCfg = Debug|Win32
+		{12931740-3958-4BF2-BAA7-5A28C7AE2916}.Debug|x86.Build.0 = Debug|Win32
+		{12931740-3958-4BF2-BAA7-5A28C7AE2916}.Release|x64.ActiveCfg = Release|x64
+		{12931740-3958-4BF2-BAA7-5A28C7AE2916}.Release|x64.Build.0 = Release|x64
+		{12931740-3958-4BF2-BAA7-5A28C7AE2916}.Release|x86.ActiveCfg = Release|Win32
+		{12931740-3958-4BF2-BAA7-5A28C7AE2916}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
