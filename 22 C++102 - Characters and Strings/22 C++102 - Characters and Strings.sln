@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "207. The char Type and ASCI
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "208. Operations on Characters", "208. Operations on Characters\208. Operations on Characters.vcxproj", "{12931740-3958-4BF2-BAA7-5A28C7AE2916}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "209. An Introduction to C-Strings", "209. An Introduction to C-Strings\209. An Introduction to C-Strings.vcxproj", "{1BD7F084-3B9B-4C5A-9B84-0C844D91E1F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{12931740-3958-4BF2-BAA7-5A28C7AE2916}.Release|x64.Build.0 = Release|x64
 		{12931740-3958-4BF2-BAA7-5A28C7AE2916}.Release|x86.ActiveCfg = Release|Win32
 		{12931740-3958-4BF2-BAA7-5A28C7AE2916}.Release|x86.Build.0 = Release|Win32
+		{1BD7F084-3B9B-4C5A-9B84-0C844D91E1F0}.Debug|x64.ActiveCfg = Debug|x64
+		{1BD7F084-3B9B-4C5A-9B84-0C844D91E1F0}.Debug|x64.Build.0 = Debug|x64
+		{1BD7F084-3B9B-4C5A-9B84-0C844D91E1F0}.Debug|x86.ActiveCfg = Debug|Win32
+		{1BD7F084-3B9B-4C5A-9B84-0C844D91E1F0}.Debug|x86.Build.0 = Debug|Win32
+		{1BD7F084-3B9B-4C5A-9B84-0C844D91E1F0}.Release|x64.ActiveCfg = Release|x64
+		{1BD7F084-3B9B-4C5A-9B84-0C844D91E1F0}.Release|x64.Build.0 = Release|x64
+		{1BD7F084-3B9B-4C5A-9B84-0C844D91E1F0}.Release|x86.ActiveCfg = Release|Win32
+		{1BD7F084-3B9B-4C5A-9B84-0C844D91E1F0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
