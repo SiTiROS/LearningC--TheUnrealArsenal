@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="211. Functions that Operate on C-Strings .cpp">
+    <ClCompile Include="213. An Introduction to the Standard String Class - stdstring.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

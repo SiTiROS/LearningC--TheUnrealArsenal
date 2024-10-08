@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "210. Determining the Size o
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "211. Functions that Operate on C-Strings - Part 1", "211. Functions that Operate on C-Strings - Part 1\211. Functions that Operate on C-Strings - Part 1.vcxproj", "{0E6CC30F-5D45-417F-A2B5-6C61E2FC0008}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "213. An Introduction to the Standard String Class - stdstring", "213. An Introduction to the Standard String Class - stdstring\213. An Introduction to the Standard String Class - stdstring.vcxproj", "{0EFB5935-8CBC-4530-B8C4-24D7D9C453C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -61,6 +63,14 @@ Global
 		{0E6CC30F-5D45-417F-A2B5-6C61E2FC0008}.Release|x64.Build.0 = Release|x64
 		{0E6CC30F-5D45-417F-A2B5-6C61E2FC0008}.Release|x86.ActiveCfg = Release|Win32
 		{0E6CC30F-5D45-417F-A2B5-6C61E2FC0008}.Release|x86.Build.0 = Release|Win32
+		{0EFB5935-8CBC-4530-B8C4-24D7D9C453C2}.Debug|x64.ActiveCfg = Debug|x64
+		{0EFB5935-8CBC-4530-B8C4-24D7D9C453C2}.Debug|x64.Build.0 = Debug|x64
+		{0EFB5935-8CBC-4530-B8C4-24D7D9C453C2}.Debug|x86.ActiveCfg = Debug|Win32
+		{0EFB5935-8CBC-4530-B8C4-24D7D9C453C2}.Debug|x86.Build.0 = Debug|Win32
+		{0EFB5935-8CBC-4530-B8C4-24D7D9C453C2}.Release|x64.ActiveCfg = Release|x64
+		{0EFB5935-8CBC-4530-B8C4-24D7D9C453C2}.Release|x64.Build.0 = Release|x64
+		{0EFB5935-8CBC-4530-B8C4-24D7D9C453C2}.Release|x86.ActiveCfg = Release|Win32
+		{0EFB5935-8CBC-4530-B8C4-24D7D9C453C2}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

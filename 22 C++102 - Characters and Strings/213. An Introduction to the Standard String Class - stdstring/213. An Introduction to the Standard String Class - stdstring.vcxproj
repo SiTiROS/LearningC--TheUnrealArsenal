@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{0e6cc30f-5d45-417f-a2b5-6c61e2fc0008}</ProjectGuid>
-    <RootNamespace>My211FunctionsthatOperateonCStringsPart1</RootNamespace>
+    <ProjectGuid>{0efb5935-8cbc-4530-b8c4-24d7d9c453c2}</ProjectGuid>
+    <RootNamespace>My213AnIntroductiontotheStandardStringClassstdstring</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="211. Functions that Operate on C-Strings .cpp" />
+    <ClCompile Include="213. An Introduction to the Standard String Class - stdstring.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
