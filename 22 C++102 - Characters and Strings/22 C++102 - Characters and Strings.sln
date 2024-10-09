@@ -29,6 +29,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "219. Standard String Compar
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "220. Standard String Numerical Conversions", "220. Standard String Numerical Conversions\220. Standard String Numerical Conversions.vcxproj", "{DD9B1079-CBB1-438B-BEFC-3EBF7F5092AC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "221. Operating on Standard String Substrings", "221. Operating on Standard String Substrings\221. Operating on Standard String Substrings.vcxproj", "{D13F91B1-3A32-40C5-9ABE-B99E544E0107}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -141,6 +143,14 @@ Global
 		{DD9B1079-CBB1-438B-BEFC-3EBF7F5092AC}.Release|x64.Build.0 = Release|x64
 		{DD9B1079-CBB1-438B-BEFC-3EBF7F5092AC}.Release|x86.ActiveCfg = Release|Win32
 		{DD9B1079-CBB1-438B-BEFC-3EBF7F5092AC}.Release|x86.Build.0 = Release|Win32
+		{D13F91B1-3A32-40C5-9ABE-B99E544E0107}.Debug|x64.ActiveCfg = Debug|x64
+		{D13F91B1-3A32-40C5-9ABE-B99E544E0107}.Debug|x64.Build.0 = Debug|x64
+		{D13F91B1-3A32-40C5-9ABE-B99E544E0107}.Debug|x86.ActiveCfg = Debug|Win32
+		{D13F91B1-3A32-40C5-9ABE-B99E544E0107}.Debug|x86.Build.0 = Debug|Win32
+		{D13F91B1-3A32-40C5-9ABE-B99E544E0107}.Release|x64.ActiveCfg = Release|x64
+		{D13F91B1-3A32-40C5-9ABE-B99E544E0107}.Release|x64.Build.0 = Release|x64
+		{D13F91B1-3A32-40C5-9ABE-B99E544E0107}.Release|x86.ActiveCfg = Release|Win32
+		{D13F91B1-3A32-40C5-9ABE-B99E544E0107}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
