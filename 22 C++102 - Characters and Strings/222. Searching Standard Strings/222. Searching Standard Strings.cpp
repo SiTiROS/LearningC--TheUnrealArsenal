@@ -70,7 +70,7 @@ int main()
 		str.replace(position, strToFind.length(), "three");
 	}
 
-	position = str.rfind(strToFind); 
+	position = str.rfind(strToFind);
 
 	if (position != std::string::npos)
 	{
@@ -85,4 +85,4 @@ int main()
 #endif
 	std::cout << "\n--- End of Program ---" << std::endl;
 	return 0;
-	}
+}
