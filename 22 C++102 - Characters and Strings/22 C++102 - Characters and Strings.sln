@@ -39,6 +39,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "224. Input with Strings - I
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "225. Console Input get and getline Member Functions", "225. Console Input get and getline Member Functions\225. Console Input get and getline Member Functions.vcxproj", "{08F5FED1-F973-452C-8177-7EA329A3A060}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "226. Get a Pointer to the Character Array Managed by a Standard String", "226. Get a Pointer to the Character Array Managed by a Standard String\226. Get a Pointer to the Character Array Managed by a Standard String.vcxproj", "{F2A640AC-F04C-4FAC-B71D-3368BE5A079B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -191,6 +193,14 @@ Global
 		{08F5FED1-F973-452C-8177-7EA329A3A060}.Release|x64.Build.0 = Release|x64
 		{08F5FED1-F973-452C-8177-7EA329A3A060}.Release|x86.ActiveCfg = Release|Win32
 		{08F5FED1-F973-452C-8177-7EA329A3A060}.Release|x86.Build.0 = Release|Win32
+		{F2A640AC-F04C-4FAC-B71D-3368BE5A079B}.Debug|x64.ActiveCfg = Debug|x64
+		{F2A640AC-F04C-4FAC-B71D-3368BE5A079B}.Debug|x64.Build.0 = Debug|x64
+		{F2A640AC-F04C-4FAC-B71D-3368BE5A079B}.Debug|x86.ActiveCfg = Debug|Win32
+		{F2A640AC-F04C-4FAC-B71D-3368BE5A079B}.Debug|x86.Build.0 = Debug|Win32
+		{F2A640AC-F04C-4FAC-B71D-3368BE5A079B}.Release|x64.ActiveCfg = Release|x64
+		{F2A640AC-F04C-4FAC-B71D-3368BE5A079B}.Release|x64.Build.0 = Release|x64
+		{F2A640AC-F04C-4FAC-B71D-3368BE5A079B}.Release|x86.ActiveCfg = Release|Win32
+		{F2A640AC-F04C-4FAC-B71D-3368BE5A079B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
