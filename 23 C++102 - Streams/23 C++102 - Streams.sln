@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "228. The Global Stream Obje
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "229. Manipulating the Field Width, Justification, and Fill Character", "229. Manipulating the Field Width, Justification, and Fill Character\229. Manipulating the Field Width, Justification, and Fill Character.vcxproj", "{4FB3FE71-5452-4892-8C44-EB462B980A79}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "230. Show the Positive Sign and Show the Decimal Point", "230. Show the Positive Sign and Show the Decimal Point\230. Show the Positive Sign and Show the Decimal Point.vcxproj", "{53679E74-B4E4-43F0-A8AC-A63DD20E4409}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{4FB3FE71-5452-4892-8C44-EB462B980A79}.Release|x64.Build.0 = Release|x64
 		{4FB3FE71-5452-4892-8C44-EB462B980A79}.Release|x86.ActiveCfg = Release|Win32
 		{4FB3FE71-5452-4892-8C44-EB462B980A79}.Release|x86.Build.0 = Release|Win32
+		{53679E74-B4E4-43F0-A8AC-A63DD20E4409}.Debug|x64.ActiveCfg = Debug|x64
+		{53679E74-B4E4-43F0-A8AC-A63DD20E4409}.Debug|x64.Build.0 = Debug|x64
+		{53679E74-B4E4-43F0-A8AC-A63DD20E4409}.Debug|x86.ActiveCfg = Debug|Win32
+		{53679E74-B4E4-43F0-A8AC-A63DD20E4409}.Debug|x86.Build.0 = Debug|Win32
+		{53679E74-B4E4-43F0-A8AC-A63DD20E4409}.Release|x64.ActiveCfg = Release|x64
+		{53679E74-B4E4-43F0-A8AC-A63DD20E4409}.Release|x64.Build.0 = Release|x64
+		{53679E74-B4E4-43F0-A8AC-A63DD20E4409}.Release|x86.ActiveCfg = Release|Win32
+		{53679E74-B4E4-43F0-A8AC-A63DD20E4409}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
