@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "231. Setting the Precision 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "232. Setting and Unsetting Flags", "232. Setting and Unsetting Flags\232. Setting and Unsetting Flags.vcxproj", "{4B7ACD49-83F6-4F8E-8602-36D7A0187E11}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "233. Stream Manipulators with Integers", "233. Stream Manipulators with Integers\233. Stream Manipulators with Integers.vcxproj", "{D2F00FB2-A626-4588-96CC-BC808E9FA872}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -61,6 +63,14 @@ Global
 		{4B7ACD49-83F6-4F8E-8602-36D7A0187E11}.Release|x64.Build.0 = Release|x64
 		{4B7ACD49-83F6-4F8E-8602-36D7A0187E11}.Release|x86.ActiveCfg = Release|Win32
 		{4B7ACD49-83F6-4F8E-8602-36D7A0187E11}.Release|x86.Build.0 = Release|Win32
+		{D2F00FB2-A626-4588-96CC-BC808E9FA872}.Debug|x64.ActiveCfg = Debug|x64
+		{D2F00FB2-A626-4588-96CC-BC808E9FA872}.Debug|x64.Build.0 = Debug|x64
+		{D2F00FB2-A626-4588-96CC-BC808E9FA872}.Debug|x86.ActiveCfg = Debug|Win32
+		{D2F00FB2-A626-4588-96CC-BC808E9FA872}.Debug|x86.Build.0 = Debug|Win32
+		{D2F00FB2-A626-4588-96CC-BC808E9FA872}.Release|x64.ActiveCfg = Release|x64
+		{D2F00FB2-A626-4588-96CC-BC808E9FA872}.Release|x64.Build.0 = Release|x64
+		{D2F00FB2-A626-4588-96CC-BC808E9FA872}.Release|x86.ActiveCfg = Release|Win32
+		{D2F00FB2-A626-4588-96CC-BC808E9FA872}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
