@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "229. Manipulating the Field
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "230. Show the Positive Sign and Show the Decimal Point", "230. Show the Positive Sign and Show the Decimal Point\230. Show the Positive Sign and Show the Decimal Point.vcxproj", "{53679E74-B4E4-43F0-A8AC-A63DD20E4409}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "231. Setting the Precision for Floating-Point Values", "231. Setting the Precision for Floating-Point Values\231. Setting the Precision for Floating-Point Values.vcxproj", "{609CD988-1308-4B66-AA32-DFBAD8B2118A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{53679E74-B4E4-43F0-A8AC-A63DD20E4409}.Release|x64.Build.0 = Release|x64
 		{53679E74-B4E4-43F0-A8AC-A63DD20E4409}.Release|x86.ActiveCfg = Release|Win32
 		{53679E74-B4E4-43F0-A8AC-A63DD20E4409}.Release|x86.Build.0 = Release|Win32
+		{609CD988-1308-4B66-AA32-DFBAD8B2118A}.Debug|x64.ActiveCfg = Debug|x64
+		{609CD988-1308-4B66-AA32-DFBAD8B2118A}.Debug|x64.Build.0 = Debug|x64
+		{609CD988-1308-4B66-AA32-DFBAD8B2118A}.Debug|x86.ActiveCfg = Debug|Win32
+		{609CD988-1308-4B66-AA32-DFBAD8B2118A}.Debug|x86.Build.0 = Debug|Win32
+		{609CD988-1308-4B66-AA32-DFBAD8B2118A}.Release|x64.ActiveCfg = Release|x64
+		{609CD988-1308-4B66-AA32-DFBAD8B2118A}.Release|x64.Build.0 = Release|x64
+		{609CD988-1308-4B66-AA32-DFBAD8B2118A}.Release|x86.ActiveCfg = Release|Win32
+		{609CD988-1308-4B66-AA32-DFBAD8B2118A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
