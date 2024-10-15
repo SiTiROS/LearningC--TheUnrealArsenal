@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "232. Setting and Unsetting 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "233. Stream Manipulators with Integers", "233. Stream Manipulators with Integers\233. Stream Manipulators with Integers.vcxproj", "{D2F00FB2-A626-4588-96CC-BC808E9FA872}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "234. Internal Justification of the Field Width", "234. Internal Justification of the Field Width\234. Internal Justification of the Field Width.vcxproj", "{14169920-5313-4260-B6C7-0F98D6827F1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +73,14 @@ Global
 		{D2F00FB2-A626-4588-96CC-BC808E9FA872}.Release|x64.Build.0 = Release|x64
 		{D2F00FB2-A626-4588-96CC-BC808E9FA872}.Release|x86.ActiveCfg = Release|Win32
 		{D2F00FB2-A626-4588-96CC-BC808E9FA872}.Release|x86.Build.0 = Release|Win32
+		{14169920-5313-4260-B6C7-0F98D6827F1C}.Debug|x64.ActiveCfg = Debug|x64
+		{14169920-5313-4260-B6C7-0F98D6827F1C}.Debug|x64.Build.0 = Debug|x64
+		{14169920-5313-4260-B6C7-0F98D6827F1C}.Debug|x86.ActiveCfg = Debug|Win32
+		{14169920-5313-4260-B6C7-0F98D6827F1C}.Debug|x86.Build.0 = Debug|Win32
+		{14169920-5313-4260-B6C7-0F98D6827F1C}.Release|x64.ActiveCfg = Release|x64
+		{14169920-5313-4260-B6C7-0F98D6827F1C}.Release|x64.Build.0 = Release|x64
+		{14169920-5313-4260-B6C7-0F98D6827F1C}.Release|x86.ActiveCfg = Release|Win32
+		{14169920-5313-4260-B6C7-0F98D6827F1C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
