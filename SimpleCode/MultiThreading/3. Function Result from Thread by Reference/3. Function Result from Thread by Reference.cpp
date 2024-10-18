@@ -1,4 +1,4 @@
-// 3. Function Result from Thread by Reference
+п»ї// 3. Function Result from Thread by Reference
 
 #include <iostream>
 #include <thread>
@@ -7,12 +7,12 @@
 void doWork(int& a)
 {
 	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-	std::cout << "ID потока = " << std::this_thread::get_id() << " --------- \tdoWork STARTED\t --------- " << std::endl;
+	std::cout << "ID РїРѕС‚РѕРєР° = " << std::this_thread::get_id() << " --------- \tdoWork STARTED\t --------- " << std::endl;
 
 	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	a *= 2;
 
-	std::cout << "ID потока = " << std::this_thread::get_id() << " --------- \tdoWork STOPPED\t --------- " << std::endl;
+	std::cout << "ID РїРѕС‚РѕРєР° = " << std::this_thread::get_id() << " --------- \tdoWork STOPPED\t --------- " << std::endl;
 }
 
 int main()
@@ -22,11 +22,11 @@ int main()
 #if 1
 	int q{ 5 };
 
-	std::thread th(doWork, std::ref(q)); // передача параметра в поток по ссылке
+	std::thread th(doWork, std::ref(q)); // РїРµСЂРµРґР°С‡Р° РїР°СЂР°РјРµС‚СЂР° РІ РїРѕС‚РѕРє РїРѕ СЃСЃС‹Р»РєРµ
 
 	for (size_t i = 0; i < 10; i++)
 	{
-		std::cout << "ID потока = " << std::this_thread::get_id() << "\tmain\t" << i << std::endl;
+		std::cout << "ID РїРѕС‚РѕРєР° = " << std::this_thread::get_id() << "\tmain\t" << i << std::endl;
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	}
 
