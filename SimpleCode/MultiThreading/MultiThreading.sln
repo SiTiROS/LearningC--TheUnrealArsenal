@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "4. Lambda Expressions and R
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "5. Threads and class methods", "5. Threads and class methods\5. Threads and class methods.vcxproj", "{0C875CA4-8B18-42F2-B06D-F8A72464DB27}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "6. Using Mutex for Thread Synchronization", "6. Using Mutex for Thread Synchronization\6. Using Mutex for Thread Synchronization.vcxproj", "{5460B166-B366-4E5E-BA74-10424D42CF3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -61,6 +63,14 @@ Global
 		{0C875CA4-8B18-42F2-B06D-F8A72464DB27}.Release|x64.Build.0 = Release|x64
 		{0C875CA4-8B18-42F2-B06D-F8A72464DB27}.Release|x86.ActiveCfg = Release|Win32
 		{0C875CA4-8B18-42F2-B06D-F8A72464DB27}.Release|x86.Build.0 = Release|Win32
+		{5460B166-B366-4E5E-BA74-10424D42CF3A}.Debug|x64.ActiveCfg = Debug|x64
+		{5460B166-B366-4E5E-BA74-10424D42CF3A}.Debug|x64.Build.0 = Debug|x64
+		{5460B166-B366-4E5E-BA74-10424D42CF3A}.Debug|x86.ActiveCfg = Debug|Win32
+		{5460B166-B366-4E5E-BA74-10424D42CF3A}.Debug|x86.Build.0 = Debug|Win32
+		{5460B166-B366-4E5E-BA74-10424D42CF3A}.Release|x64.ActiveCfg = Release|x64
+		{5460B166-B366-4E5E-BA74-10424D42CF3A}.Release|x64.Build.0 = Release|x64
+		{5460B166-B366-4E5E-BA74-10424D42CF3A}.Release|x86.ActiveCfg = Release|Win32
+		{5460B166-B366-4E5E-BA74-10424D42CF3A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

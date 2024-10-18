@@ -93,7 +93,7 @@ int main()
 
 	myClass m;
 
-	std::thread th(&myClass::doWork2, m, 1); // передача объекта и вызов его метода в поток
+	std::thread th(&myClass::doWork2, m, 1); // передача объекта и вызов его метода c параметрами в поток
 
 	for (size_t i = 1; i <= 10; i++)
 	{
