@@ -33,7 +33,7 @@ int main()
 	}
 
 	th.join();
-	std::cout << result << std::endl;;
+	std::cout << result << std::endl;
 
 	//[&a, &b]()
 	//	{
