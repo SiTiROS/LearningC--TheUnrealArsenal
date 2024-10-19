@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "5. Threads and class method
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "6. Using Mutex for Thread Synchronization", "6. Using Mutex for Thread Synchronization\6. Using Mutex for Thread Synchronization.vcxproj", "{5460B166-B366-4E5E-BA74-10424D42CF3A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "7. lock_guard mutex. Sync threads", "7. lock_guard mutex. Sync threads\7. lock_guard mutex. Sync threads.vcxproj", "{238BBF69-E55B-426D-99C4-A9FEBA81F9FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +73,14 @@ Global
 		{5460B166-B366-4E5E-BA74-10424D42CF3A}.Release|x64.Build.0 = Release|x64
 		{5460B166-B366-4E5E-BA74-10424D42CF3A}.Release|x86.ActiveCfg = Release|Win32
 		{5460B166-B366-4E5E-BA74-10424D42CF3A}.Release|x86.Build.0 = Release|Win32
+		{238BBF69-E55B-426D-99C4-A9FEBA81F9FA}.Debug|x64.ActiveCfg = Debug|x64
+		{238BBF69-E55B-426D-99C4-A9FEBA81F9FA}.Debug|x64.Build.0 = Debug|x64
+		{238BBF69-E55B-426D-99C4-A9FEBA81F9FA}.Debug|x86.ActiveCfg = Debug|Win32
+		{238BBF69-E55B-426D-99C4-A9FEBA81F9FA}.Debug|x86.Build.0 = Debug|Win32
+		{238BBF69-E55B-426D-99C4-A9FEBA81F9FA}.Release|x64.ActiveCfg = Release|x64
+		{238BBF69-E55B-426D-99C4-A9FEBA81F9FA}.Release|x64.Build.0 = Release|x64
+		{238BBF69-E55B-426D-99C4-A9FEBA81F9FA}.Release|x86.ActiveCfg = Release|Win32
+		{238BBF69-E55B-426D-99C4-A9FEBA81F9FA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
