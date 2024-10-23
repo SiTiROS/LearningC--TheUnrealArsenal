@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "7. lock_guard mutex. Sync t
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "8. Deadlock", "8. Deadlock\8. Deadlock.vcxproj", "{D4DC97A1-8227-4719-AF1D-9923B949DF8F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "9. Recursive_mutex C++", "9. Recursive_mutex C++\9. Recursive_mutex C++.vcxproj", "{3D7DC7A7-D370-430D-A93B-2C51548DBD57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -91,6 +93,14 @@ Global
 		{D4DC97A1-8227-4719-AF1D-9923B949DF8F}.Release|x64.Build.0 = Release|x64
 		{D4DC97A1-8227-4719-AF1D-9923B949DF8F}.Release|x86.ActiveCfg = Release|Win32
 		{D4DC97A1-8227-4719-AF1D-9923B949DF8F}.Release|x86.Build.0 = Release|Win32
+		{3D7DC7A7-D370-430D-A93B-2C51548DBD57}.Debug|x64.ActiveCfg = Debug|x64
+		{3D7DC7A7-D370-430D-A93B-2C51548DBD57}.Debug|x64.Build.0 = Debug|x64
+		{3D7DC7A7-D370-430D-A93B-2C51548DBD57}.Debug|x86.ActiveCfg = Debug|Win32
+		{3D7DC7A7-D370-430D-A93B-2C51548DBD57}.Debug|x86.Build.0 = Debug|Win32
+		{3D7DC7A7-D370-430D-A93B-2C51548DBD57}.Release|x64.ActiveCfg = Release|x64
+		{3D7DC7A7-D370-430D-A93B-2C51548DBD57}.Release|x64.Build.0 = Release|x64
+		{3D7DC7A7-D370-430D-A93B-2C51548DBD57}.Release|x86.ActiveCfg = Release|Win32
+		{3D7DC7A7-D370-430D-A93B-2C51548DBD57}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
