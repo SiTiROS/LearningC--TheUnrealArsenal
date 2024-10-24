@@ -24,6 +24,7 @@
     <ProjectGuid>{fb3f76a8-5fb6-4cf8-aecf-7b6ce13cffaa}</ProjectGuid>
     <RootNamespace>My4LambdaExpressionsandReturningThreadResult</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>04. Lambda Expressions and Returning Thread Result</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

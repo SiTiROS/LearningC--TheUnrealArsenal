@@ -24,6 +24,7 @@
     <ProjectGuid>{d4dc97a1-8227-4719-af1d-9923b949df8f}</ProjectGuid>
     <RootNamespace>My8Deadlock</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>08. Deadlock</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

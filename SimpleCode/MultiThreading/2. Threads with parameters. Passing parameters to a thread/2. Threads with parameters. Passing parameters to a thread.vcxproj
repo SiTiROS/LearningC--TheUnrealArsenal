@@ -24,6 +24,7 @@
     <ProjectGuid>{7beef13e-5526-45b7-8710-ddd7fd250ef1}</ProjectGuid>
     <RootNamespace>My2ThreadswithparametersPassingparameterstoathread</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>02. Threads with parameters. Passing parameters to a thread</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

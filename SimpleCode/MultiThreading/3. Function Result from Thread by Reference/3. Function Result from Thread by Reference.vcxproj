@@ -24,6 +24,7 @@
     <ProjectGuid>{d28c9119-907e-4d4f-ad5c-ff63cd5b40a5}</ProjectGuid>
     <RootNamespace>My3FunctionResultfromThreadbyReference</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>03. Function Result from Thread by Reference</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

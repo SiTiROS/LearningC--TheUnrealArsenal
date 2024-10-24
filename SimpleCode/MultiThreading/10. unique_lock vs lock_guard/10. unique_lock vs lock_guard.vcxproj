@@ -21,10 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{3d7dc7a7-d370-430d-a93b-2c51548dbd57}</ProjectGuid>
-    <RootNamespace>My9RecursivemutexC</RootNamespace>
+    <ProjectGuid>{e8459db8-d399-48ca-848d-75af0ff95091}</ProjectGuid>
+    <RootNamespace>My10uniquelockvslockguard</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>09. Recursive_mutex C++</ProjectName>
+    <ProjectName>10. Unique_lock vs lock_guard</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -128,7 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="9. Recursive_mutex C++.cpp" />
+    <ClCompile Include="10. unique_lock vs lock_guard.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

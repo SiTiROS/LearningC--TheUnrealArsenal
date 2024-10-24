@@ -24,6 +24,7 @@
     <ProjectGuid>{238bbf69-e55b-426d-99c4-a9feba81f9fa}</ProjectGuid>
     <RootNamespace>My7lockguardmutexSyncthreads</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>07. lock_guard mutex. Sync threads</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

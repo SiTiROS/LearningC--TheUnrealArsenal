@@ -24,6 +24,7 @@
     <ProjectGuid>{5460b166-b366-4e5e-ba74-10424d42cf3a}</ProjectGuid>
     <RootNamespace>My6UsingMutexforThreadSynchronization</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>06. Using Mutex for Thread Synchronization</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

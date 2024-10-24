@@ -3,23 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1. Creating a thread. Parallel execution of code", "Creating a thread. Parallel execution of code\Creating a thread. Parallel execution of code.vcxproj", "{1DCCB694-EDCA-449A-9A43-C2C92A0F0B2F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01. Creating a thread. Parallel execution of code", "Creating a thread. Parallel execution of code\Creating a thread. Parallel execution of code.vcxproj", "{1DCCB694-EDCA-449A-9A43-C2C92A0F0B2F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2. Threads with parameters. Passing parameters to a thread", "2. Threads with parameters. Passing parameters to a thread\2. Threads with parameters. Passing parameters to a thread.vcxproj", "{7BEEF13E-5526-45B7-8710-DDD7FD250EF1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02. Threads with parameters. Passing parameters to a thread", "2. Threads with parameters. Passing parameters to a thread\2. Threads with parameters. Passing parameters to a thread.vcxproj", "{7BEEF13E-5526-45B7-8710-DDD7FD250EF1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3. Function Result from Thread by Reference", "3. Function Result from Thread by Reference\3. Function Result from Thread by Reference.vcxproj", "{D28C9119-907E-4D4F-AD5C-FF63CD5B40A5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03. Function Result from Thread by Reference", "3. Function Result from Thread by Reference\3. Function Result from Thread by Reference.vcxproj", "{D28C9119-907E-4D4F-AD5C-FF63CD5B40A5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "4. Lambda Expressions and Returning Thread Result", "4. Lambda Expressions and Returning Thread Result\4. Lambda Expressions and Returning Thread Result.vcxproj", "{FB3F76A8-5FB6-4CF8-AECF-7B6CE13CFFAA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "04. Lambda Expressions and Returning Thread Result", "4. Lambda Expressions and Returning Thread Result\4. Lambda Expressions and Returning Thread Result.vcxproj", "{FB3F76A8-5FB6-4CF8-AECF-7B6CE13CFFAA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "5. Threads and class methods", "5. Threads and class methods\5. Threads and class methods.vcxproj", "{0C875CA4-8B18-42F2-B06D-F8A72464DB27}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "05. Threads and class methods", "5. Threads and class methods\5. Threads and class methods.vcxproj", "{0C875CA4-8B18-42F2-B06D-F8A72464DB27}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "6. Using Mutex for Thread Synchronization", "6. Using Mutex for Thread Synchronization\6. Using Mutex for Thread Synchronization.vcxproj", "{5460B166-B366-4E5E-BA74-10424D42CF3A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "06. Using Mutex for Thread Synchronization", "6. Using Mutex for Thread Synchronization\6. Using Mutex for Thread Synchronization.vcxproj", "{5460B166-B366-4E5E-BA74-10424D42CF3A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "7. lock_guard mutex. Sync threads", "7. lock_guard mutex. Sync threads\7. lock_guard mutex. Sync threads.vcxproj", "{238BBF69-E55B-426D-99C4-A9FEBA81F9FA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "07. lock_guard mutex. Sync threads", "7. lock_guard mutex. Sync threads\7. lock_guard mutex. Sync threads.vcxproj", "{238BBF69-E55B-426D-99C4-A9FEBA81F9FA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "8. Deadlock", "8. Deadlock\8. Deadlock.vcxproj", "{D4DC97A1-8227-4719-AF1D-9923B949DF8F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "08. Deadlock", "8. Deadlock\8. Deadlock.vcxproj", "{D4DC97A1-8227-4719-AF1D-9923B949DF8F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "9. Recursive_mutex C++", "9. Recursive_mutex C++\9. Recursive_mutex C++.vcxproj", "{3D7DC7A7-D370-430D-A93B-2C51548DBD57}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09. Recursive_mutex C++", "9. Recursive_mutex C++\9. Recursive_mutex C++.vcxproj", "{3D7DC7A7-D370-430D-A93B-2C51548DBD57}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10. Unique_lock vs lock_guard", "10. unique_lock vs lock_guard\10. unique_lock vs lock_guard.vcxproj", "{E8459DB8-D399-48CA-848D-75AF0FF95091}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +103,14 @@ Global
 		{3D7DC7A7-D370-430D-A93B-2C51548DBD57}.Release|x64.Build.0 = Release|x64
 		{3D7DC7A7-D370-430D-A93B-2C51548DBD57}.Release|x86.ActiveCfg = Release|Win32
 		{3D7DC7A7-D370-430D-A93B-2C51548DBD57}.Release|x86.Build.0 = Release|Win32
+		{E8459DB8-D399-48CA-848D-75AF0FF95091}.Debug|x64.ActiveCfg = Debug|x64
+		{E8459DB8-D399-48CA-848D-75AF0FF95091}.Debug|x64.Build.0 = Debug|x64
+		{E8459DB8-D399-48CA-848D-75AF0FF95091}.Debug|x86.ActiveCfg = Debug|Win32
+		{E8459DB8-D399-48CA-848D-75AF0FF95091}.Debug|x86.Build.0 = Debug|Win32
+		{E8459DB8-D399-48CA-848D-75AF0FF95091}.Release|x64.ActiveCfg = Release|x64
+		{E8459DB8-D399-48CA-848D-75AF0FF95091}.Release|x64.Build.0 = Release|x64
+		{E8459DB8-D399-48CA-848D-75AF0FF95091}.Release|x86.ActiveCfg = Release|Win32
+		{E8459DB8-D399-48CA-848D-75AF0FF95091}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

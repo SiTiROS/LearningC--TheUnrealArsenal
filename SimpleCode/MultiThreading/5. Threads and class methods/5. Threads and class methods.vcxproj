@@ -24,6 +24,7 @@
     <ProjectGuid>{0c875ca4-8b18-42f2-b06d-f8a72464db27}</ProjectGuid>
     <RootNamespace>My5Threadsandclassmethods</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>05. Threads and class methods</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
