@@ -30,6 +30,15 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	class UStaticMeshComponent* StaticMeshComp;
 
+	UPROPERTY(VisibleAnywhere)
+	class UStaticMeshComponent* ConeMeshComp;
+
+	UPROPERTY(VisibleAnywhere)
+	class UStaticMeshComponent* PyramidMeshComp;
+
+	UPROPERTY(VisibleAnywhere)
+	class UStaticMeshComponent* TargetMeshComp;
+	
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = "TestActor|Vectors")
 	FVector InitialLocation;
 
