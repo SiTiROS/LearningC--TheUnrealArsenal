@@ -11,7 +11,16 @@ ACube::ACube()
 
 	ImpulseVelocity = 100000.0f;
 
-	CubeMesh->SetSimulatePhysics(true);
+	CubeMesh->SetSimulatePhysics(false);
+
+	// добавляем статик мэш
+	ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Script/Engine.StaticMesh'/Engine/BasicShapes/Cube.Cube'"));
+
+	if (MeshAsset.Object != nullptr)
+	{
+		// устанавливаем статик мэш
+		CubeMesh->SetStaticMesh(MeshAsset.Object);
+	}
 }
 
 void ACube::BeginPlay()
@@ -20,6 +29,8 @@ void ACube::BeginPlay()
 
 	if (bIsActivateImpulse)
 	{
+		CubeMesh->SetSimulatePhysics(true);
+
 		if (EChangeImpulseMethod == ChangeImpulseMethod::AddImpulse)
 		{
 			CubeMesh->AddImpulse(FVector(ImpulseVelocity, 0.0f, 0.0f));
@@ -40,6 +51,8 @@ void ACube::BeginPlay()
 
 	const FString Temp = FString::Printf(TEXT("Name: %s, Level: %d"), *Name, Level);
 	UE_LOG(LogTemp, Error, TEXT("%s"), *Temp);
+
+	SetLifeSpan(20.0f);
 }
 
 void ACube::Tick(float DeltaTime)
@@ -48,7 +61,7 @@ void ACube::Tick(float DeltaTime)
 
 	FHitResult Hit;
 
-	AddActorWorldOffset(FVector(1.0f, 0.0f, 0.0f), true, &Hit);
+	AddActorWorldOffset(FVector(600.0f * DeltaTime, 0.0f, 0.0f), true, &Hit);
 
 	if (Hit.bBlockingHit)
 	{
@@ -56,6 +69,7 @@ void ACube::Tick(float DeltaTime)
 		UE_LOG(LogTemp, Warning, TEXT("Hit! Location: %s"), *Impact.ToString());
 		UE_LOG(LogTemp, Warning, TEXT("Hit! X: %f, Y: %f, Z: %f"), Impact.X, Impact.Y, Impact.Z);
 
+		// выводим дебаг сообщение на экран
 		if (GEngine)
 		{
 			GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.0f, FColor(FColor::Red), TEXT("HIT"));
