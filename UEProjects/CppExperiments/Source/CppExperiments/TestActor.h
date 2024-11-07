@@ -38,7 +38,7 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	class UStaticMeshComponent* TargetMeshComp;
-	
+
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = "TestActor|Vectors")
 	FVector InitialLocation;
 
@@ -50,6 +50,34 @@ public:
 
 	UPROPERTY(EditInstanceOnly, Category = "TestActor|Booleans")
 	bool bShouldRotate;
+
+	UFUNCTION(BlueprintPure, Category = "TestActor|Getters")
+	int32 GetHealth() const;
+
+	UFUNCTION(BlueprintCallable, Category = "TestActor|Getters")
+	int32 GetStrength() const;
+
+	UFUNCTION(BlueprintCallable, Category = "TestActor|Setters")
+	void SetStrength(int32 NewStrength);
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "TestActor|Setters")
+	void SetIntelligence(int32 NewIntelligence);
+
+	/**
+ * @brief Краткое описание вашей функции
+ *
+ * Этот комментарий должен отображаться красиво.
+ */
+	UFUNCTION(BlueprintImplementableEvent, BlueprintPure, Category = "TestActor|Getters")
+	int32 GetArmor() const;
+
+	/**
+ * @brief Краткое описание вашей функции
+ *
+ * Этот комментарий должен отображаться красиво.
+ */
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "TestActor|Damage")
+	void DamageHealth(int32 HealthDamage, int32& NewHealth, int32 ArmorDamage, int32& NewArmor);
 
 protected:
 	virtual void BeginPlay() override;

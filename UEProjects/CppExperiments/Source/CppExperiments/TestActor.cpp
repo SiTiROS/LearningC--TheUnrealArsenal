@@ -33,6 +33,8 @@ ATestActor::ATestActor()
 	TargetMeshComp->SetupAttachment(ConeMeshComp); // Привязываем TargetMeshComp к ConeMeshComp
 
 	TargetMeshComp->AddWorldOffset(FVector(0.0f, 150.0f, 0.0f));
+
+	FString TestFString = TEXT("Test Actor");
 }
 
 void ATestActor::BeginPlay()
@@ -44,7 +46,6 @@ void ATestActor::BeginPlay()
 
 	// Открепляем PyramidMeshComp от текущего родителя
 	// PyramidMeshComp->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
-
 
 	// Произвольные правила привязки
 	FAttachmentTransformRules MyTransformRules{EAttachmentRule::KeepWorld, EAttachmentRule::KeepRelative,
@@ -77,4 +78,33 @@ void ATestActor::Tick(float DeltaTime)
 		// CurrentLocation = FVector(0.0f, 0.0f, 100.0f);
 	}
 
+}
+
+int32 ATestActor::GetHealth() const
+{
+	return Health;
+}
+
+int32 ATestActor::GetStrength() const
+{
+	return Strength;
+}
+
+void ATestActor::SetStrength(int32 NewStrength)
+{
+	Strength = NewStrength;
+}
+
+void ATestActor::SetIntelligence_Implementation(int32 NewIntelligence)
+{
+	Intelligence = NewIntelligence;
+}
+
+void ATestActor::DamageHealth_Implementation(int32 HealthDamage, int32& NewHealth, int32 ArmorDamage, int32& NewArmor)
+{
+	Health -= HealthDamage;
+	Armor -= ArmorDamage;
+
+	NewHealth = Health;
+	NewArmor = Armor;
 }
