@@ -19,12 +19,8 @@ ATreeBase::ATreeBase()
 
 	// добавляем статик мэш
 	ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Script/Engine.StaticMesh'/Game/Meshes/SM_Tree.SM_Tree'"));
-
-	if (MeshAsset.Object != nullptr)
-	{
-		// устанавливаем статик мэш
-		TreeMeshComponent->SetStaticMesh(MeshAsset.Object);
-	}
+	// устанавливаем статик мэш
+	if (MeshAsset.Object != nullptr) TreeMeshComponent->SetStaticMesh(MeshAsset.Object);
 }
 
 void ATreeBase::BeginPlay()
@@ -35,7 +31,7 @@ void ATreeBase::BeginPlay()
 	if (SpawnApple == nullptr)
 	{
 		SpawnApple = AAppleBase::StaticClass();
-		UE_LOG(LogTemp, Error, TEXT("MyApple == nullptr"));
+		// UE_LOG(LogTemp, Error, TEXT("MyApple == nullptr"));
 	}
 
 	GetWorld()->GetTimerManager().SetTimer(ChangeDirectionTimer, this, &ATreeBase::ChangeDirection, RedirectTime, true, 2.5f);
@@ -47,20 +43,20 @@ void ATreeBase::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	FVector TempLocation{ GetActorLocation() };
-	//UE_LOG(LogTemp, Display, TEXT("TempLocation: %f"), TempLocation.Y);
+	// UE_LOG(LogTemp, Display, TEXT("TempLocation: %f"), TempLocation.Y);
 
 	// Check is Apple Tree within bounds
 	if (TempLocation.Y <= -Boundary)
 	{
 		// Move Right
 		MovementSpeed = FMath::Abs(MovementSpeed);
-		UE_LOG(LogTemp, Warning, TEXT("Change Right, %f"), TempLocation.Y);
+		// UE_LOG(LogTemp, Warning, TEXT("Change Right, %f"), TempLocation.Y);
 	}
 	else if (TempLocation.Y >= Boundary)
 	{
 		// Move Left
 		MovementSpeed = -(FMath::Abs(MovementSpeed));
-		UE_LOG(LogTemp, Warning, TEXT("Change Left, %f"), TempLocation.Y);
+		// UE_LOG(LogTemp, Warning, TEXT("Change Left, %f"), TempLocation.Y);
 	}
 
 	// Add offset and set new location
@@ -78,7 +74,7 @@ void ATreeBase::ChangeDirection()
 	{
 		// change direction
 		MovementSpeed *= -1;
-		UE_LOG(LogTemp, Warning, TEXT("Random Change, %f"), TempLocation.Y);
+		// UE_LOG(LogTemp, Warning, TEXT("Random Change, %f"), TempLocation.Y);
 	}
 }
 
