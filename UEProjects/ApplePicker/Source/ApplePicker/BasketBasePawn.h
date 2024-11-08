@@ -24,6 +24,10 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	float BasketSpeed;
 
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
+		FVector NormalImpulse, const FHitResult& Hit);
+
 public:
 	virtual void Tick(float DeltaTime) override;
 

@@ -1,4 +1,6 @@
 #include "BasketBasePawn.h"
+#include "AppleBase.h"
+#include "Components/PrimitiveComponent.h"
 
 ABasketBasePawn::ABasketBasePawn()
 	: BasketSpeed(700.0f), CurrentVelocity(0.0f)
@@ -15,11 +17,27 @@ ABasketBasePawn::ABasketBasePawn()
 	ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Script/Engine.StaticMesh'/Game/Meshes/SM_Paddle.SM_Paddle'"));
 	// устанавливаем статик мэш
 	if (MeshAsset.Object != nullptr) Paddle1->SetStaticMesh(MeshAsset.Object);
+
+	// Simulation Generates Hit Events
+	Paddle1->SetNotifyRigidBodyCollision(true);
 }
 
 void ABasketBasePawn::BeginPlay()
 {
 	Super::BeginPlay();
+
+	Paddle1->OnComponentHit.AddDynamic(this, &ABasketBasePawn::OnHit); // привязка функции к делегату
+}
+
+void ABasketBasePawn::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
+	FVector NormalImpulse, const FHitResult& Hit)
+{
+	AAppleBase* AppleToCatch = Cast<AAppleBase>(OtherActor);
+
+	if (AppleToCatch)
+	{
+		OtherActor->Destroy();
+	}
 }
 
 void ABasketBasePawn::Tick(float DeltaTime)
