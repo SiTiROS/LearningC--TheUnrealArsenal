@@ -18,6 +18,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UStaticMeshComponent* AppleMeshComponent;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
+	float FloorBoundary;
+
 public:
 	virtual void Tick(float DeltaTime) override;
 };

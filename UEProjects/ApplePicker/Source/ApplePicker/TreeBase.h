@@ -29,10 +29,21 @@ protected:
 
 	/**
 	* Left and right boundaries
-	* when reached the Tree Actor movies in opposite direction
+	* 
+	* When reached the Tree Actor movies in opposite direction
 	*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
-	float Boundary;
+	float OuterBoundary;
+
+	/**
+	* Left and inner boundaries
+	* 
+	* Tree randomly redirects only if it within the inner boundary
+	* 
+	* Smooths the redirection at the boundary
+	*/
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
+	float InnerBoundary;
 
 	/**
 	* Called to move opposite direction

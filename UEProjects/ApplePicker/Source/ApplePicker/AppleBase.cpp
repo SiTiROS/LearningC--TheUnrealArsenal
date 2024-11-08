@@ -1,6 +1,7 @@
 #include "AppleBase.h"
 
 AAppleBase::AAppleBase()
+	: FloorBoundary(-680.0f)
 {
 	PrimaryActorTick.bCanEverTick = true;
 
@@ -30,4 +31,8 @@ void AAppleBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (GetActorLocation().Z <= FloorBoundary)
+	{
+		Destroy();
+	}
 }

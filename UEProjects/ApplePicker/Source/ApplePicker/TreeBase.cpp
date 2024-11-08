@@ -4,7 +4,8 @@
 
 ATreeBase::ATreeBase()
 	: MovementSpeed(550.0f),
-	  Boundary(850.0f),
+	  OuterBoundary(900.0f),
+	  InnerBoundary(500.0f),
 	  ChanceToRedirect(0.4f),
 	  RedirectTime(1.0f),
 	  SecondsBetweenAppleDrops(1.0f)
@@ -46,17 +47,17 @@ void ATreeBase::Tick(float DeltaTime)
 	// UE_LOG(LogTemp, Display, TEXT("TempLocation: %f"), TempLocation.Y);
 
 	// Check is Apple Tree within bounds
-	if (TempLocation.Y <= -Boundary)
+	if (TempLocation.Y <= -OuterBoundary)
 	{
 		// Move Right
 		MovementSpeed = FMath::Abs(MovementSpeed);
-		// UE_LOG(LogTemp, Warning, TEXT("Change Right, %f"), TempLocation.Y);
+		 // UE_LOG(LogTemp, Warning, TEXT("Change Right, %f"), TempLocation.Y);
 	}
-	else if (TempLocation.Y >= Boundary)
+	else if (TempLocation.Y >= OuterBoundary)
 	{
 		// Move Left
 		MovementSpeed = -(FMath::Abs(MovementSpeed));
-		// UE_LOG(LogTemp, Warning, TEXT("Change Left, %f"), TempLocation.Y);
+		 // UE_LOG(LogTemp, Warning, TEXT("Change Left, %f"), TempLocation.Y);
 	}
 
 	// Add offset and set new location
@@ -66,15 +67,17 @@ void ATreeBase::Tick(float DeltaTime)
 
 void ATreeBase::ChangeDirection()
 {
-	// restriction of boundary values
 	FVector TempLocation{ GetActorLocation() };
-	if (TempLocation.Y <= -(Boundary - 300) || TempLocation.Y >= (Boundary - 300)) return;
 
-	if (FMath::FRand() <= ChanceToRedirect)
+	// Restriction of OuterBoundary values
+	if (TempLocation.Y <= InnerBoundary && TempLocation.Y >= -InnerBoundary)
 	{
-		// change direction
-		MovementSpeed *= -1;
-		// UE_LOG(LogTemp, Warning, TEXT("Random Change, %f"), TempLocation.Y);
+		if (FMath::FRand() <= ChanceToRedirect)
+		{
+			// change direction
+			MovementSpeed *= -1;
+			// UE_LOG(LogTemp, Warning, TEXT("Random Change, %f"), TempLocation.Y);
+		}
 	}
 }
 

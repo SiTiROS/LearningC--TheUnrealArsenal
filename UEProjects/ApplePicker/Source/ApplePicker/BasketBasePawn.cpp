@@ -61,5 +61,5 @@ void ABasketBasePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 void ABasketBasePawn::MoveRight(float AxisValue)
 {
 	CurrentVelocity.Y = FMath::Clamp(AxisValue, -1.0f, 1.0f) * BasketSpeed;
-	UE_LOG(LogTemp, Warning, TEXT("Velocity: %s"), *CurrentVelocity.ToString());
+	//UE_LOG(LogTemp, Warning, TEXT("Velocity: %s"), *CurrentVelocity.ToString());
 }
