@@ -4,6 +4,7 @@
 #include "GameFramework/Actor.h"
 #include "TreeBase.generated.h"
 
+class AAppleBase;
 class USphereComponent;
 
 UCLASS()
@@ -39,8 +40,21 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
 	float ChanceToRedirect;
 
+	/**
+	* Time to change directions
+	*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
 	float RedirectTime;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
+	float SecondsBetweenAppleDrops;
+
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Setup")
+	TSubclassOf<AAppleBase> SpawnApple;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Setup")
+	UClass* SpawnApple2; // another method
 
 public:
 	virtual void Tick(float DeltaTime) override;
@@ -49,4 +63,8 @@ private:
 	FTimerHandle ChangeDirectionTimer;
 
 	void ChangeDirection();
+
+	FTimerHandle AppleSpawnTimer;
+
+	void AppleSpawn() const;
 };

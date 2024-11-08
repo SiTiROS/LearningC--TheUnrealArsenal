@@ -1,8 +1,13 @@
 #include "TreeBase.h"
 #include "Components/SphereComponent.h"
+#include "ApplePicker/AppleBase.h"
 
 ATreeBase::ATreeBase()
-	: MovementSpeed(550.0f), Boundary(850.0f), ChanceToRedirect(0.4f), RedirectTime(1.0f)
+	: MovementSpeed(550.0f),
+	  Boundary(850.0f),
+	  ChanceToRedirect(0.4f),
+	  RedirectTime(1.0f),
+	  SecondsBetweenAppleDrops(1.0f)
 {
 	PrimaryActorTick.bCanEverTick = true;
 
@@ -11,13 +16,30 @@ ATreeBase::ATreeBase()
 
 	SphereCollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereCollisionComponent"));
 	SphereCollisionComponent->SetupAttachment(RootComponent);
+
+	// добавляем статик мэш
+	ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Script/Engine.StaticMesh'/Game/Meshes/SM_Tree.SM_Tree'"));
+
+	if (MeshAsset.Object != nullptr)
+	{
+		// устанавливаем статик мэш
+		TreeMeshComponent->SetStaticMesh(MeshAsset.Object);
+	}
 }
 
 void ATreeBase::BeginPlay()
 {
 	Super::BeginPlay();
 
+	// проверка на установленный класс
+	if (SpawnApple == nullptr)
+	{
+		SpawnApple = AAppleBase::StaticClass();
+		UE_LOG(LogTemp, Error, TEXT("MyApple == nullptr"));
+	}
+
 	GetWorld()->GetTimerManager().SetTimer(ChangeDirectionTimer, this, &ATreeBase::ChangeDirection, RedirectTime, true, 2.5f);
+	GetWorld()->GetTimerManager().SetTimer(AppleSpawnTimer, this, &ATreeBase::AppleSpawn, SecondsBetweenAppleDrops, true, 2.0f);
 }
 
 void ATreeBase::Tick(float DeltaTime)
@@ -43,7 +65,6 @@ void ATreeBase::Tick(float DeltaTime)
 
 	// Add offset and set new location
 	TempLocation += FVector(0.0f, MovementSpeed * DeltaTime, 0.0f); // TempLocation.Y += MovementSpeed * DeltaTime;
-
 	SetActorLocation(TempLocation);
 }
 
@@ -58,5 +79,21 @@ void ATreeBase::ChangeDirection()
 		// change direction
 		MovementSpeed *= -1;
 		UE_LOG(LogTemp, Warning, TEXT("Random Change, %f"), TempLocation.Y);
+	}
+}
+
+void ATreeBase::AppleSpawn() const
+{
+	// Get TreeBase current location and rotation
+	FVector SpawnLocation{ GetActorLocation() };
+	FRotator SpawnRotation{ GetActorRotation() };
+
+	// Add offset randomly to the left or to the right of the current location
+	SpawnLocation.Y += (FMath::FRand() <= 0.5f) ? 150.0f : -150.0f;
+
+	// Spawn apple at new offset location
+	if (UWorld* World = GetWorld())
+	{
+		World->SpawnActor<AAppleBase>(SpawnApple, SpawnLocation, SpawnRotation);
 	}
 }
