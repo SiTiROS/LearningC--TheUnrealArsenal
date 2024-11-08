@@ -51,13 +51,13 @@ void ATreeBase::Tick(float DeltaTime)
 	{
 		// Move Right
 		MovementSpeed = FMath::Abs(MovementSpeed);
-		 // UE_LOG(LogTemp, Warning, TEXT("Change Right, %f"), TempLocation.Y);
+		// UE_LOG(LogTemp, Warning, TEXT("Change Right, %f"), TempLocation.Y);
 	}
 	else if (TempLocation.Y >= OuterBoundary)
 	{
 		// Move Left
 		MovementSpeed = -(FMath::Abs(MovementSpeed));
-		 // UE_LOG(LogTemp, Warning, TEXT("Change Left, %f"), TempLocation.Y);
+		// UE_LOG(LogTemp, Warning, TEXT("Change Left, %f"), TempLocation.Y);
 	}
 
 	// Add offset and set new location
@@ -69,13 +69,13 @@ void ATreeBase::ChangeDirection()
 {
 	FVector TempLocation{ GetActorLocation() };
 
-	// Restriction of OuterBoundary values
+	// Only redirect if within InnerBoundary
 	if (TempLocation.Y <= InnerBoundary && TempLocation.Y >= -InnerBoundary)
 	{
 		if (FMath::FRand() <= ChanceToRedirect)
 		{
 			// change direction
-			MovementSpeed *= -1;
+			MovementSpeed *= -1.0f;
 			// UE_LOG(LogTemp, Warning, TEXT("Random Change, %f"), TempLocation.Y);
 		}
 	}

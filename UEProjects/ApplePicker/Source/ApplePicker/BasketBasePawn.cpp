@@ -17,6 +17,8 @@ ABasketBasePawn::ABasketBasePawn()
 	ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Script/Engine.StaticMesh'/Game/Meshes/SM_Paddle.SM_Paddle'"));
 	// устанавливаем статик мэш
 	if (MeshAsset.Object != nullptr) Paddle1->SetStaticMesh(MeshAsset.Object);
+	
+	AutoPossessPlayer = EAutoReceiveInput::Player0;
 
 	// Simulation Generates Hit Events
 	Paddle1->SetNotifyRigidBodyCollision(true);
