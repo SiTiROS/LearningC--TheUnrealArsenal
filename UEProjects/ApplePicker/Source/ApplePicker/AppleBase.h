@@ -1,5 +1,6 @@
 #pragma once
 
+#include "AppleTreeElementBase.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "AppleBase.generated.h"
@@ -7,7 +8,7 @@
 class AApplePickerGameModeBase;
 
 UCLASS()
-class APPLEPICKER_API AAppleBase : public AActor
+class APPLEPICKER_API AAppleBase : public AAppleTreeElementBase
 {
 	GENERATED_BODY()
 

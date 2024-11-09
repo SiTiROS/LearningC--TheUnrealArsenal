@@ -47,10 +47,13 @@ public:
 
 	void HandlePaddleDestruction();
 
+	APlayerController* GetBasketPlayerController() const;
+
 private:
 	FVector CurrentVelocity;
 
 	void MoveRight(float AxisValue);
 
 	TWeakObjectPtr<AApplePickerGameModeBase> CurrentGameMode{ nullptr };
+	TWeakObjectPtr<APlayerController> CurrentPlayerController{ nullptr };
 };

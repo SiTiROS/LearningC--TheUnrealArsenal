@@ -1,5 +1,7 @@
 #include "ApplePickerGameModeBase.h"
+
 #include "AppleBase.h"
+#include "AppleTreeElementBase.h"
 #include "BasketBasePawn.h"
 #include "TreeBase.h"
 #include "Kismet/GameplayStatics.h"
@@ -33,25 +35,34 @@ void AApplePickerGameModeBase::HandleAppleLost()
 
 	if (ApplesLost >= 3)
 	{
-		//  Stop Spawning Apples
-		TArray<AActor*> FoundTrees;
-		UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATreeBase::StaticClass(), FoundTrees);
-
-		for (auto FoundTree : FoundTrees)
+		if (const UWorld* World = GetWorld())
 		{
-			// FoundTree->Destroy();
+			TArray<AActor*> FoundAppleTreeElements;
+			UGameplayStatics::GetAllActorsOfClass(World, AAppleTreeElementBase::StaticClass(), FoundAppleTreeElements);
 
-			ATreeBase* TreeTemp = Cast<ATreeBase>(FoundTree);
-			TreeTemp->StopSpawningApple();
-		}
+			for (const auto FoundTreeElement : FoundAppleTreeElements)
+			{
+				if (ATreeBase* TreeTemp = Cast<ATreeBase>(FoundTreeElement))
+				{
+					// Stop Spawning Apples
+					TreeTemp->StopSpawningApple();
+					TreeTemp->StopRedirecting();
+					TreeTemp->SetShouldMove(false);
+					// TreeTemp->Destroy();
+				}
+				else if (AAppleBase* AppleTemp = Cast<AAppleBase>(FoundTreeElement))
+				{
+					// Destroy Remaining Apples
+					AppleTemp->Destroy();
+				}
+			}
 
-		// Destroy Remaining Apples
-		TArray<AActor*> FoundApples;
-		UGameplayStatics::GetAllActorsOfClass(GetWorld(), AAppleBase::StaticClass(), FoundApples);
-
-		for (auto FoundApple : FoundApples)
-		{
-			FoundApple->Destroy();
+			if (BasketPawn.IsValid() && BasketPawn->GetBasketPlayerController())
+			{
+				BasketPawn->DisableInput(BasketPawn->GetBasketPlayerController());
+				BasketPawn->SetActorTickEnabled(false);
+				// BasketPawn->SetActorHiddenInGame(true);
+			}
 		}
 	}
 }

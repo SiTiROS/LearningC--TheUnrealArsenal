@@ -1,5 +1,4 @@
 #include "BasketBasePawn.h"
-#include <string>
 #include "AppleBase.h"
 #include "ApplePickerGameModeBase.h"
 #include "Components/PrimitiveComponent.h"
@@ -21,8 +20,7 @@ ABasketBasePawn::ABasketBasePawn()
 
 	for (int i = 0; i < NumbersPaddles; i++)
 	{
-		// FString PaddleName = FString::Printf(TEXT("Paddle_%d"), i);
-		FString PaddleName = FString{ "Paddle_" } + std::to_string(i).c_str();
+		FString PaddleName = FString::Format(TEXT("Paddle_{0}"), { i });
 
 		Paddles[i] = CreateDefaultSubobject<UStaticMeshComponent>(*PaddleName);
 
@@ -90,6 +88,8 @@ void ABasketBasePawn::BeginPlay()
 	}
 
 	CurrentGameMode = Cast<AApplePickerGameModeBase>(UGameplayStatics::GetGameMode(this));
+
+	CurrentPlayerController = Cast<APlayerController>(GetController());
 }
 
 void ABasketBasePawn::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
@@ -112,20 +112,23 @@ void ABasketBasePawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (!CurrentVelocity.IsZero())
+	if (InputEnabled())
 	{
-		FVector NewLocation = GetActorLocation() + CurrentVelocity * DeltaTime;
-
-		FHitResult Hit;
-
-		SetActorLocation(NewLocation, true, &Hit);
-
-		// TODO: не работает хз наверное потому что root USceneComponent
-		if (Hit.bBlockingHit)
+		if (!CurrentVelocity.IsZero())
 		{
-			FVector Impact = Hit.Location;
-			UE_LOG(LogTemp, Warning, TEXT("Hit! Location: %s"), *Impact.ToString());
-			UE_LOG(LogTemp, Warning, TEXT("hit:"));
+			FVector NewLocation = GetActorLocation() + CurrentVelocity * DeltaTime;
+
+			FHitResult Hit;
+
+			SetActorLocation(NewLocation, true, &Hit);
+
+			// TODO: не работает хз наверное потому что root USceneComponent
+			if (Hit.bBlockingHit)
+			{
+				FVector Impact = Hit.Location;
+				UE_LOG(LogTemp, Warning, TEXT("Hit! Location: %s"), *Impact.ToString());
+				UE_LOG(LogTemp, Warning, TEXT("hit:"));
+			}
 		}
 	}
 }
@@ -154,4 +157,14 @@ void ABasketBasePawn::HandlePaddleDestruction()
 			PoppedElement->DestroyComponent();
 		}
 	}
+}
+
+APlayerController* ABasketBasePawn::GetBasketPlayerController() const
+{
+	if (CurrentPlayerController.IsValid())
+	{
+		return CurrentPlayerController.Get();
+	}
+
+	return nullptr;
 }

@@ -15,7 +15,7 @@ ATreeBase::ATreeBase()
 
 	TreeMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TreeMeshComponent"));
 	RootComponent = TreeMeshComponent;
-	
+
 	// добавляем статик мэш
 	ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Script/Engine.StaticMesh'/Game/Meshes/SM_Tree.SM_Tree'"));
 	// устанавливаем статик мэш
@@ -95,6 +95,15 @@ void ATreeBase::AppleSpawn() const
 
 void ATreeBase::StopSpawningApple()
 {
-	GetWorld()->GetTimerManager().ClearAllTimersForObject(this);
-	bShouldMove = false;
+	GetWorld()->GetTimerManager().ClearTimer(AppleSpawnTimer);
+}
+
+void ATreeBase::StopRedirecting()
+{
+	GetWorld()->GetTimerManager().ClearTimer(ChangeDirectionTimer);
+}
+
+void ATreeBase::SetShouldMove(bool bInShouldMove)
+{
+	bShouldMove = bInShouldMove;
 }

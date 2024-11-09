@@ -1,5 +1,6 @@
 #pragma once
 
+#include "AppleTreeElementBase.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "TreeBase.generated.h"
@@ -8,7 +9,7 @@ class AAppleBase;
 class USphereComponent;
 
 UCLASS()
-class APPLEPICKER_API ATreeBase : public AActor
+class APPLEPICKER_API ATreeBase : public AAppleTreeElementBase
 {
 	GENERATED_BODY()
 
@@ -20,7 +21,7 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UStaticMeshComponent* TreeMeshComponent;
-	
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
 	float MovementSpeed;
 
@@ -56,17 +57,16 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
 	float SecondsBetweenAppleDrops;
-	
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Setup")
-	TSubclassOf<AAppleBase> SpawnApple;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Setup")
-	UClass* SpawnApple2; // another method
+	TSubclassOf<AAppleBase> SpawnApple;
 
 public:
 	virtual void Tick(float DeltaTime) override;
 
 	void StopSpawningApple();
+	void StopRedirecting();
+	void SetShouldMove(bool bInShouldMove);
 
 private:
 	FTimerHandle ChangeDirectionTimer;
