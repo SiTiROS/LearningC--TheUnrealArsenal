@@ -8,16 +8,14 @@ ATreeBase::ATreeBase()
 	  InnerBoundary(500.0f),
 	  ChanceToRedirect(0.4f),
 	  RedirectTime(1.0f),
-	  SecondsBetweenAppleDrops(1.0f)
+	  SecondsBetweenAppleDrops(1.0f),
+	  bShouldMove(true)
 {
 	PrimaryActorTick.bCanEverTick = true;
 
 	TreeMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TreeMeshComponent"));
 	RootComponent = TreeMeshComponent;
-
-	SphereCollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereCollisionComponent"));
-	SphereCollisionComponent->SetupAttachment(RootComponent);
-
+	
 	// добавляем статик мэш
 	ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Script/Engine.StaticMesh'/Game/Meshes/SM_Tree.SM_Tree'"));
 	// устанавливаем статик мэш
@@ -32,7 +30,6 @@ void ATreeBase::BeginPlay()
 	if (SpawnApple == nullptr)
 	{
 		SpawnApple = AAppleBase::StaticClass();
-		// UE_LOG(LogTemp, Error, TEXT("MyApple == nullptr"));
 	}
 
 	GetWorld()->GetTimerManager().SetTimer(ChangeDirectionTimer, this, &ATreeBase::ChangeDirection, RedirectTime, true, 2.5f);
@@ -43,26 +40,26 @@ void ATreeBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	FVector TempLocation{ GetActorLocation() };
-	// UE_LOG(LogTemp, Display, TEXT("TempLocation: %f"), TempLocation.Y);
-
-	// Check is Apple Tree within bounds
-	if (TempLocation.Y <= -OuterBoundary)
+	if (bShouldMove)
 	{
-		// Move Right
-		MovementSpeed = FMath::Abs(MovementSpeed);
-		// UE_LOG(LogTemp, Warning, TEXT("Change Right, %f"), TempLocation.Y);
-	}
-	else if (TempLocation.Y >= OuterBoundary)
-	{
-		// Move Left
-		MovementSpeed = -(FMath::Abs(MovementSpeed));
-		// UE_LOG(LogTemp, Warning, TEXT("Change Left, %f"), TempLocation.Y);
-	}
+		FVector TempLocation{ GetActorLocation() };
 
-	// Add offset and set new location
-	TempLocation += FVector(0.0f, MovementSpeed * DeltaTime, 0.0f); // TempLocation.Y += MovementSpeed * DeltaTime;
-	SetActorLocation(TempLocation);
+		// Check is Apple Tree within bounds
+		if (TempLocation.Y <= -OuterBoundary)
+		{
+			// Move Right
+			MovementSpeed = FMath::Abs(MovementSpeed);
+		}
+		else if (TempLocation.Y >= OuterBoundary)
+		{
+			// Move Left
+			MovementSpeed = -(FMath::Abs(MovementSpeed));
+		}
+
+		// Add offset and set new location
+		TempLocation.Y += MovementSpeed * DeltaTime;
+		SetActorLocation(TempLocation);
+	}
 }
 
 void ATreeBase::ChangeDirection()
@@ -76,7 +73,6 @@ void ATreeBase::ChangeDirection()
 		{
 			// change direction
 			MovementSpeed *= -1.0f;
-			// UE_LOG(LogTemp, Warning, TEXT("Random Change, %f"), TempLocation.Y);
 		}
 	}
 }
@@ -95,4 +91,10 @@ void ATreeBase::AppleSpawn() const
 	{
 		World->SpawnActor<AAppleBase>(SpawnApple, SpawnLocation, SpawnRotation);
 	}
+}
+
+void ATreeBase::StopSpawningApple()
+{
+	GetWorld()->GetTimerManager().ClearAllTimersForObject(this);
+	bShouldMove = false;
 }

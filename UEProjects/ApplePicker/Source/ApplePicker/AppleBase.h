@@ -4,6 +4,8 @@
 #include "GameFramework/Actor.h"
 #include "AppleBase.generated.h"
 
+class AApplePickerGameModeBase;
+
 UCLASS()
 class APPLEPICKER_API AAppleBase : public AActor
 {
@@ -23,4 +25,7 @@ protected:
 
 public:
 	virtual void Tick(float DeltaTime) override;
+
+private:
+	TWeakObjectPtr<AApplePickerGameModeBase> CurrentGameMode{ nullptr };
 };

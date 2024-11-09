@@ -1,34 +1,95 @@
 #include "BasketBasePawn.h"
+#include <string>
 #include "AppleBase.h"
+#include "ApplePickerGameModeBase.h"
 #include "Components/PrimitiveComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 ABasketBasePawn::ABasketBasePawn()
-	: BasketSpeed(700.0f), CurrentVelocity(0.0f)
+	: NumbersPaddles(3),
+	  BasketSpeed(700.0f),
+	  PaddleOffset(0.0f, 0.0f, 100.0f),
+	  CurrentVelocity(0.0f)
 {
 	PrimaryActorTick.bCanEverTick = true;
 
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
-	Paddle1 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Paddle1"));
-
 	RootComponent = Root;
-	Paddle1->SetupAttachment(Root);
 
-	// добавляем статик мэш
-	ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Script/Engine.StaticMesh'/Game/Meshes/SM_Paddle.SM_Paddle'"));
-	// устанавливаем статик мэш
-	if (MeshAsset.Object != nullptr) Paddle1->SetStaticMesh(MeshAsset.Object);
-	
+	// Инициализация массива
+	Paddles.SetNum(NumbersPaddles);
+
+	for (int i = 0; i < NumbersPaddles; i++)
+	{
+		// FString PaddleName = FString::Printf(TEXT("Paddle_%d"), i);
+		FString PaddleName = FString{ "Paddle_" } + std::to_string(i).c_str();
+
+		Paddles[i] = CreateDefaultSubobject<UStaticMeshComponent>(*PaddleName);
+
+		if (Paddles[i] == Paddles[0])
+		{
+			Paddles[i]->SetupAttachment(Root);
+		}
+		else
+		{
+			Paddles[i]->SetupAttachment(Paddles[i - 1]);
+		}
+
+		// устанавливаем смещение у корзин
+		Paddles[i]->SetRelativeLocation(PaddleOffset);
+
+		// добавляем статик мэш
+		ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Script/Engine.StaticMesh'/Game/Meshes/SM_Paddle1.SM_Paddle1'"));
+
+		// устанавливаем статик мэш
+		if (MeshAsset.Object != nullptr) Paddles[i]->SetStaticMesh(MeshAsset.Object);
+
+		// Simulation Generates Hit Events
+		Paddles[i]->SetNotifyRigidBodyCollision(true);
+	}
+
+	// вселяем игрока в пешку
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 
-	// Simulation Generates Hit Events
-	Paddle1->SetNotifyRigidBodyCollision(true);
+}
+
+void ABasketBasePawn::PreRegisterAllComponents()
+{
+	Super::PreRegisterAllComponents();
+
+	for (int i = 0; i < NumbersPaddles; i++)
+	{
+		// устанавливаем смещение у корзин, чтобы была возможность менять в редакторе
+		Paddles[i]->SetRelativeLocation(PaddleOffset);
+
+		// TODO: крашится, если добавить NumbersPaddles = больше 3
+	}
+}
+
+void ABasketBasePawn::OnConstruction(const FTransform& Transform)
+{
+	Super::OnConstruction(Transform);
+
+	// UE_LOG(LogTemp, Display, TEXT("Transform: %s"), *Transform.GetTranslation().ToString());
+
+	for (int i = 0; i < NumbersPaddles; i++)
+	{
+		// устанавливаем смещение у корзин, чтобы была возможность менять в редакторе
+		// Paddles[i]->SetRelativeLocation(PaddleOffset * i);
+	}
 }
 
 void ABasketBasePawn::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Paddle1->OnComponentHit.AddDynamic(this, &ABasketBasePawn::OnHit); // привязка функции к делегату
+	for (int i = 0; i < NumbersPaddles; i++)
+	{
+		// привязка функции к делегату
+		Paddles[i]->OnComponentHit.AddDynamic(this, &ABasketBasePawn::OnHit);
+	}
+
+	CurrentGameMode = Cast<AApplePickerGameModeBase>(UGameplayStatics::GetGameMode(this));
 }
 
 void ABasketBasePawn::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
@@ -39,6 +100,11 @@ void ABasketBasePawn::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UP
 	if (AppleToCatch)
 	{
 		OtherActor->Destroy();
+
+		if (CurrentGameMode.IsValid())
+		{
+			CurrentGameMode->HandleAppleCaught();
+		}
 	}
 }
 
@@ -49,7 +115,18 @@ void ABasketBasePawn::Tick(float DeltaTime)
 	if (!CurrentVelocity.IsZero())
 	{
 		FVector NewLocation = GetActorLocation() + CurrentVelocity * DeltaTime;
-		SetActorLocation(NewLocation);
+
+		FHitResult Hit;
+
+		SetActorLocation(NewLocation, true, &Hit);
+
+		// TODO: не работает хз наверное потому что root USceneComponent
+		if (Hit.bBlockingHit)
+		{
+			FVector Impact = Hit.Location;
+			UE_LOG(LogTemp, Warning, TEXT("Hit! Location: %s"), *Impact.ToString());
+			UE_LOG(LogTemp, Warning, TEXT("hit:"));
+		}
 	}
 }
 
@@ -63,5 +140,18 @@ void ABasketBasePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 void ABasketBasePawn::MoveRight(float AxisValue)
 {
 	CurrentVelocity.Y = FMath::Clamp(AxisValue, -1.0f, 1.0f) * BasketSpeed;
-	//UE_LOG(LogTemp, Warning, TEXT("Velocity: %s"), *CurrentVelocity.ToString());
+	// UE_LOG(LogTemp, Warning, TEXT("Velocity: %s"), *CurrentVelocity.ToString());
+}
+
+void ABasketBasePawn::HandlePaddleDestruction()
+{
+	if (!Paddles.IsEmpty())
+	{
+		UStaticMeshComponent* PoppedElement = Paddles.Pop();
+
+		if (PoppedElement)
+		{
+			PoppedElement->DestroyComponent();
+		}
+	}
 }

@@ -4,6 +4,8 @@
 #include "GameFramework/Pawn.h"
 #include "BasketBasePawn.generated.h"
 
+class AApplePickerGameModeBase;
+
 UCLASS()
 class APPLEPICKER_API ABasketBasePawn : public APawn
 {
@@ -13,16 +15,26 @@ public:
 	ABasketBasePawn();
 
 protected:
+	virtual void PreRegisterAllComponents() override;
+
+	virtual void OnConstruction(const FTransform& Transform) override;
+
 	virtual void BeginPlay() override;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category="Components")
 	USceneComponent* Root;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category="Components")
-	UStaticMeshComponent* Paddle1;
+	TArray<UStaticMeshComponent*> Paddles;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
+	int32 NumbersPaddles;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
 	float BasketSpeed;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Setup")
+	FVector PaddleOffset;
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
@@ -33,8 +45,12 @@ public:
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	void HandlePaddleDestruction();
+
 private:
 	FVector CurrentVelocity;
 
 	void MoveRight(float AxisValue);
+
+	TWeakObjectPtr<AApplePickerGameModeBase> CurrentGameMode{ nullptr };
 };

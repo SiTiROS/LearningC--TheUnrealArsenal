@@ -20,10 +20,7 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UStaticMeshComponent* TreeMeshComponent;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-	USphereComponent* SphereCollisionComponent;
-
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
 	float MovementSpeed;
 
@@ -59,8 +56,7 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
 	float SecondsBetweenAppleDrops;
-
-
+	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Setup")
 	TSubclassOf<AAppleBase> SpawnApple;
 
@@ -70,12 +66,14 @@ protected:
 public:
 	virtual void Tick(float DeltaTime) override;
 
+	void StopSpawningApple();
+
 private:
 	FTimerHandle ChangeDirectionTimer;
-
-	void ChangeDirection();
-
 	FTimerHandle AppleSpawnTimer;
 
+	void ChangeDirection();
 	void AppleSpawn() const;
+
+	bool bShouldMove;
 };
