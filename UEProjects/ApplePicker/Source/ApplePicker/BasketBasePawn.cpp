@@ -95,9 +95,8 @@ void ABasketBasePawn::BeginPlay()
 void ABasketBasePawn::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	FVector NormalImpulse, const FHitResult& Hit)
 {
-	AAppleBase* AppleToCatch = Cast<AAppleBase>(OtherActor);
 
-	if (AppleToCatch)
+	if (AAppleBase* AppleToCatch = Cast<AAppleBase>(OtherActor))
 	{
 		OtherActor->Destroy();
 
@@ -116,7 +115,7 @@ void ABasketBasePawn::Tick(float DeltaTime)
 	{
 		if (!CurrentVelocity.IsZero())
 		{
-			FVector NewLocation = GetActorLocation() + CurrentVelocity * DeltaTime;
+			const FVector NewLocation = GetActorLocation() + CurrentVelocity * DeltaTime;
 
 			FHitResult Hit;
 
@@ -140,19 +139,16 @@ void ABasketBasePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 	PlayerInputComponent->BindAxis("MoveRight", this, &ABasketBasePawn::MoveRight);
 }
 
-void ABasketBasePawn::MoveRight(float AxisValue)
+void ABasketBasePawn::MoveRight(const float AxisValue)
 {
 	CurrentVelocity.Y = FMath::Clamp(AxisValue, -1.0f, 1.0f) * BasketSpeed;
-	// UE_LOG(LogTemp, Warning, TEXT("Velocity: %s"), *CurrentVelocity.ToString());
 }
 
 void ABasketBasePawn::HandlePaddleDestruction()
 {
 	if (!Paddles.IsEmpty())
 	{
-		UStaticMeshComponent* PoppedElement = Paddles.Pop();
-
-		if (PoppedElement)
+		if (UStaticMeshComponent* PoppedElement = Paddles.Pop())
 		{
 			PoppedElement->DestroyComponent();
 		}

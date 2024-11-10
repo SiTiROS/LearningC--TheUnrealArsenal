@@ -10,10 +10,10 @@ AAppleBase::AAppleBase()
 	AppleMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("AppleMeshComponent"));
 	RootComponent = AppleMeshComponent;
 
-	// добавляем статик мэш
+	// Добавляем статик мэш
 	ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Script/Engine.StaticMesh'/Game/Meshes/SM_Apple.SM_Apple'"));
 
-	// устанавливаем статик мэш
+	// Устанавливаем статик мэш
 	if (MeshAsset.Object != nullptr) AppleMeshComponent->SetStaticMesh(MeshAsset.Object);
 
 	AppleMeshComponent->SetSimulatePhysics(true);
@@ -31,7 +31,7 @@ void AAppleBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	// if fall on floor
+	// If the apple falls on the floor
 	if (GetActorLocation().Z <= FloorBoundary)
 	{
 		Destroy();

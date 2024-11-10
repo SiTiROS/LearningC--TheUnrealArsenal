@@ -64,9 +64,11 @@ protected:
 public:
 	virtual void Tick(float DeltaTime) override;
 
-	void StopSpawningApple();
+	void StartSpawningApples();
+	void StartRedirecting();
+	void StopSpawningApples();
 	void StopRedirecting();
-	void SetShouldMove(bool bInShouldMove);
+	void SetShouldMove(const bool bInShouldMove);
 
 private:
 	FTimerHandle ChangeDirectionTimer;

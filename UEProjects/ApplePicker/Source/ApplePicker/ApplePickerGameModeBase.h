@@ -21,9 +21,23 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
+	UFUNCTION(BlueprintNativeEvent)
+	void HandleGameOver(bool IsWinner);
+
+	UPROPERTY(EditAnywhere, Category = "Setup")
+	int32 ApplesToCatch{ 10 };
+
+	UPROPERTY(EditAnywhere, Category = "Setup")
+	int32 ApplesToLose{ 3 };
+
+	UPROPERTY(EditAnywhere, Category = "Setup")
+	float GameStartDelay{ 3.0f };
+
 private:
 	int32 ApplesCaught{ 0 };
 	int32 ApplesLost{ 0 };
 
 	TWeakObjectPtr<ABasketBasePawn> BasketPawn{ nullptr };
+
+	void HandleGameStart() const;
 };

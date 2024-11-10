@@ -1,5 +1,4 @@
 #include "TreeBase.h"
-#include "Components/SphereComponent.h"
 #include "ApplePicker/AppleBase.h"
 
 ATreeBase::ATreeBase()
@@ -9,16 +8,16 @@ ATreeBase::ATreeBase()
 	  ChanceToRedirect(0.4f),
 	  RedirectTime(1.0f),
 	  SecondsBetweenAppleDrops(1.0f),
-	  bShouldMove(true)
+	  bShouldMove(false)
 {
 	PrimaryActorTick.bCanEverTick = true;
 
 	TreeMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TreeMeshComponent"));
 	RootComponent = TreeMeshComponent;
 
-	// добавляем статик мэш
+	// Добавляем статик мэш
 	ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Script/Engine.StaticMesh'/Game/Meshes/SM_Tree.SM_Tree'"));
-	// устанавливаем статик мэш
+	// Устанавливаем статик мэш
 	if (MeshAsset.Object != nullptr) TreeMeshComponent->SetStaticMesh(MeshAsset.Object);
 }
 
@@ -26,14 +25,11 @@ void ATreeBase::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// проверка на установленный класс
+	// Проверка на установленный класс
 	if (SpawnApple == nullptr)
 	{
 		SpawnApple = AAppleBase::StaticClass();
 	}
-
-	GetWorld()->GetTimerManager().SetTimer(ChangeDirectionTimer, this, &ATreeBase::ChangeDirection, RedirectTime, true, 2.5f);
-	GetWorld()->GetTimerManager().SetTimer(AppleSpawnTimer, this, &ATreeBase::AppleSpawn, SecondsBetweenAppleDrops, true, 2.0f);
 }
 
 void ATreeBase::Tick(float DeltaTime)
@@ -64,15 +60,18 @@ void ATreeBase::Tick(float DeltaTime)
 
 void ATreeBase::ChangeDirection()
 {
-	FVector TempLocation{ GetActorLocation() };
-
-	// Only redirect if within InnerBoundary
-	if (TempLocation.Y <= InnerBoundary && TempLocation.Y >= -InnerBoundary)
+	if (bShouldMove)
 	{
-		if (FMath::FRand() <= ChanceToRedirect)
+		FVector TempLocation{ GetActorLocation() };
+
+		// Only redirect if within InnerBoundary
+		if (TempLocation.Y <= InnerBoundary && TempLocation.Y >= -InnerBoundary)
 		{
-			// change direction
-			MovementSpeed *= -1.0f;
+			if (FMath::FRand() <= ChanceToRedirect)
+			{
+				// Change direction
+				MovementSpeed *= -1.0f;
+			}
 		}
 	}
 }
@@ -81,7 +80,7 @@ void ATreeBase::AppleSpawn() const
 {
 	// Get TreeBase current location and rotation
 	FVector SpawnLocation{ GetActorLocation() };
-	FRotator SpawnRotation{ GetActorRotation() };
+	const FRotator SpawnRotation{ GetActorRotation() };
 
 	// Add offset randomly to the left or to the right of the current location
 	SpawnLocation.Y += (FMath::FRand() <= 0.5f) ? 150.0f : -150.0f;
@@ -93,7 +92,17 @@ void ATreeBase::AppleSpawn() const
 	}
 }
 
-void ATreeBase::StopSpawningApple()
+void ATreeBase::StartSpawningApples()
+{
+	GetWorld()->GetTimerManager().SetTimer(AppleSpawnTimer, this, &ATreeBase::AppleSpawn, SecondsBetweenAppleDrops, true, 2.0f);
+}
+
+void ATreeBase::StartRedirecting()
+{
+	GetWorld()->GetTimerManager().SetTimer(ChangeDirectionTimer, this, &ATreeBase::ChangeDirection, RedirectTime, true);
+}
+
+void ATreeBase::StopSpawningApples()
 {
 	GetWorld()->GetTimerManager().ClearTimer(AppleSpawnTimer);
 }
@@ -103,7 +112,7 @@ void ATreeBase::StopRedirecting()
 	GetWorld()->GetTimerManager().ClearTimer(ChangeDirectionTimer);
 }
 
-void ATreeBase::SetShouldMove(bool bInShouldMove)
+void ATreeBase::SetShouldMove(const bool bInShouldMove)
 {
 	bShouldMove = bInShouldMove;
 }

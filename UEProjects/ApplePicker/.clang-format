@@ -18,4 +18,3 @@ IndentCaseLabels: true
 AlwaysBreakTemplateDeclarations: Yes
 #SpacesInBraces: true
 Cpp11BracedListStyle: false
-

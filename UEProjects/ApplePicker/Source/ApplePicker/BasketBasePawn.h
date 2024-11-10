@@ -52,7 +52,7 @@ public:
 private:
 	FVector CurrentVelocity;
 
-	void MoveRight(float AxisValue);
+	void MoveRight(const float AxisValue);
 
 	TWeakObjectPtr<AApplePickerGameModeBase> CurrentGameMode{ nullptr };
 	TWeakObjectPtr<APlayerController> CurrentPlayerController{ nullptr };
