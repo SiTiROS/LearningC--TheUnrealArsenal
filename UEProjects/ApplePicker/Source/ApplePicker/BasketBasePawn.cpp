@@ -3,6 +3,8 @@
 #include "ApplePickerGameModeBase.h"
 #include "Components/PrimitiveComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "NiagaraFunctionLibrary.h"
+#include "NiagaraSystem.h"
 
 ABasketBasePawn::ABasketBasePawn()
 	: NumbersPaddles(3),
@@ -148,9 +150,18 @@ void ABasketBasePawn::HandlePaddleDestruction()
 {
 	if (!Paddles.IsEmpty())
 	{
+		FVector TempPaddleLoc;
+
 		if (UStaticMeshComponent* PoppedElement = Paddles.Pop())
 		{
+			TempPaddleLoc = PoppedElement->GetComponentLocation();
 			PoppedElement->DestroyComponent();
+		}
+
+		if (PaddleDestroyedParticles != nullptr && PaddleDestroyedParticles->IsValid())
+		{
+			UNiagaraFunctionLibrary::SpawnSystemAtLocation(this, PaddleDestroyedParticles,
+				TempPaddleLoc);
 		}
 	}
 }

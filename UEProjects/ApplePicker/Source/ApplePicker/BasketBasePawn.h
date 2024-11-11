@@ -5,6 +5,7 @@
 #include "BasketBasePawn.generated.h"
 
 class AApplePickerGameModeBase;
+class UNiagaraSystem;
 
 UCLASS()
 class APPLEPICKER_API ABasketBasePawn : public APawn
@@ -39,6 +40,9 @@ protected:
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 		FVector NormalImpulse, const FHitResult& Hit);
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Setup|Particles Effects")
+	UNiagaraSystem* PaddleDestroyedParticles;
 
 public:
 	virtual void Tick(float DeltaTime) override;

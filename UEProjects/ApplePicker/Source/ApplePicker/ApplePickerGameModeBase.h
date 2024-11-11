@@ -5,6 +5,7 @@
 #include "ApplePickerGameModeBase.generated.h"
 
 class ABasketBasePawn;
+class UApplePickerUserWidgetBase;
 
 UCLASS()
 class APPLEPICKER_API AApplePickerGameModeBase : public AGameModeBase
@@ -18,6 +19,12 @@ public:
 	UFUNCTION()
 	void HandleAppleLost();
 
+	UFUNCTION(BlueprintCallable)
+	float GetGameStartDelay() const { return GameStartDelay; }
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Win")
+	bool bIsGameActive{ false };
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -30,8 +37,15 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Setup")
 	int32 ApplesToLose{ 3 };
 
-	UPROPERTY(EditAnywhere, Category = "Setup")
-	float GameStartDelay{ 3.0f };
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
+	float GameStartDelay{ 5.0f };
+
+	// To specify widget blueprint/type in Editor
+	UPROPERTY(EditAnywhere, Category = "Setup|Widgets")
+	TSubclassOf<UUserWidget> GameWidgetType;
+
+	UPROPERTY()
+	UApplePickerUserWidgetBase* Widget;
 
 private:
 	int32 ApplesCaught{ 0 };
@@ -39,5 +53,7 @@ private:
 
 	TWeakObjectPtr<ABasketBasePawn> BasketPawn{ nullptr };
 
-	void HandleGameStart() const;
+	void HandleGameStart();
+
+	void UpdateWidgetText() const;
 };

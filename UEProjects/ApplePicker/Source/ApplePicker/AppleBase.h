@@ -6,6 +6,7 @@
 #include "AppleBase.generated.h"
 
 class AApplePickerGameModeBase;
+class UNiagaraSystem;
 
 UCLASS()
 class APPLEPICKER_API AAppleBase : public AAppleTreeElementBase
@@ -18,8 +19,13 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
+	virtual void Destroyed() override;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UStaticMeshComponent* AppleMeshComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Particles Effects")
+	UNiagaraSystem* AppleDestroyedParticles;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
 	float FloorBoundary;

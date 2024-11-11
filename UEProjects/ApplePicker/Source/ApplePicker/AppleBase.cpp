@@ -1,6 +1,8 @@
 #include "AppleBase.h"
 #include "ApplePickerGameModeBase.h"
 #include "Kismet/GameplayStatics.h"
+#include "NiagaraFunctionLibrary.h"
+#include "NiagaraSystem.h"
 
 AAppleBase::AAppleBase()
 	: FloorBoundary(-680.0f)
@@ -25,6 +27,17 @@ void AAppleBase::BeginPlay()
 	Super::BeginPlay();
 
 	CurrentGameMode = Cast<AApplePickerGameModeBase>(UGameplayStatics::GetGameMode(this));
+}
+
+void AAppleBase::Destroyed()
+{
+	Super::Destroyed();
+
+	if (AppleDestroyedParticles != nullptr && AppleDestroyedParticles->IsValid())
+	{
+		UNiagaraFunctionLibrary::SpawnSystemAtLocation(this, AppleDestroyedParticles,
+			GetActorLocation());
+	}
 }
 
 void AAppleBase::Tick(float DeltaTime)
